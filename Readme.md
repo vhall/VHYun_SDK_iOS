@@ -12,7 +12,7 @@
 
 ### SDK 各模块依赖关系图
 
-![(VHYun)](http://wiki.vhall.com/lib/exe/fetch.php?media=rd:%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png)
+![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
  
