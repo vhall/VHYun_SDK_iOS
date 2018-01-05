@@ -1,5 +1,6 @@
 # VHYun_SDK_iOS
 微吼云 iOS SDK
+微吼云 iOS SDK 集成和调用方式，参见官方文档：http://yun.vhall.com/document/document/index
 
 ### APP工程集成SDK基本设置
 1、工程中AppDelegate.m 文件名修改为 AppDelegate.mm<br>
