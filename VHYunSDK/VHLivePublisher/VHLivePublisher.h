@@ -126,7 +126,7 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
 
 /**
  *  缩放摄像头
- *  @param zoomSize  缩放比例
+ *  @param zoomSize  变焦取值范围[1.0 - xx] xx 是系统相机支持最大变焦值
  */
 - (BOOL)zoomCamera:(CGFloat)zoomSize;
 

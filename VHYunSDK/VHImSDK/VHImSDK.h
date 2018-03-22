@@ -16,7 +16,7 @@
 /**
  * IM模块初始化
  */
-- (instancetype)initWithChannelID:(NSString*)channelID accessToken:(NSString*)accessToken;
+- (instancetype)initWithChannelID:(NSString*)channelID accessToken:(NSString*)accessToken delegate:(id <VHImSDKDelegate>)delegate;
 
 /**
  * 发送消息
@@ -26,7 +26,7 @@
 @end
 
 @protocol VHImSDKDelegate <NSObject>
-
+@optional
 /**
  *  接收IM消息
  *  @param imSDK IM实例
@@ -34,7 +34,20 @@
  */
 - (void)imSDK:(VHImSDK *)imSDK receiveMessage:(VHMessage*)message;
 
-@optional
+/**
+ *  接收自定义消息
+ *  @param imSDK IM实例
+ *  @param message   自定义消息
+ */
+- (void)imSDK:(VHImSDK *)imSDK receiveCustomMessage:(VHMessage*)message;
+
+/**
+ *  上下线消息
+ *  @param imSDK IM实例
+ *  @param message   消息
+ */
+- (void)imSDK:(VHImSDK *)imSDK onlineMessage:(VHMessage*)message;
+
 /**
  *  错误回调
  *  @param imSDK IM实例

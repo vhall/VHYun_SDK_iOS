@@ -15,7 +15,6 @@ typedef NS_ENUM(NSInteger, VHLogLevel) {
     VHLogLevelWarning = 2,    //Warning
     VHLogLevelInfo    = 3,    //Info
     VHLogLevelDebug   = 4,    //Debug
-    VHLogLevelVerbose = 5,    //VERBOSE
 };
 
 @interface VHLiveBase : NSObject

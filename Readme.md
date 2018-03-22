@@ -16,6 +16,12 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+
+#### 版本 v1.1 更新时间：2018.03.22
+更新内容：<br>
+1、新增自定义消息<br>
+2、新增上下线消息<br>
+3、功能优化<br>
  
 #### 版本 v1.0 更新时间：2018.01.03
 更新内容：<br>

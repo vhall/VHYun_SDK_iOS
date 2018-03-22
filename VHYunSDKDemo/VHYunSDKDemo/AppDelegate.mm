@@ -21,7 +21,7 @@
     
     [VHLiveBase registerApp:DEMO_AppID];
     [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
-//    [VHLiveBase setLogLevel:VHLogLevelError];
+
     NSLog(@"SDKVersion: %@",[VHLiveBase getSDKVersion]);
     
     return YES;

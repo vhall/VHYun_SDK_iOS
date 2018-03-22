@@ -5,7 +5,7 @@
 //  Created by vhall on 2017/11/16.
 //  Copyright © 2017年 www.vhall.com. All rights reserved.
 //
-
+#import <objc/message.h>
 #import "ViewController.h"
 #import "PublishViewController.h"
 #import "WatchViewController.h"
@@ -19,16 +19,44 @@
 #import "VHSettingViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *verLabel;
 
 @end
 
 @implementation ViewController
-
-- (void)viewDidLoad {
+ - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _verLabel.text = [NSString stringWithFormat:@"v%@",[VHLiveBase getSDKVersion]];
+
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入AppID" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+//    UITextField *txtName = [alert textFieldAtIndex:0];
+//    txtName.placeholder = @"请输入AppID";
+//    [alert show];
+
 }
 
+#pragma mark - 点击代理
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        UITextField *txt = [alertView textFieldAtIndex:0];
+        if(txt.text.length > 0)
+        {
+            //获取txt内容即可
+            [VHLiveBase registerApp:txt.text];
+            [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
+        }
+        else
+        {
+            [self showMsg:@"输入AppID为空,使用系统默认AppID" afterDelay:2];
+            //获取txt内容即可
+            [VHLiveBase registerApp:DEMO_AppID];
+            [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
+        }
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

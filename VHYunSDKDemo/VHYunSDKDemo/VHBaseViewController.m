@@ -109,4 +109,11 @@
 {
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
+
+
+- (NSString*)timeFormat:(NSTimeInterval)time
+{
+    int secend = ceil(time);
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",secend/3600,(secend%3600)/60,secend%60];
+}
 @end

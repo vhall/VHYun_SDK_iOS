@@ -42,6 +42,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initView];
     
+    //阻止iOS设备锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+    
     _player = [[VHVodPlayer alloc]init];
     _player.delegate = self;
     _player.isUseDefaultControl = NO;//不适用默认UI Control
@@ -73,6 +76,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)dealloc
+{
+    //允许iOS设备锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    NSLog(@"%@: dealloc",[self class]);
+}
 
 /*
 #pragma mark - Navigation
@@ -85,7 +94,7 @@
 */
 
 - (IBAction)backBtnClicked:(id)sender {
-    [_player stopPlay];
+    [self stopPlayer];
     [_player destroyPlayer];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
@@ -96,6 +105,7 @@
 - (void)initView
 {
     _document = [[VHDocument alloc]initWithRecordID:self.recordID];
+//    _document.delegate = self;
     _document.view.frame = _scrollView.bounds;
     _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);
     [_scrollView addSubview:_document.view];
@@ -136,18 +146,6 @@
         if(_player.duration>0)
             _curTimeSlider.value =_player.currentPlaybackTime/_player.duration;
     }
-}
-
-- (NSString*)timeFormat:(NSTimeInterval)time
-{
-    NSString *str = @"00:00";
-    long t = ceil(time);
-    
-    int hh = (int)(t/3600);
-    int mm = (int)(t-hh*3660)/60;
-    int ss = (int)(t%60);
-    str = [NSString stringWithFormat:@"%02d:%02d:%02d",hh,mm,ss];
-    return str;
 }
 
 #pragma mark - palyerControls

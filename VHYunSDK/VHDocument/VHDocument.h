@@ -37,7 +37,7 @@
  * 自定义翻页接口
  * return NO 基础模块未初始化
  */
-- (BOOL)nextPage:(NSString*)documentID pageID:(NSString*)pageID;
+- (BOOL)nextPage:(NSString*)documentID pageID:(NSString*)pageID accessToken:(NSString*)accessToken;
 
 @end
 

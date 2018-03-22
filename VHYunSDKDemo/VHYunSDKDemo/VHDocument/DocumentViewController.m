@@ -43,6 +43,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)dealloc
+{
+    NSLog(@"%@: dealloc",[self class]);
+}
 
 /*
 #pragma mark - Navigation
@@ -66,7 +70,7 @@
     {
         [_scrollView setZoomScale:1.0 animated:NO];
         NSString *page = [NSString stringWithFormat:@"%d",(int)sender.value];
-        [_document nextPage:_docIDTextField.text pageID:page];
+        [_document nextPage:_docIDTextField.text pageID:page accessToken:self.accessToken];
     }
 }
 
@@ -74,6 +78,7 @@
 - (void)initView
 {
     _document = [[VHDocument alloc]initWithChannelID:self.channelID accessToken:self.accessToken];
+//    _document.delegate = self;
     _document.view.frame = _scrollView.bounds;
     _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);
     [_scrollView addSubview:_document.view];

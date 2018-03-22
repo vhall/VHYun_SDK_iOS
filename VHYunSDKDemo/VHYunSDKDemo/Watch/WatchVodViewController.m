@@ -99,7 +99,7 @@
 }
 */
 - (IBAction)backBtnClicked:(id)sender {
-    [_player stopPlay];
+    [self stopPlayer];
     [_player destroyPlayer];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
@@ -154,18 +154,6 @@
         if(_player.duration>0)
             _curTimeSlider.value =_player.currentPlaybackTime/_player.duration;
     }
-}
-
-- (NSString*)timeFormat:(NSTimeInterval)time
-{
-    NSString *str = @"00:00";
-    long t = ceil(time);
-    
-    int hh = (int)(t/3600);
-    int mm = (int)(t-hh*3660)/60;
-    int ss = (int)(t%60);
-    str = [NSString stringWithFormat:@"%02d:%02d:%02d",hh,mm,ss];
-    return str;
 }
 
 #pragma mark - palyerControls

@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger,VHStreamType){
 @property(nonatomic,strong,readonly)UIView          *view;
 @property(nonatomic,assign,readonly)int             playerState;//播放器状态  详见 VHPlayerStatus 的定义.
 @property(nonatomic,assign)NSInteger                bufferTime; //RTMP 的缓冲时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
+@property(nonatomic,assign)int timeout;     //RTMP链接的超时时间 默认5000毫秒，单位为毫秒
 /**
  *  设置默认播放的清晰度 默认原画
  */
@@ -122,4 +123,19 @@ typedef NS_ENUM(NSInteger,VHStreamType){
  */
 - (void)player:(VHLivePlayer *)player streamtype:(VHStreamType)streamtype;
 
+/**
+ *  接收流中消息
+ *
+ *  @param player       player
+ *  @param msg          流中消息
+ */
+- (void)player:(VHLivePlayer *)player receiveMessage:(NSDictionary*)msg;
+
+/**
+ *  上下线消息
+ *
+ *  @param player       player
+ *  @param msg          消息
+ */
+- (void)player:(VHLivePlayer *)player onlineMessage:(id)msg;
 @end

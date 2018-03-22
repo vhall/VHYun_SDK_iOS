@@ -17,4 +17,6 @@
 
 -(void)showProgressDialog:(UIView*)view;
 -(void)hideProgressDialog:(UIView*)view;
+
+- (NSString*)timeFormat:(NSTimeInterval)time;
 @end

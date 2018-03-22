@@ -197,15 +197,21 @@
 {
     NSLog(@"curDefinition: %ld definitions:%@",(long)definition,definitions);
     
+    if(definition>4)
+        return;
+    
     [_definitionBtn setTitle:DefinitionNameList[definition] forState:UIControlStateNormal];
     for (UIButton* btn in _definitionBtns) {
         btn.enabled = NO;
     }
     
     for (NSNumber *idx in definitions) {
-        UIButton* btn  = _definitionBtns[[idx integerValue]];
-        btn.enabled = YES;
-        btn.selected = (definition == [idx integerValue]);
+        if([idx intValue]<5)
+        {
+            UIButton* btn  = _definitionBtns[[idx integerValue]];
+            btn.enabled = YES;
+            btn.selected = (definition == [idx integerValue]);
+        }
     }
 }
 
