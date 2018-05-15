@@ -293,6 +293,17 @@
     [self stopPlayer];
     [self showMsg:[NSString stringWithFormat:@"%@",error.domain] afterDelay:2];
 }
+    
+//测试代码
+-(void)cdnSwitch:(VHVodPlayer *)player info:(NSDictionary *)info
+{
+    NSString *cdn = info[@"cdn"];
+    if(cdn)
+    {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"当前正在播放" message:cdn delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
 
 -(BOOL)shouldAutorotate
 {

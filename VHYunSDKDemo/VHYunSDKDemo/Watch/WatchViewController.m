@@ -191,6 +191,16 @@
 - (void)player:(VHLivePlayer *)player downloadSpeed:(NSString*)speed
 {
     _downloadSpeedLabel.text = [NSString stringWithFormat:@"%@ kb/s",speed];
+    
+//测试代码
+    if([speed rangeOfString:@"-"].location == NSNotFound)
+        _downloadSpeedLabel.text = [NSString stringWithFormat:@"%@ kb/s",speed];
+    else
+    {
+        NSRange r = [speed rangeOfString:@"_" options:NSBackwardsSearch];
+        if(r.location != NSNotFound)
+        _infoLabel.text = [_infoLabel.text stringByAppendingFormat:@"\n%@",[speed substringToIndex:r.location]];
+    }
 }
 
 - (void)player:(VHLivePlayer *)player validDefinitions:(NSArray*)definitions curDefinition:(VHDefinition)definition

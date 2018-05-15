@@ -28,9 +28,6 @@
 #define DEMO_IMChannelID            @""
 #define DEMO_CustomDocID            @""
 
-
-
-
 //#if DEBUG  // 调试状态, 打开LOG功能
 #define VHLog(...) NSLog(__VA_ARGS__)
 //#else // 发布状态, 关闭LOG功能

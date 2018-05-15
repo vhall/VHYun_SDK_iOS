@@ -16,6 +16,10 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.1.1 更新时间：2018.05.15
+更新内容：<br>
+1、bug修复<br>
+2、功能优化<br>
 
 #### 版本 v1.1 更新时间：2018.03.22
 更新内容：<br>

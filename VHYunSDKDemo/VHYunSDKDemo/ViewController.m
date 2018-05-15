@@ -35,7 +35,9 @@
 //    UITextField *txtName = [alert textFieldAtIndex:0];
 //    txtName.placeholder = @"请输入AppID";
 //    [alert show];
-
+     
+     [VHLiveBase registerApp:DEMO_AppID];
+     [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
 }
 
 #pragma mark - 点击代理
