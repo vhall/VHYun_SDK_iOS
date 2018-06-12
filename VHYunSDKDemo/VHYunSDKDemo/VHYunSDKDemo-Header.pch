@@ -17,5 +17,5 @@
 #import "VHBaseViewController.h"
 #import "VHLiveBase.h"
 #import "VHStystemSetting.h"
-
+#import "JXTAlertManagerHeader.h"
 #endif /* VHYunSDKDemo_Header_pch */

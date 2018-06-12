@@ -9,6 +9,9 @@
 #ifndef CONSTS_h
 #define CONSTS_h
 
+#define SHOW_CPU_INFO
+
+
 //开发说明 http://www.vhallyun.com/document/detail/index?project_id=40&doc_id=949
 //1、AppDelegate.mm 修改为.mm
 //2、关闭bitcode
@@ -27,6 +30,10 @@
 #define DEMO_DocChannelID           @""
 #define DEMO_IMChannelID            @""
 #define DEMO_CustomDocID            @""
+#define DEMO_InteractiveID          @""
+
+
+#define DEMO_Test
 
 //#if DEBUG  // 调试状态, 打开LOG功能
 #define VHLog(...) NSLog(__VA_ARGS__)

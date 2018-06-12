@@ -47,8 +47,7 @@
     
     _player = [[VHVodPlayer alloc]init];
     _player.delegate = self;
-    _player.isUseDefaultControl = NO;//不适用默认UI Control
-    
+
     [self.preView insertSubview:_player.view atIndex:0];
     _player.view.frame = _preView.bounds;
     [_player startPlay:self.recordID accessToken:self.accessToken];

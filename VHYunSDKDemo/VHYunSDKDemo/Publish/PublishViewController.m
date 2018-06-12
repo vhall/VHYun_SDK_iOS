@@ -21,9 +21,9 @@
     UIButton * _lastFilterSelectBtn;
 
     dispatch_source_t _timer;
-    long              _liveTime;
-}
 
+}
+@property (assign, nonatomic)long             liveTime;
 @property (strong, nonatomic)VHLivePublisher *publisher;
 @property (weak, nonatomic) IBOutlet UIView *perView;
 @property (weak, nonatomic) IBOutlet UIImageView *logView;
@@ -309,16 +309,19 @@
         _timer = nil;
     }
     _liveTime = 0;
+    
+    __weak typeof(self) wf = self;
+    
     dispatch_queue_t queue = dispatch_queue_create("my queue", 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), 1 * NSEC_PER_SEC, 0);//间隔1秒
     dispatch_source_set_event_handler(_timer, ^(){
-        _liveTime++;
-        NSString *strInfo = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",_liveTime/3600,(_liveTime/60)%60,_liveTime%60];
+        wf.liveTime++;
+        NSString *strInfo = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",wf.liveTime/3600,(wf.liveTime/60)%60,wf.liveTime%60];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if(_timeLabel)
+            if(wf.timeLabel)
             {
-                _timeLabel.text = strInfo;
+                wf.timeLabel.text = strInfo;
             }
         });
     });

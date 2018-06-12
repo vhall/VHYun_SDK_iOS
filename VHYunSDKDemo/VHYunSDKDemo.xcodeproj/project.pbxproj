@@ -45,6 +45,12 @@
 		C0111CB51FFB276E00BC3D94 /* libVhallLiveBase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0111CA21FFB276E00BC3D94 /* libVhallLiveBase.a */; };
 		C0111CB61FFB276E00BC3D94 /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0111CA31FFB276E00BC3D94 /* libx264.a */; };
 		C0111CB71FFB276E00BC3D94 /* libVHVodPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0111CA51FFB276E00BC3D94 /* libVHVodPlayer.a */; };
+		C029512B20BE9B2300FD60BD /* VHStatisticsStystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */; };
+		C055909B208721EF007F1595 /* libVhallSignaling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0559093208721EE007F1595 /* libVhallSignaling.a */; };
+		C055909C208721EF007F1595 /* libVHInteractive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0559094208721EE007F1595 /* libVHInteractive.a */; };
+		C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05590A020872262007F1595 /* VHInteractiveViewController.m */; };
+		C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05590A120872262007F1595 /* VHInteractiveViewController.xib */; };
+		C05590AA20873211007F1595 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C05590A720872CB2007F1595 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C07B745A1FBD3AFA00189E0B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C07B74591FBD3AFA00189E0B /* AppDelegate.mm */; };
 		C07B745D1FBD3AFA00189E0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B745C1FBD3AFA00189E0B /* ViewController.m */; };
 		C07B74601FBD3AFA00189E0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07B745E1FBD3AFA00189E0B /* Main.storyboard */; };
@@ -68,14 +74,27 @@
 		C07C13691FC5287B000D57FE /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C07C13671FC5287B000D57FE /* PublishViewController.xib */; };
 		C07C136E1FC528EA000D57FE /* WatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07C136C1FC528EA000D57FE /* WatchViewController.m */; };
 		C07C136F1FC528EA000D57FE /* WatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C07C136D1FC528EA000D57FE /* WatchViewController.xib */; };
+		C090308420B50C240051F6ED /* VHLayoutView_1vN.m in Sources */ = {isa = PBXBuildFile; fileRef = C090308320B50C240051F6ED /* VHLayoutView_1vN.m */; };
+		C090308720B50C950051F6ED /* VHLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C090308620B50C950051F6ED /* VHLayoutItem.m */; };
+		C090308A20B5284F0051F6ED /* VHInteractiveViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = C090308920B5284F0051F6ED /* VHInteractiveViewController+Layout.m */; };
+		C090308D20B546A50051F6ED /* VHLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C090308C20B546A50051F6ED /* VHLayoutView.m */; };
+		C090309120B568050051F6ED /* VHLayoutView_1vN_Pip.m in Sources */ = {isa = PBXBuildFile; fileRef = C090309020B568050051F6ED /* VHLayoutView_1vN_Pip.m */; };
+		C090309420B583880051F6ED /* VHLayoutView_1vN_Pip_Left.m in Sources */ = {isa = PBXBuildFile; fileRef = C090309320B583880051F6ED /* VHLayoutView_1vN_Pip_Left.m */; };
+		C090309920B69CE60051F6ED /* VHLayoutView_1vN_Left.m in Sources */ = {isa = PBXBuildFile; fileRef = C090309820B69CE60051F6ED /* VHLayoutView_1vN_Left.m */; };
 		C09848C81FC5407D0045066C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07C13711FC53FFA000D57FE /* OpenAL.framework */; };
 		C09848C91FC540980045066C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07C13701FC53FD5000D57FE /* QuartzCore.framework */; };
 		C09848CA1FC540B10045066C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07B74C11FBD5E2D00189E0B /* CoreMedia.framework */; };
 		C09848CB1FC540C80045066C /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07B74BE1FBD5AC400189E0B /* VideoToolbox.framework */; };
 		C09848D11FC5415C0045066C /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C09848D01FC5415C0045066C /* libbz2.tbd */; };
+		C09C4F2E20A2A85300164B30 /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C4F2920A2A85300164B30 /* JXTAlertController.m */; };
+		C09C4F2F20A2A85300164B30 /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C4F2D20A2A85300164B30 /* JXTAlertView.m */; };
+		C09C4F3320A2E07E00164B30 /* VHInteractiveViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C4F3220A2E07E00164B30 /* VHInteractiveViewController+TableView.m */; };
+		C09C4F3620A2E13C00164B30 /* VHInteractiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C4F3520A2E13C00164B30 /* VHInteractiveTableViewCell.m */; };
+		C09FDF8B209FFC9A00B91E49 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05590A720872CB2007F1595 /* WebRTC.framework */; };
 		C0A37E471FDA33040088A0ED /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A37E461FDA33040088A0ED /* CALayer+XibConfiguration.m */; };
 		C0A38B0E1FC8058A00A8998F /* WatchVodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A38B0C1FC8058A00A8998F /* WatchVodViewController.m */; };
 		C0A38B0F1FC8058A00A8998F /* WatchVodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A38B0D1FC8058A00A8998F /* WatchVodViewController.xib */; };
+		C0B7AE3B2088782300C3C691 /* VHInteractiveViewController+Room.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7AE3A2088782300C3C691 /* VHInteractiveViewController+Room.m */; };
 		C0F4A8811FD0FE2F006D6DA9 /* VHSettingArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4A8731FD0FE2F006D6DA9 /* VHSettingArrowItem.m */; };
 		C0F4A8821FD0FE2F006D6DA9 /* VHSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4A8751FD0FE2F006D6DA9 /* VHSettingGroup.m */; };
 		C0F4A8831FD0FE2F006D6DA9 /* VHSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4A8771FD0FE2F006D6DA9 /* VHSettingItem.m */; };
@@ -87,6 +106,20 @@
 		C0F4A8911FD16AB8006D6DA9 /* CustomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0F4A88E1FD16AB7006D6DA9 /* CustomPickerView.xib */; };
 		C0F4A8921FD16AB8006D6DA9 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4A88F1FD16AB7006D6DA9 /* CustomPickerView.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C05590AB20873211007F1595 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C05590AA20873211007F1595 /* WebRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C00B645E1FE23E0600DF36FF /* DocumentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentViewController.h; sourceTree = "<group>"; };
@@ -158,6 +191,14 @@
 		C0111CA51FFB276E00BC3D94 /* libVHVodPlayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVHVodPlayer.a; sourceTree = "<group>"; };
 		C0111CA61FFB276E00BC3D94 /* VHPlayerTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHPlayerTypeDef.h; sourceTree = "<group>"; };
 		C0111CA71FFB276E00BC3D94 /* VHVodPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHVodPlayer.h; sourceTree = "<group>"; };
+		C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHStatisticsStystem.m; sourceTree = "<group>"; };
+		C029512A20BE9B2300FD60BD /* VHStatisticsStystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHStatisticsStystem.h; sourceTree = "<group>"; };
+		C0559093208721EE007F1595 /* libVhallSignaling.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVhallSignaling.a; sourceTree = "<group>"; };
+		C0559094208721EE007F1595 /* libVHInteractive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVHInteractive.a; sourceTree = "<group>"; };
+		C055909F20872262007F1595 /* VHInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveViewController.h; sourceTree = "<group>"; };
+		C05590A020872262007F1595 /* VHInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveViewController.m; sourceTree = "<group>"; };
+		C05590A120872262007F1595 /* VHInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHInteractiveViewController.xib; sourceTree = "<group>"; };
+		C05590A720872CB2007F1595 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		C07B74551FBD3AFA00189E0B /* VHYunSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHYunSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07B74581FBD3AFA00189E0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C07B74591FBD3AFA00189E0B /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -198,15 +239,41 @@
 		C07C136D1FC528EA000D57FE /* WatchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchViewController.xib; sourceTree = "<group>"; };
 		C07C13701FC53FD5000D57FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C07C13711FC53FFA000D57FE /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		C0902F5F20AB09840051F6ED /* VHRenderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHRenderView.h; sourceTree = "<group>"; };
+		C090308220B50C240051F6ED /* VHLayoutView_1vN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutView_1vN.h; sourceTree = "<group>"; };
+		C090308320B50C240051F6ED /* VHLayoutView_1vN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutView_1vN.m; sourceTree = "<group>"; };
+		C090308520B50C950051F6ED /* VHLayoutItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutItem.h; sourceTree = "<group>"; };
+		C090308620B50C950051F6ED /* VHLayoutItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutItem.m; sourceTree = "<group>"; };
+		C090308820B5284F0051F6ED /* VHInteractiveViewController+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHInteractiveViewController+Layout.h"; sourceTree = "<group>"; };
+		C090308920B5284F0051F6ED /* VHInteractiveViewController+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VHInteractiveViewController+Layout.m"; sourceTree = "<group>"; };
+		C090308B20B546A50051F6ED /* VHLayoutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutView.h; sourceTree = "<group>"; };
+		C090308C20B546A50051F6ED /* VHLayoutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutView.m; sourceTree = "<group>"; };
+		C090308F20B568050051F6ED /* VHLayoutView_1vN_Pip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutView_1vN_Pip.h; sourceTree = "<group>"; };
+		C090309020B568050051F6ED /* VHLayoutView_1vN_Pip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutView_1vN_Pip.m; sourceTree = "<group>"; };
+		C090309220B583880051F6ED /* VHLayoutView_1vN_Pip_Left.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutView_1vN_Pip_Left.h; sourceTree = "<group>"; };
+		C090309320B583880051F6ED /* VHLayoutView_1vN_Pip_Left.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutView_1vN_Pip_Left.m; sourceTree = "<group>"; };
+		C090309720B69CE60051F6ED /* VHLayoutView_1vN_Left.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHLayoutView_1vN_Left.h; sourceTree = "<group>"; };
+		C090309820B69CE60051F6ED /* VHLayoutView_1vN_Left.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHLayoutView_1vN_Left.m; sourceTree = "<group>"; };
 		C09848CC1FC540E10045066C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C09848CD1FC540F20045066C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C09848D01FC5415C0045066C /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		C09848D71FC54AA80045066C /* VHYunSDKDemo-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHYunSDKDemo-Header.pch"; sourceTree = "<group>"; };
+		C09C4F2820A2A85300164B30 /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
+		C09C4F2920A2A85300164B30 /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
+		C09C4F2A20A2A85300164B30 /* JXTAlertManagerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertManagerHeader.h; sourceTree = "<group>"; };
+		C09C4F2C20A2A85300164B30 /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
+		C09C4F2D20A2A85300164B30 /* JXTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertView.m; sourceTree = "<group>"; };
+		C09C4F3120A2E07E00164B30 /* VHInteractiveViewController+TableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHInteractiveViewController+TableView.h"; sourceTree = "<group>"; };
+		C09C4F3220A2E07E00164B30 /* VHInteractiveViewController+TableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VHInteractiveViewController+TableView.m"; sourceTree = "<group>"; };
+		C09C4F3420A2E13C00164B30 /* VHInteractiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveTableViewCell.h; sourceTree = "<group>"; };
+		C09C4F3520A2E13C00164B30 /* VHInteractiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveTableViewCell.m; sourceTree = "<group>"; };
 		C0A37E451FDA33030088A0ED /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
 		C0A37E461FDA33040088A0ED /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
 		C0A38B0B1FC8058A00A8998F /* WatchVodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchVodViewController.h; sourceTree = "<group>"; };
 		C0A38B0C1FC8058A00A8998F /* WatchVodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchVodViewController.m; sourceTree = "<group>"; };
 		C0A38B0D1FC8058A00A8998F /* WatchVodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchVodViewController.xib; sourceTree = "<group>"; };
+		C0B7AE392088782300C3C691 /* VHInteractiveViewController+Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHInteractiveViewController+Room.h"; sourceTree = "<group>"; };
+		C0B7AE3A2088782300C3C691 /* VHInteractiveViewController+Room.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VHInteractiveViewController+Room.m"; sourceTree = "<group>"; };
 		C0F4A86D1FD0F62E006D6DA9 /* CONSTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CONSTS.h; sourceTree = "<group>"; };
 		C0F4A8721FD0FE2F006D6DA9 /* VHSettingArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSettingArrowItem.h; sourceTree = "<group>"; };
 		C0F4A8731FD0FE2F006D6DA9 /* VHSettingArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHSettingArrowItem.m; sourceTree = "<group>"; };
@@ -226,6 +293,7 @@
 		C0F4A88E1FD16AB7006D6DA9 /* CustomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerView.xib; sourceTree = "<group>"; };
 		C0F4A88F1FD16AB7006D6DA9 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
 		C0F4A8901FD16AB7006D6DA9 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
+		C0FB08282099C40D004EF58B /* VHInteractiveRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHInteractiveRoom.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,32 +301,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0111CB71FFB276E00BC3D94 /* libVHVodPlayer.a in Frameworks */,
-				C09848CB1FC540C80045066C /* VideoToolbox.framework in Frameworks */,
-				C09848CA1FC540B10045066C /* CoreMedia.framework in Frameworks */,
+				C09FDF8B209FFC9A00B91E49 /* WebRTC.framework in Frameworks */,
 				C0111CB61FFB276E00BC3D94 /* libx264.a in Frameworks */,
 				C0111CAC1FFB276E00BC3D94 /* libGPUImage.a in Frameworks */,
 				C0111CAA1FFB276E00BC3D94 /* libVHImSDK.a in Frameworks */,
-				C09848C91FC540980045066C /* QuartzCore.framework in Frameworks */,
 				C0111CA81FFB276E00BC3D94 /* libVHBasePlatform.a in Frameworks */,
-				C09848C81FC5407D0045066C /* OpenAL.framework in Frameworks */,
-				C07B74B71FBD5A8100189E0B /* OpenGLES.framework in Frameworks */,
 				C0111CAB1FFB276E00BC3D94 /* libVHLivePlayer.a in Frameworks */,
-				C07B74C01FBD5E2200189E0B /* AVFoundation.framework in Frameworks */,
 				C0111CB51FFB276E00BC3D94 /* libVhallLiveBase.a in Frameworks */,
-				C07B74BB1FBD5A9E00189E0B /* libz.tbd in Frameworks */,
+				C055909B208721EF007F1595 /* libVhallSignaling.a in Frameworks */,
 				C0111CB31FFB276E00BC3D94 /* libVhall3rdLib.a in Frameworks */,
-				C09848D11FC5415C0045066C /* libbz2.tbd in Frameworks */,
-				C07B74BD1FBD5AA800189E0B /* libc++.tbd in Frameworks */,
-				C0111CB41FFB276E00BC3D94 /* libVhallLiveApi.a in Frameworks */,
 				C0111CA91FFB276E00BC3D94 /* libVHDocument.a in Frameworks */,
+				C0111CB41FFB276E00BC3D94 /* libVhallLiveApi.a in Frameworks */,
 				C0111CAD1FFB276E00BC3D94 /* libVHLivePublisher.a in Frameworks */,
-				C0111CB21FFB276E00BC3D94 /* libswscale.a in Frameworks */,
-				C07B74B91FBD5A9700189E0B /* libiconv.tbd in Frameworks */,
+				C0111CB71FFB276E00BC3D94 /* libVHVodPlayer.a in Frameworks */,
+				C055909C208721EF007F1595 /* libVHInteractive.a in Frameworks */,
 				C0111CB11FFB276E00BC3D94 /* libswresample.a in Frameworks */,
 				C0111CB01FFB276E00BC3D94 /* libavutil.a in Frameworks */,
-				C07B74B81FBD5A8D00189E0B /* libicucore.tbd in Frameworks */,
+				C0111CB21FFB276E00BC3D94 /* libswscale.a in Frameworks */,
 				C0111CAF1FFB276E00BC3D94 /* libavcodec.a in Frameworks */,
+				C09848CA1FC540B10045066C /* CoreMedia.framework in Frameworks */,
+				C09848CB1FC540C80045066C /* VideoToolbox.framework in Frameworks */,
+				C09848C91FC540980045066C /* QuartzCore.framework in Frameworks */,
+				C09848C81FC5407D0045066C /* OpenAL.framework in Frameworks */,
+				C07B74B71FBD5A8100189E0B /* OpenGLES.framework in Frameworks */,
+				C07B74C01FBD5E2200189E0B /* AVFoundation.framework in Frameworks */,
+				C07B74BB1FBD5A9E00189E0B /* libz.tbd in Frameworks */,
+				C09848D11FC5415C0045066C /* libbz2.tbd in Frameworks */,
+				C07B74BD1FBD5AA800189E0B /* libc++.tbd in Frameworks */,
+				C07B74B81FBD5A8D00189E0B /* libicucore.tbd in Frameworks */,
+				C07B74B91FBD5A9700189E0B /* libiconv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +409,7 @@
 				C0111C941FFB276E00BC3D94 /* VHLivePublisher */,
 				C0111C9A1FFB276E00BC3D94 /* VHMediaSDK */,
 				C0111CA41FFB276E00BC3D94 /* VHVodPlayer */,
+				C0559091208721EE007F1595 /* VHInteractive */,
 			);
 			name = VHYunSDK;
 			path = ../../../VHYunSDK;
@@ -419,6 +491,37 @@
 			path = VHVodPlayer;
 			sourceTree = "<group>";
 		};
+		C0559091208721EE007F1595 /* VHInteractive */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB08282099C40D004EF58B /* VHInteractiveRoom.h */,
+				C0902F5F20AB09840051F6ED /* VHRenderView.h */,
+				C0559093208721EE007F1595 /* libVhallSignaling.a */,
+				C0559094208721EE007F1595 /* libVHInteractive.a */,
+				C05590A720872CB2007F1595 /* WebRTC.framework */,
+			);
+			path = VHInteractive;
+			sourceTree = "<group>";
+		};
+		C055909E20872262007F1595 /* VHInteractive */ = {
+			isa = PBXGroup;
+			children = (
+				C090308120B50BD00051F6ED /* VHInteractiveViewLayout */,
+				C055909F20872262007F1595 /* VHInteractiveViewController.h */,
+				C05590A020872262007F1595 /* VHInteractiveViewController.m */,
+				C05590A120872262007F1595 /* VHInteractiveViewController.xib */,
+				C090308820B5284F0051F6ED /* VHInteractiveViewController+Layout.h */,
+				C090308920B5284F0051F6ED /* VHInteractiveViewController+Layout.m */,
+				C0B7AE392088782300C3C691 /* VHInteractiveViewController+Room.h */,
+				C0B7AE3A2088782300C3C691 /* VHInteractiveViewController+Room.m */,
+				C09C4F3120A2E07E00164B30 /* VHInteractiveViewController+TableView.h */,
+				C09C4F3220A2E07E00164B30 /* VHInteractiveViewController+TableView.m */,
+				C09C4F3420A2E13C00164B30 /* VHInteractiveTableViewCell.h */,
+				C09C4F3520A2E13C00164B30 /* VHInteractiveTableViewCell.m */,
+			);
+			path = VHInteractive;
+			sourceTree = "<group>";
+		};
 		C07B744C1FBD3AFA00189E0B = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +554,7 @@
 				C07C136A1FC528CD000D57FE /* Watch */,
 				C00B645D1FE23D6900DF36FF /* VHDocument */,
 				C00B649D1FE91D7700DF36FF /* IM */,
+				C055909E20872262007F1595 /* VHInteractive */,
 				C0F4A8701FD0FE2F006D6DA9 /* Setting */,
 				C07B74861FBD437600189E0B /* Libs */,
 				C07B74611FBD3AFA00189E0B /* Assets.xcassets */,
@@ -466,6 +570,9 @@
 				C07B74871FBD437600189E0B /* Common */,
 				C07B74911FBD437600189E0B /* MBProgressHUD */,
 				C00B64A51FEA431D00DF36FF /* SDWebImage */,
+				C09C4F2620A2A85300164B30 /* JXTAlertManager */,
+				C029512A20BE9B2300FD60BD /* VHStatisticsStystem.h */,
+				C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -549,6 +656,53 @@
 			path = Watch;
 			sourceTree = "<group>";
 		};
+		C090308120B50BD00051F6ED /* VHInteractiveViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C090308B20B546A50051F6ED /* VHLayoutView.h */,
+				C090308C20B546A50051F6ED /* VHLayoutView.m */,
+				C090308220B50C240051F6ED /* VHLayoutView_1vN.h */,
+				C090308320B50C240051F6ED /* VHLayoutView_1vN.m */,
+				C090309720B69CE60051F6ED /* VHLayoutView_1vN_Left.h */,
+				C090309820B69CE60051F6ED /* VHLayoutView_1vN_Left.m */,
+				C090308F20B568050051F6ED /* VHLayoutView_1vN_Pip.h */,
+				C090309020B568050051F6ED /* VHLayoutView_1vN_Pip.m */,
+				C090309220B583880051F6ED /* VHLayoutView_1vN_Pip_Left.h */,
+				C090309320B583880051F6ED /* VHLayoutView_1vN_Pip_Left.m */,
+				C090308520B50C950051F6ED /* VHLayoutItem.h */,
+				C090308620B50C950051F6ED /* VHLayoutItem.m */,
+			);
+			path = VHInteractiveViewLayout;
+			sourceTree = "<group>";
+		};
+		C09C4F2620A2A85300164B30 /* JXTAlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				C09C4F2720A2A85300164B30 /* AlertController */,
+				C09C4F2A20A2A85300164B30 /* JXTAlertManagerHeader.h */,
+				C09C4F2B20A2A85300164B30 /* AlertView */,
+			);
+			path = JXTAlertManager;
+			sourceTree = "<group>";
+		};
+		C09C4F2720A2A85300164B30 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				C09C4F2820A2A85300164B30 /* JXTAlertController.h */,
+				C09C4F2920A2A85300164B30 /* JXTAlertController.m */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+		C09C4F2B20A2A85300164B30 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				C09C4F2C20A2A85300164B30 /* JXTAlertView.h */,
+				C09C4F2D20A2A85300164B30 /* JXTAlertView.m */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		C0F4A86F1FD0FA1D006D6DA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,7 +717,7 @@
 		C0F4A8701FD0FE2F006D6DA9 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				C0F4A8711FD0FE2F006D6DA9 /* Model */,
+				C0F4A8711FD0FE2F006D6DA9 /* View */,
 				C0F4A87A1FD0FE2F006D6DA9 /* VHSettingTableViewCell.h */,
 				C0F4A87B1FD0FE2F006D6DA9 /* VHSettingTableViewCell.m */,
 				C0F4A87C1FD0FE2F006D6DA9 /* VHSettingViewController.h */,
@@ -575,7 +729,7 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		C0F4A8711FD0FE2F006D6DA9 /* Model */ = {
+		C0F4A8711FD0FE2F006D6DA9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C0F4A8901FD16AB7006D6DA9 /* CustomPickerView.h */,
@@ -590,7 +744,7 @@
 				C0F4A8781FD0FE2F006D6DA9 /* VHSettingTextFieldItem.h */,
 				C0F4A8791FD0FE2F006D6DA9 /* VHSettingTextFieldItem.m */,
 			);
-			path = Model;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,6 +757,7 @@
 				C07B74511FBD3AFA00189E0B /* Sources */,
 				C07B74521FBD3AFA00189E0B /* Frameworks */,
 				C07B74531FBD3AFA00189E0B /* Resources */,
+				C05590AB20873211007F1595 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -619,7 +774,7 @@
 		C07B744D1FBD3AFA00189E0B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = www.vhall.com;
 				TargetAttributes = {
 					C07B74541FBD3AFA00189E0B = {
@@ -652,6 +807,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A38B0F1FC8058A00A8998F /* WatchVodViewController.xib in Resources */,
+				C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */,
 				C00B64671FE23E2400DF36FF /* VodDocumentViewController.xib in Resources */,
 				C07C13691FC5287B000D57FE /* PublishViewController.xib in Resources */,
 				C07B74651FBD3AFA00189E0B /* LaunchScreen.storyboard in Resources */,
@@ -675,8 +831,10 @@
 			files = (
 				C07B74991FBD437600189E0B /* ITTXibViewUtils.m in Sources */,
 				C00B64D61FEA431E00DF36FF /* UIView+WebCacheOperation.m in Sources */,
+				C090308720B50C950051F6ED /* VHLayoutItem.m in Sources */,
 				C0F4A8821FD0FE2F006D6DA9 /* VHSettingGroup.m in Sources */,
 				C00B64D51FEA431E00DF36FF /* UIImageView+WebCache.m in Sources */,
+				C09C4F2E20A2A85300164B30 /* JXTAlertController.m in Sources */,
 				C0F4A8881FD0FE2F006D6DA9 /* VHStystemSetting.m in Sources */,
 				C07B745D1FBD3AFA00189E0B /* ViewController.m in Sources */,
 				C00B64C81FEA431E00DF36FF /* NSData+ImageContentType.m in Sources */,
@@ -684,26 +842,36 @@
 				C00B64661FE23E2400DF36FF /* VodDocumentViewController.m in Sources */,
 				C00B64D01FEA431E00DF36FF /* UIButton+WebCache.m in Sources */,
 				C00B64CF1FEA431E00DF36FF /* SDWebImagePrefetcher.m in Sources */,
+				C090308D20B546A50051F6ED /* VHLayoutView.m in Sources */,
 				C0A38B0E1FC8058A00A8998F /* WatchVodViewController.m in Sources */,
 				C0A37E471FDA33040088A0ED /* CALayer+XibConfiguration.m in Sources */,
+				C090308A20B5284F0051F6ED /* VHInteractiveViewController+Layout.m in Sources */,
+				C09C4F2F20A2A85300164B30 /* JXTAlertView.m in Sources */,
 				C00B64A11FE91D9800DF36FF /* IMViewController.m in Sources */,
 				C00B64D41FEA431E00DF36FF /* UIImageView+HighlightedWebCache.m in Sources */,
 				C07C136E1FC528EA000D57FE /* WatchViewController.m in Sources */,
+				C029512B20BE9B2300FD60BD /* VHStatisticsStystem.m in Sources */,
 				C0F4A8831FD0FE2F006D6DA9 /* VHSettingItem.m in Sources */,
 				C00B64CE1FEA431E00DF36FF /* SDWebImageManager.m in Sources */,
 				C00B64611FE23E0600DF36FF /* DocumentViewController.m in Sources */,
+				C09C4F3320A2E07E00164B30 /* VHInteractiveViewController+TableView.m in Sources */,
+				C090308420B50C240051F6ED /* VHLayoutView_1vN.m in Sources */,
 				C07B74851FBD431800189E0B /* VHBaseViewController.m in Sources */,
+				C090309920B69CE60051F6ED /* VHLayoutView_1vN_Left.m in Sources */,
 				C0F4A8811FD0FE2F006D6DA9 /* VHSettingArrowItem.m in Sources */,
 				C00B64D11FEA431E00DF36FF /* UIImage+GIF.m in Sources */,
 				C07B74681FBD3AFA00189E0B /* main.m in Sources */,
 				C0F4A8841FD0FE2F006D6DA9 /* VHSettingTextFieldItem.m in Sources */,
 				C0F4A8851FD0FE2F006D6DA9 /* VHSettingTableViewCell.m in Sources */,
+				C090309120B568050051F6ED /* VHLayoutView_1vN_Pip.m in Sources */,
 				C00B64D21FEA431E00DF36FF /* UIImage+MultiFormat.m in Sources */,
 				C00B64CD1FEA431E00DF36FF /* SDWebImageDownloaderOperation.m in Sources */,
 				C0F4A8921FD16AB8006D6DA9 /* CustomPickerView.m in Sources */,
 				C07B74981FBD437600189E0B /* ITTXibView.m in Sources */,
 				C07B749A1FBD437600189E0B /* MBHUDHelper.m in Sources */,
 				C07B745A1FBD3AFA00189E0B /* AppDelegate.mm in Sources */,
+				C09C4F3620A2E13C00164B30 /* VHInteractiveTableViewCell.m in Sources */,
+				C090309420B583880051F6ED /* VHLayoutView_1vN_Pip_Left.m in Sources */,
 				C00B64CB1FEA431E00DF36FF /* SDWebImageDecoder.m in Sources */,
 				C00B64D31FEA431E00DF36FF /* UIImage+WebP.m in Sources */,
 				C00B64CA1FEA431E00DF36FF /* SDWebImageCompat.m in Sources */,
@@ -711,8 +879,10 @@
 				C07B74961FBD437600189E0B /* UIAlertView+ITTAdditions.m in Sources */,
 				C00B64CC1FEA431E00DF36FF /* SDWebImageDownloader.m in Sources */,
 				C00B64C71FEA431E00DF36FF /* MKAnnotationView+WebCache.m in Sources */,
+				C0B7AE3B2088782300C3C691 /* VHInteractiveViewController+Room.m in Sources */,
 				C07C13681FC5287B000D57FE /* PublishViewController.m in Sources */,
 				C07B749B1FBD437600189E0B /* MBProgressHUD.m in Sources */,
+				C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */,
 				C00B64C91FEA431E00DF36FF /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,6 +923,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -760,6 +931,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -809,6 +981,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -816,6 +989,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -849,10 +1023,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S82ZX9394G;
+				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHInteractive";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VHYunSDKDemo/VHYunSDKDemo-Header.pch";
 				INFOPLIST_FILE = VHYunSDKDemo/Info.plist;
@@ -866,8 +1042,9 @@
 					"$(PROJECT_DIR)/../VHYunSDK/VHVodPlayer/",
 					"$(PROJECT_DIR)/../VHYunSDK/VHDocument/",
 					"$(PROJECT_DIR)/../VHYunSDK/VHImSDK/",
+					"$(PROJECT_DIR)/../VHYunSDK/VHInteractive",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.opensdk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhallyun.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -879,10 +1056,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S82ZX9394G;
+				DEVELOPMENT_TEAM = H49DK955B9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHInteractive";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VHYunSDKDemo/VHYunSDKDemo-Header.pch";
 				INFOPLIST_FILE = VHYunSDKDemo/Info.plist;
@@ -896,8 +1075,9 @@
 					"$(PROJECT_DIR)/../VHYunSDK/VHVodPlayer/",
 					"$(PROJECT_DIR)/../VHYunSDK/VHDocument/",
 					"$(PROJECT_DIR)/../VHYunSDK/VHImSDK/",
+					"$(PROJECT_DIR)/../VHYunSDK/VHInteractive",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vhall.opensdk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhallyun.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

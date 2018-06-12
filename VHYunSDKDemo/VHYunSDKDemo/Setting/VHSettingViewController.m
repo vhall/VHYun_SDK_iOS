@@ -14,32 +14,36 @@
 #import "VHSettingArrowItem.h"
 #import "CustomPickerView.h"
 
+#define PushArr @[@"默认",@"标清",@"高清",@"超清",@"自定义"]
+#define OptionsSD   @{VHVideoWidthKey:@"192",VHVideoHeightKey:@"144",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
+#define OptionsHD   @{VHVideoWidthKey:@"480",VHVideoHeightKey:@"360",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
+#define OptionsUHD  @{VHVideoWidthKey:@"960",VHVideoHeightKey:@"540",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
+
 @interface VHSettingViewController()<UITableViewDataSource,UITableViewDelegate,CustomPickerViewDataSource,CustomPickerViewDelegate,UITextFieldDelegate>
 {
     NSArray * _selectArray;
     //基础设置
     VHSettingTextFieldItem *item00;
+    VHSettingTextFieldItem *item01;
     //直播播放
     VHSettingTextFieldItem *item10;
     VHSettingTextFieldItem *item11;
-    VHSettingTextFieldItem *item12;
     //推流
     VHSettingTextFieldItem *item20;
     VHSettingTextFieldItem *item21;
     VHSettingTextFieldItem *item22;
     VHSettingTextFieldItem *item23;
     VHSettingTextFieldItem *item24;
-    VHSettingTextFieldItem *item25;
-    VHSettingTextFieldItem *item26;
     //点播
     VHSettingTextFieldItem *item30;
-    VHSettingTextFieldItem *item31;
     //文档直播
     VHSettingTextFieldItem *item40;
-    VHSettingTextFieldItem *item41;
     //IM
     VHSettingTextFieldItem *item50;
-    VHSettingTextFieldItem *item51;
+    //互动
+    VHSettingTextFieldItem *item60;
+    VHSettingTextFieldItem *item61;
+    VHSettingTextFieldItem *item62;
     
     UISwitch *_noiseSwitch;//降噪开关
     UISlider *_volumeAmplificateSlider;//增益
@@ -49,6 +53,14 @@
 @property(nonatomic,strong) CustomPickerView    *pickerView;//选择框控件
 @property(nonatomic,strong) UITableView         *tableView;
 @property(nonatomic,strong) UITextField         *tempTextField;
+
+//互动view
+@property (weak, nonatomic) IBOutlet UIView *interactiveView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *ilssTypeSegCtrl;
+@property (weak, nonatomic) IBOutlet UITextField *dpiTextField;
+@property (weak, nonatomic) IBOutlet UITextField *rateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *fpsTextField;
+
 @end
 
 @implementation VHSettingViewController
@@ -100,6 +112,7 @@
     _pickerView.delegate = self;
     _pickerView.dataSource = self;
     [_pickerView setTitle:@"请选择分辨率"];
+    _pickerView.tag = 1;
     
     _noiseSwitch = [[UISwitch alloc]init];
     [_noiseSwitch addTarget:self action:@selector(noiseSwitch) forControlEvents:UIControlEventValueChanged];
@@ -115,7 +128,7 @@
     _tableView.dataSource= self;
     _tableView.delegate = self;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:_tableView];
+    [self.view insertSubview:_tableView atIndex:0];
     if ([_tableView  respondsToSelector:@selector(setLayoutMargins:)]) {
         [_tableView setLayoutMargins:UIEdgeInsetsZero];
     }
@@ -136,6 +149,7 @@
     [self setupGroup3];
     [self setupGroup4];
     [self setupGroup5];
+    [self setupGroup6];
     [self initWithView];
 }
 
@@ -164,7 +178,9 @@
 {
     item00 = [VHSettingTextFieldItem itemWithTitle:@"第三方ID"];
     item00.text = DEMO_Setting.third_party_user_id;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00]];
+    item01 = [VHSettingTextFieldItem  itemWithTitle:@"AccessToken"];
+    item01.text=DEMO_Setting.accessToken;
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item00,item01]];
     group.headerTitle = @"基础设置";
     [self.groups addObject:group];
 }
@@ -172,11 +188,9 @@
 {
     item10 = [VHSettingTextFieldItem  itemWithTitle:@"看直播房间ID"];
     item10.text=DEMO_Setting.playerRoomID;
-    item11 = [VHSettingTextFieldItem  itemWithTitle:@"看直播AccessToken"];
-    item11.text=DEMO_Setting.playerAccessToken;
-    item12 = [VHSettingTextFieldItem  itemWithTitle:@"缓存时间"];
-    item12.text=[NSString stringWithFormat:@"%ld",(long)DEMO_Setting.bufferTime];
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item10,item11,item12]];
+    item11 = [VHSettingTextFieldItem  itemWithTitle:@"缓存时间"];
+    item11.text=[NSString stringWithFormat:@"%ld",(long)DEMO_Setting.bufferTime];
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item10,item11]];
     group.headerTitle = @"看直播设置";
     [self.groups addObject:group];
 }
@@ -186,22 +200,20 @@
     __weak typeof(self) weakSelf = self;
     item20 = [VHSettingTextFieldItem  itemWithTitle:@"推流房间ID"];
     item20.text = DEMO_Setting.publishRoomID;
-    item21 = [VHSettingTextFieldItem  itemWithTitle:@"推流AccessToken"];
-    item21.text =  DEMO_Setting.publishAccessToken;
-    item22 = [VHSettingTextFieldItem  itemWithTitle:@"分辨率"];
-    item22.text = _selectArray[[DEMO_Setting.videoResolution intValue]];
-    item22.operation=^(NSIndexPath *indexPath)
+    item21 = [VHSettingTextFieldItem  itemWithTitle:@"分辨率"];
+    item21.text = _selectArray[[DEMO_Setting.videoResolution intValue]];
+    item21.operation=^(NSIndexPath *indexPath)
     {
         [weakSelf.tempTextField endEditing:YES];
         [weakSelf.pickerView showPickerView:weakSelf.view];
     };
-    item23 = [VHSettingTextFieldItem  itemWithTitle:@"视频码率(kpbs)"];
-    item23.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoBitRate];
-    item24 = [VHSettingTextFieldItem  itemWithTitle:@"视频帧率(fps)"];
-    item24.text =  [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoCaptureFPS];
-    item25 = [VHSettingTextFieldItem  itemWithTitle:@"音频码率(kpbs)"];
-    item25.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24,item25]];
+    item22 = [VHSettingTextFieldItem  itemWithTitle:@"视频码率(kpbs)"];
+    item22.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoBitRate];
+    item23 = [VHSettingTextFieldItem  itemWithTitle:@"视频帧率(fps)"];
+    item23.text =  [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoCaptureFPS];
+    item24 = [VHSettingTextFieldItem  itemWithTitle:@"音频码率(kpbs)"];
+    item24.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24]];
     group.headerTitle = @"推流设置";
     [self.groups addObject:group];
     //此处还有一个噪音开关 和 音频增益 tableView 读取时会加2行
@@ -211,9 +223,7 @@
 {
     item30 = [VHSettingTextFieldItem  itemWithTitle:@"点播房间ID"];
     item30.text=DEMO_Setting.recordID;
-    item31 = [VHSettingTextFieldItem  itemWithTitle:@"点播AccessToken"];
-    item31.text=DEMO_Setting.vodAccessToken;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item30,item31]];
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item30]];
     group.headerTitle = @"点播设置";
     [self.groups addObject:group];
 }
@@ -222,9 +232,7 @@
 {
     item40 = [VHSettingTextFieldItem  itemWithTitle:@"文档channelID"];
     item40.text=DEMO_Setting.docChannelID;
-    item41 = [VHSettingTextFieldItem  itemWithTitle:@"文档AccessToken"];
-    item41.text=DEMO_Setting.docAccessToken;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40,item41]];
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40]];
     group.headerTitle = @"文档设置";
     [self.groups addObject:group];
 }
@@ -233,12 +241,31 @@
 {
     item50 = [VHSettingTextFieldItem  itemWithTitle:@"IM channelID"];
     item50.text=DEMO_Setting.imChannelID;
-    item51 = [VHSettingTextFieldItem  itemWithTitle:@"IM AccessToken"];
-    item51.text=DEMO_Setting.imAccessToken;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item50,item51]];
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item50]];
     group.headerTitle = @"IM设置";
     [self.groups addObject:group];
 }
+
+-(void)setupGroup6
+{
+    __weak typeof(self) weakSelf = self;
+    item60 = [VHSettingTextFieldItem  itemWithTitle:@"互动房间ID"];
+    item60.text=DEMO_Setting.ilssRoomID;
+    item61 = [VHSettingTextFieldItem  itemWithTitle:@"旁路房间ID"];
+    item61.text=DEMO_Setting.ilssLiveRoomID;
+    item62 = [VHSettingTextFieldItem  itemWithTitle:@"推流参数"];
+    item62.text = PushArr[DEMO_Setting.ilssType];
+    _ilssTypeSegCtrl.selectedSegmentIndex = DEMO_Setting.ilssType;
+    [self typeChanged:_ilssTypeSegCtrl];
+    item62.operation=^(NSIndexPath *indexPath)
+    {
+        weakSelf.interactiveView.hidden = NO;
+    };
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item60,item61,item62]];
+    group.headerTitle = @"互动";
+    [self.groups addObject:group];
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -418,23 +445,33 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)customPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
-{
-    NSString * title =_selectArray[row];
-    [item22 setText:title];
-    DEMO_Setting.videoResolution =  [NSString stringWithFormat:@"%ld",(long)row];
-    [_tableView reloadData];
-}
 #pragma mark - CustomPickerViewDataSource
-- (NSString*)titleOfRowCustomPickerViewWithRow:(NSInteger)row
+- (void)pickerView:(CustomPickerView *)pickerView didSelectRow:(NSInteger)row
 {
-    NSString * title =_selectArray[row];
-    return title;
+    if(pickerView.tag == 1)
+    {
+        NSString * title =_selectArray[row];
+        [item22 setText:title];
+        DEMO_Setting.videoResolution =  [NSString stringWithFormat:@"%ld",(long)row];
+        [_tableView reloadData];
+    }
 }
-
-- (NSInteger)numberOfRowsInPickerView
+- (NSString*)pickerView:(CustomPickerView *)pickerView titleWithRow:(NSInteger)row
 {
-    return _selectArray.count;
+    if(pickerView.tag == 1)
+    {
+        NSString * title =_selectArray[row];
+        return title;
+    }
+    return nil;
+}
+- (NSInteger)pickerView:(CustomPickerView *)pickerView numberOfRows:(NSInteger)row
+{
+    if(pickerView.tag == 1)
+    {
+        return _selectArray.count;
+    }
+    return 0;
 }
 
 -(void)value:(NSString*)text indexPath:(NSIndexPath*)indexpath
@@ -447,6 +484,12 @@
                 {
                     DEMO_Setting.third_party_user_id = text;
                     item00.text = DEMO_Setting.third_party_user_id;
+                }
+                    break;
+                case 1:
+                {
+                    DEMO_Setting.accessToken = text;
+                    item01.text = DEMO_Setting.accessToken;
                 }
                     break;
                 default:break;
@@ -464,14 +507,8 @@
                     break;
                 case 1:
                 {
-                    DEMO_Setting.playerAccessToken = text;
-                    item11.text = DEMO_Setting.playerAccessToken;
-                }
-                    break;
-                case 2:
-                {
                     DEMO_Setting.bufferTime = [text integerValue];
-                    item12.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.bufferTime];
+                    item11.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.bufferTime];
                 }
                     break;
                 default:break;
@@ -487,29 +524,23 @@
                     item20.text = DEMO_Setting.publishRoomID;
                 }
                     break;
-                case 1:
-                {
-                    DEMO_Setting.publishAccessToken = text;
-                    item21.text = DEMO_Setting.publishAccessToken;
-                }
-                    break;
-                case 2:break;
-                case 3:
+                case 1:break;
+                case 2:
                 {
                     DEMO_Setting.videoBitRate= [text integerValue];
-                    item23.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoBitRate];
+                    item22.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoBitRate];
+                }
+                    break;
+                case 3:
+                {
+                    DEMO_Setting.videoCaptureFPS = [text integerValue];
+                    item23.text =  [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoCaptureFPS];
                 }
                     break;
                 case 4:
                 {
-                    DEMO_Setting.videoCaptureFPS = [text integerValue];
-                    item24.text =  [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoCaptureFPS];
-                }
-                    break;
-                case 5:
-                {
                     DEMO_Setting.audioBitRate = [text integerValue];
-                    item25.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
+                    item24.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
                 }
                     break;
                 default:break;
@@ -525,12 +556,6 @@
                     item30.text = DEMO_Setting.recordID;
                 }
                     break;
-                case 1:
-                {
-                    DEMO_Setting.vodAccessToken = text;
-                    item31.text = DEMO_Setting.vodAccessToken;
-                }
-                    break;
                 default:break;
             }
         }
@@ -542,12 +567,6 @@
                 {
                     DEMO_Setting.docChannelID = text;
                     item40.text = DEMO_Setting.docChannelID;
-                }
-                    break;
-                case 1:
-                {
-                    DEMO_Setting.docAccessToken = text;
-                    item41.text = DEMO_Setting.docAccessToken;
                 }
                     break;
                 default:break;
@@ -563,10 +582,23 @@
                     item50.text = DEMO_Setting.imChannelID;
                 }
                     break;
+                default:break;
+            }
+        }
+            break;
+        case 6:
+        {
+            switch (indexpath.row) {
+                case 0:
+                {
+                    DEMO_Setting.ilssRoomID = text;
+                    item60.text = DEMO_Setting.recordID;
+                }
+                    break;
                 case 1:
                 {
-                    DEMO_Setting.imAccessToken = text;
-                    item51.text = DEMO_Setting.imAccessToken;
+                    DEMO_Setting.ilssLiveRoomID = text;
+                    item61.text = DEMO_Setting.ilssLiveRoomID;
                 }
                     break;
                 default:break;
@@ -600,9 +632,100 @@
 {
     return NO;
 }
+
+#pragma mark - 互动view
+- (IBAction)savePushParamBtn:(id)sender {
+    [self.view endEditing:YES];
+    
+    DEMO_Setting.ilssType = _ilssTypeSegCtrl.selectedSegmentIndex;
+    item62.text = PushArr[DEMO_Setting.ilssType];
+    [_tableView reloadData];
+    if(DEMO_Setting.ilssType == VHPushTypeCUSTOM)
+    {
+        NSString *dpi = _dpiTextField.text;
+        NSArray *params = [dpi componentsSeparatedByString:@"*"];
+        int fps     = [_fpsTextField.text intValue];
+        if(fps<10||fps>30)
+            fps = 30;
+        
+        int rate    = [_rateTextField.text intValue];
+        if(rate<=0)
+            rate = 200;
+        
+        _fpsTextField.text  = [NSString stringWithFormat:@"%d",fps];
+        _rateTextField.text = [NSString stringWithFormat:@"%d",rate];
+        if(params.count>1 && fps)
+            DEMO_Setting.ilssOptions =  @{VHVideoWidthKey:params[0],
+                                          VHVideoHeightKey:params[1],
+                                          VHVideoFpsKey:@(fps),
+                                          VHMaxVideoBitrateKey:@(rate)};
+    }
+    [self showMsg:@"保存成功" afterDelay:2];
+    [self closeInteractiveView:nil];
+}
+- (IBAction)closeInteractiveView:(id)sender {
+    _interactiveView.hidden = YES;
+    [self.view endEditing:YES];
+}
+
+- (IBAction)typeChanged:(UISegmentedControl *)sender {
+    _dpiTextField.enabled = NO;
+    _fpsTextField.enabled = NO;
+    _rateTextField.enabled = NO;
+    
+    _dpiTextField.backgroundColor = MakeColor(200, 200, 200, 1);
+    _fpsTextField.backgroundColor = MakeColor(200, 200, 200, 1);
+    _rateTextField.backgroundColor = MakeColor(200, 200, 200, 1);
+    switch (_ilssTypeSegCtrl.selectedSegmentIndex) {
+        case 0:
+        {
+            _dpiTextField.text  = @"后台配置";
+            _fpsTextField.text  = @"后台配置";
+            _rateTextField.text = @"后台配置";
+        }
+            break;
+        case 1:
+        {
+            _dpiTextField.text  = @"192*144";
+            _fpsTextField.text  = @"30";
+            _rateTextField.text = @"200";
+        }
+            break;
+        case 2:
+        {
+            _dpiTextField.text  = @"352*288";
+            _fpsTextField.text  = @"30";
+            _rateTextField.text = @"200";
+        }
+            break;
+        case 3:
+        {
+            _dpiTextField.text  = @"480*360";
+            _fpsTextField.text  = @"30";
+            _rateTextField.text = @"200";
+        }
+            break;
+        case 4:
+        {
+            _dpiTextField.enabled = YES;
+            _fpsTextField.enabled = YES;
+            _rateTextField.enabled = YES;
+            
+            _dpiTextField.text  = [NSString stringWithFormat:@"%@*%@",DEMO_Setting.ilssOptions[VHVideoWidthKey],DEMO_Setting.ilssOptions[VHVideoHeightKey]];
+            _fpsTextField.text  = [NSString stringWithFormat:@"%@",DEMO_Setting.ilssOptions[VHVideoFpsKey]];
+            _rateTextField.text = [NSString stringWithFormat:@"%@",DEMO_Setting.ilssOptions[VHMaxVideoBitrateKey]];
+            
+            _dpiTextField.backgroundColor = [UIColor whiteColor];
+            _fpsTextField.backgroundColor = [UIColor whiteColor];
+            _rateTextField.backgroundColor = [UIColor whiteColor];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 @end
-
-
 
 
 

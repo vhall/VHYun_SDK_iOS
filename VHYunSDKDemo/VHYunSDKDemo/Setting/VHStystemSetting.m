@@ -52,15 +52,14 @@ static VHStystemSetting *pub_sharedSetting = nil;
         NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
         //基础设置
         _third_party_user_id= [standardUserDefaults objectForKey:@"VHthird_party_user_id"];  //第三方ID
+        _accessToken  = [standardUserDefaults objectForKey:@"VHaccessToken"];    //AccessToken
         
         //直播播放
         _playerRoomID       = [standardUserDefaults objectForKey:@"VHplayerRoomID"];         //看直播房间ID
-        _playerAccessToken  = [standardUserDefaults objectForKey:@"VHplayerAccessToken"];    //看直播 AccessToken
         _bufferTime         = [standardUserDefaults integerForKey:@"VHbufferTime"];          //RTMP观看缓冲时间
         
         //推流
         _publishRoomID      = [standardUserDefaults objectForKey:@"VHpublishRoomID"];        //发直播房间ID
-        _publishAccessToken = [standardUserDefaults objectForKey:@"VHpublishAccessToken"];   //发直播 AccessToken
         _videoResolution    = [standardUserDefaults objectForKey:@"VHvideoResolution"];      //发起直播分辨率 VideoResolution [0,3] 默认1
         _videoBitRate       = [standardUserDefaults integerForKey:@"VHvideoBitRate"];         //发直播视频码率
         _audioBitRate       = [standardUserDefaults integerForKey:@"VHaudioBitRate"];         //发直播视频码率
@@ -77,31 +76,34 @@ static VHStystemSetting *pub_sharedSetting = nil;
         
         //点播
         _recordID           = [standardUserDefaults objectForKey:@"VHrecordID"];            //点播房间ID
-        _vodAccessToken     = [standardUserDefaults objectForKey:@"VHvodAccessToken"];      //点播 AccessToken
         
         //文档直播
         _docChannelID       = [standardUserDefaults objectForKey:@"VHdocChannelID"];        //文档ChannelID
-        _docAccessToken     = [standardUserDefaults objectForKey:@"VHdocAccessToken"];      //文档AccessToken
         
         //IM
-        _imChannelID       = [standardUserDefaults objectForKey:@"VHimChannelID"];        //文档ChannelID
-        _imAccessToken     = [standardUserDefaults objectForKey:@"VHimAccessToken"];      //文档AccessToken
+        _imChannelID        = [standardUserDefaults objectForKey:@"VHimChannelID"];        //文档ChannelID
         
+        //互动
+        _ilssRoomID         = [standardUserDefaults objectForKey:@"VHilssRoomID"];
+        _ilssLiveRoomID     = [standardUserDefaults objectForKey:@"VHilssLiveRoomID"];
+        _ilssType           = [standardUserDefaults integerForKey:@"VHilssType"];            //摄像头及推流参数设置VHPushType
+        _ilssOptions        = [standardUserDefaults objectForKey:@"VHilssOptions"];         //摄像头及推流参数设置
         //基础设置
         if(_third_party_user_id == nil)
-            _third_party_user_id = @"third_party_user_id";
+//            _third_party_user_id = @"third_party_user_id";
+            _third_party_user_id = [[UIDevice currentDevice] name]; 
+        
+        if(_accessToken.length == 0)
+            _accessToken       = DEMO_AccessToken;
+        
         //直播播放
         if(_playerRoomID.length == 0)
             _playerRoomID       = DEMO_PlayerRoomID;
-        if(_playerAccessToken.length == 0)
-            _playerAccessToken  = DEMO_AccessToken;
         if(_bufferTime <=0)
             _bufferTime = 6;
         //推流
         if(_publishRoomID.length == 0)
             _publishRoomID      = DEMO_PublishRoomID;
-        if(_publishAccessToken.length == 0)
-            _publishAccessToken = DEMO_AccessToken;
         if(_videoResolution.length == 0)
             _videoResolution = @"2";
         if(_videoBitRate<=0)
@@ -113,20 +115,27 @@ static VHStystemSetting *pub_sharedSetting = nil;
         //点播
         if(_recordID.length == 0)
             _recordID       = DEMO_RecordID;
-        if(_vodAccessToken.length == 0)
-            _vodAccessToken  = DEMO_AccessToken;
         
         //文档直播
         if(_docChannelID.length == 0)
             _docChannelID   = DEMO_DocChannelID;
-        if(_docAccessToken.length == 0)
-            _docAccessToken = DEMO_AccessToken;
         
         //IM
         if(_imChannelID.length == 0)
             _imChannelID   = DEMO_IMChannelID;
-        if(_imAccessToken.length == 0)
-            _imAccessToken = DEMO_AccessToken;
+        //互动
+        if(_ilssRoomID.length == 0)
+            _ilssRoomID   = DEMO_InteractiveID;
+        if(_ilssLiveRoomID.length==0)
+            _ilssLiveRoomID = DEMO_PublishRoomID;
+        if(!_ilssOptions)
+        {
+            _ilssOptions = @{VHVideoWidthKey:@"192",
+                             VHVideoHeightKey:@"144",
+                             VHVideoFpsKey:@(30),
+                             VHMaxVideoBitrateKey:@(200)};
+        }
+        
     }
     return self;
 }
@@ -146,6 +155,22 @@ static VHStystemSetting *pub_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:third_party_user_id forKey:@"VHthird_party_user_id"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+- (void)setAccessToken:(NSString *)accessToken
+{
+    _accessToken = accessToken;
+    if(accessToken.length == 0)
+    {
+        _accessToken = DEMO_AccessToken;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHaccessToken"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"VHaccessToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - 直播播放
 - (void)setPlayerRoomID:(NSString *)playerRoomID
 {
@@ -159,21 +184,6 @@ static VHStystemSetting *pub_sharedSetting = nil;
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:playerRoomID forKey:@"VHplayerRoomID"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPlayerAccessToken:(NSString *)playerAccessToken
-{
-    _playerAccessToken = playerAccessToken;
-    if(playerAccessToken.length == 0)
-    {
-        _playerAccessToken = DEMO_AccessToken;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHplayerAccessToken"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        return;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:playerAccessToken forKey:@"VHplayerAccessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -200,20 +210,6 @@ static VHStystemSetting *pub_sharedSetting = nil;
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:publishRoomID forKey:@"VHpublishRoomID"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-- (void)setPublishAccessToken:(NSString *)publishAccessToken
-{
-    _publishAccessToken = publishAccessToken;
-    if(publishAccessToken.length == 0)
-    {
-        _publishAccessToken = DEMO_AccessToken;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHpublishAccessToken"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        return;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:publishAccessToken forKey:@"VHpublishAccessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (void)setVideoResolution:(NSString*)videoResolution
@@ -284,21 +280,6 @@ static VHStystemSetting *pub_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)setVodAccessToken:(NSString *)vodAccessToken
-{
-    _vodAccessToken = vodAccessToken;
-    if(vodAccessToken.length == 0)
-    {
-        _vodAccessToken = DEMO_AccessToken;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHvodAccessToken"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        return;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:vodAccessToken forKey:@"VHvodAccessToken"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 #pragma mark - 文档直播
 - (void)setDocChannelID:(NSString *)docChannelID
 {
@@ -314,21 +295,6 @@ static VHStystemSetting *pub_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_docChannelID forKey:@"VHdocChannelID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (void)setDocAccessToken:(NSString *)docAccessToken
-{
-    _docAccessToken = docAccessToken;
-    if(docAccessToken.length == 0)
-    {
-        _docAccessToken = DEMO_AccessToken;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHdocAccessToken"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        return;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:_docAccessToken forKey:@"VHdocAccessToken"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 #pragma mark - IM
 - (void)setImChannelID:(NSString *)imChannelID
 {
@@ -344,18 +310,53 @@ static VHStystemSetting *pub_sharedSetting = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_imChannelID forKey:@"VHimChannelID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (void)setImAccessToken:(NSString *)imAccessToken
+#pragma mark - 互动
+- (void)setIlssRoomID:(NSString *)ilssRoomID
 {
-    _imAccessToken = imAccessToken;
-    if(imAccessToken.length == 0)
+    _ilssRoomID = ilssRoomID;
+    if(ilssRoomID.length == 0)
     {
-        _imAccessToken = DEMO_AccessToken;
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHimAccessToken"];
+        _ilssRoomID = DEMO_InteractiveID;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHilssRoomID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         return;
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:_imAccessToken forKey:@"VHimAccessToken"];
+    [[NSUserDefaults standardUserDefaults] setObject:_ilssRoomID forKey:@"VHilssRoomID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)setIlssLiveRoomID:(NSString *)ilssLiveRoomID
+{
+    _ilssLiveRoomID = ilssLiveRoomID;
+    if(_ilssLiveRoomID.length == 0)
+    {
+        _ilssLiveRoomID = DEMO_PublishRoomID;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHilssLiveRoomID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_ilssLiveRoomID forKey:@"VHilssLiveRoomID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setIlssType:(VHPushType)ilssType
+{
+    _ilssType = ilssType;
+    [[NSUserDefaults standardUserDefaults] setInteger:_ilssType forKey:@"VHilssType"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)setIlssOptions:(NSDictionary *)ilssOptions
+{
+    _ilssOptions= ilssOptions;
+    if(!_ilssOptions)
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHilssOptions"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_ilssOptions forKey:@"VHilssOptions"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end
