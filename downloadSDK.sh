@@ -3,13 +3,13 @@
 
 # 下载 微吼云 SDK
 # 版本号如下
-echo "|-------------------------------sdk version-------------------------------------|"
-VHYunSDKVersion="VHYunSDK_iOS_v1.2"
+echo "|-------------------------------VHYunSDK version--------------------------------|"
+VHYunSDKVersion="VHYunSDK_iOS_v1.2.1"
 
 echo $VHYunSDKVersion
 
 #清除现有文件
-echo "|-------------------------------clear sdk dir...--------------------------------|"
+echo "|-------------------------------clear VHYunSDK dir...---------------------------|"
 rm -rf VHYunSDK
 
 #下载sdk zip文件

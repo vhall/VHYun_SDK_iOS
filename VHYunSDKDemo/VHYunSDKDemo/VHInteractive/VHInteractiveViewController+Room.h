@@ -38,8 +38,8 @@
 - (void)startListeningStream;
 - (void)stopListeningStream;
 
-- (void) didBecomeActive;
-- (void)willResignActive;
+- (void)willEnterForeground;
+- (void)didEnterBackground;
 @end
 
 /*

@@ -180,8 +180,8 @@
     [self createRoom];
     [self initView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didBecomeActive) name: UIApplicationDidBecomeActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (willResignActive) name: UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (willEnterForeground) name: UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didEnterBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
 }
 ;
 UIKIT_EXTERN NSNotificationName const UIApplicationWillResignActiveNotification;

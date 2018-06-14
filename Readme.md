@@ -20,6 +20,11 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.2.1 更新时间：2018.06.14
+更新内容：<br>
+1、互动功能bug修复<br>
+
+
 #### 版本 v1.2 更新时间：2018.06.12
 更新内容：<br>
 1、新增多人互动功能<br>

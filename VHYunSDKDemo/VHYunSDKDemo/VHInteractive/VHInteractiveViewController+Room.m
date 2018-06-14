@@ -347,12 +347,12 @@ static NSString *infoDictKey    = @"infoDictKey";
 }
 
 #pragma mark - 进入后台
-- (void) didBecomeActive
+- (void)willEnterForeground
 {
     [self enterRoom];
 }
 
-- (void)willResignActive
+- (void)didEnterBackground
 {
     [self leaveRoom];
 }
