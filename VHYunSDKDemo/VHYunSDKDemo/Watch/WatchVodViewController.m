@@ -56,9 +56,7 @@
     _player.view.frame = _preView.bounds;
     [_player startPlay:self.recordID accessToken:self.accessToken];
     [self showProgressDialog:self.preView];
-    [self startTimer];
-    
-    
+
     // 单击的_player.view
     UITapGestureRecognizer* singleRecognizer;
     singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SingleTap:)];
@@ -108,7 +106,6 @@
 - (void)stopPlayer
 {
     [_player stopPlay];
-    [self stopTimer];
 }
 
 - (IBAction)scalingModeBtnClicked:(UIButton *)sender {
@@ -126,33 +123,6 @@
     [_player setCurDefinition:sender.tag];
     _definitionsView.hidden = YES;
 //    _logView.hidden = (sender.tag != VHDefinitionAudio);
-}
-#pragma mark - Timer
-- (void)startTimer
-{
-    if(_timer == nil)
-    {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerEvent)  userInfo:nil repeats:YES];
-    }
-}
-- (void)stopTimer
-{
-    if(_timer)
-    {
-        [_timer invalidate];
-        _timer = nil;
-    }
-}
-
--(void)timerEvent
-{
-    if(_player.playerState == VHPlayerStatusPlaying)
-    {
-        _minLabel.text = [self timeFormat:_player.currentPlaybackTime];
-        _maxLabel.text = [self timeFormat:_player.duration];
-        if(_player.duration>0)
-            _curTimeSlider.value =_player.currentPlaybackTime/_player.duration;
-    }
 }
 
 #pragma mark - palyerControls
@@ -189,7 +159,6 @@
         {
             [_player startPlay:self.recordID accessToken:self.accessToken];
             [self showProgressDialog:self.preView];
-            [self startTimer];
         }
         else if(_player.playerState == VHPlayerStatusPause)
         {
@@ -292,7 +261,17 @@
     [self stopPlayer];
     [self showMsg:[NSString stringWithFormat:@"%@",error.domain] afterDelay:2];
 }
-    
+
+- (void)player:(VHVodPlayer*)player currentTime:(NSTimeInterval)currentTime
+{
+    if(_player.playerState == VHPlayerStatusPlaying)
+    {
+        _minLabel.text = [self timeFormat:_player.currentPlaybackTime];
+        _maxLabel.text = [self timeFormat:_player.duration];
+        if(_player.duration>0)
+            _curTimeSlider.value =_player.currentPlaybackTime/_player.duration;
+    }
+}
 //测试代码
 -(void)cdnSwitch:(VHVodPlayer *)player info:(NSDictionary *)info
 {

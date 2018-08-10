@@ -33,14 +33,14 @@
     _verLabel.text = [NSString stringWithFormat:@"SDK ver:%@",[VHLiveBase getSDKVersion]];
     _bundleIDLabel.text = [NSString stringWithFormat:@"BundleID: %@",[NSBundle mainBundle].bundleIdentifier];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入AppID" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    UITextField *txtName = [alert textFieldAtIndex:0];
-    txtName.placeholder = DEMO_AppID;
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入AppID" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+//    UITextField *txtName = [alert textFieldAtIndex:0];
+//    txtName.placeholder = DEMO_AppID;
+//    [alert show];
      
-//     [VHLiveBase registerApp:DEMO_AppID];
-//     [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
+     [VHLiveBase registerApp:DEMO_AppID];
+     [VHLiveBase setThirdPartyUserId:DEMO_third_party_user_id];
 }
 
 #pragma mark - 点击代理
@@ -132,6 +132,7 @@
     vc.myName           = [UIDevice currentDevice].name;
     [self presentViewController:vc animated:YES completion:nil];
 }
+
 #pragma mark - 设置
 - (IBAction)settingBtnClicked:(UIButton *)sender {
     VHSettingViewController * settingVC = [[VHSettingViewController alloc] init];

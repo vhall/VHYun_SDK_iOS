@@ -4,7 +4,7 @@
 # 下载 微吼云 SDK
 # 版本号如下
 echo "|-------------------------------VHYunSDK version--------------------------------|"
-VHYunSDKVersion="VHYunSDK_iOS_v1.2.1"
+VHYunSDKVersion="VHYunSDK_iOS_v1.2.2"
 
 echo $VHYunSDKVersion
 

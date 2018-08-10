@@ -340,10 +340,10 @@ static NSString *infoDictKey    = @"infoDictKey";
 /*
  * 房间人员信息变化
  */
-- (void)room:(VHInteractiveRoom *)room userChangeStatus:(int)status onlineNum:(NSInteger)onlineNum
+- (void)room:(VHInteractiveRoom *)room userChangeInfo:(NSDictionary *)info
 {
     [self updateUserListData];
-    self.onlineNumLabel.text = [NSString stringWithFormat:@"在线 %ld 人",(long)onlineNum];
+    self.onlineNumLabel.text = [NSString stringWithFormat:@"在线 %@ 人",info[@"online"]];
 }
 
 #pragma mark - 进入后台
