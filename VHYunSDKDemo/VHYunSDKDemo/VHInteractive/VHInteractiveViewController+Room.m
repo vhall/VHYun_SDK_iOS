@@ -185,6 +185,9 @@ static NSString *infoDictKey    = @"infoDictKey";
     {
         [self.infoDict removeAllObjects];
         [self removeAllViews];
+        if (error.code == 284003) { //断网
+            [self showDisConectAlertWithStatusMessage:@"互动房间连接出错"];
+        }
     }
     
     NSString *str = [NSString stringWithFormat:@"%@(%ld)",error.domain,(long)error.code];

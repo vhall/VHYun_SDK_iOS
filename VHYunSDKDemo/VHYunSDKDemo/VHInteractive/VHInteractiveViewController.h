@@ -37,7 +37,8 @@
 - (void)showCallConnectViews:(BOOL)show updateStatusMessage:(NSString *)statusMessage;
 //房间视频流状态更新
 - (void)updateInfoTextView:(NSString*)text;
-
+//断开与房间的连接弹窗
+- (void)showDisConectAlertWithStatusMessage:(NSString *)msg;
 //推流成功
 - (void)didPublish:(NSString*)streamId;
 //结束推流成功

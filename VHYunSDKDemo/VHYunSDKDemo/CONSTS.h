@@ -33,8 +33,27 @@
 #define DEMO_InteractiveID          @""
 
 
-
 #define DEMO_Test
+
+
+////////////////////////////////////////////////////////////发布要删除
+////http://www.vhallyun.com/  http://t-open.e.vhall.com  账号：vhall 123456       //18510248667 gaoyansing
+//#define DEMO_Test //正式环境
+//#define DEMO_Test                   ((BOOL(*)(id,SEL))objc_msgSend)([VHLiveBase class],@selector(setTestServerUrl));//测试环境
+//
+//#define DEMO_AccessToken            @"vhall"
+//#define DEMO_third_party_user_id    DEMO_Setting.third_party_user_id
+//#define DEMO_PlayerRoomID           @"lss_7d131f4c"
+//#define DEMO_PublishRoomID          @"lss_706f5237"
+//#define DEMO_RecordID               @"0ecedb7c"
+//#define DEMO_DocChannelID           @"ch_999c55f8"
+//#define DEMO_IMChannelID            @""
+//#define DEMO_CustomDocID            @""
+//#define DEMO_InteractiveID          @"inav_e301abbf"
+//#define DEMO_AppID                  @"d317f559"
+////////////////////////////////////////////////////////////发布要删除
+
+
 
 //#if DEBUG  // 调试状态, 打开LOG功能
 #define VHLog(...) NSLog(__VA_ARGS__)

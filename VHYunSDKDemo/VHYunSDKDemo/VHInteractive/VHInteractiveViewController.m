@@ -131,6 +131,16 @@
        }
    });
 }
+- (void)showDisConectAlertWithStatusMessage:(NSString *)msg
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self backBtnClicked:nil];
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)updateInfoTextView:(NSString*)text
 {
@@ -182,9 +192,25 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (willEnterForeground) name: UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (didEnterBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
-;
-UIKIT_EXTERN NSNotificationName const UIApplicationWillResignActiveNotification;
+
+-(void)deviceOrientationDidChange:(NSObject*)sender{
+    
+    if(self.cameraView)
+    {
+        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+        [self.cameraView setDeviceOrientation:(UIDeviceOrientation)orientation];
+    }
+    
+}
+
+    
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -215,6 +241,7 @@ UIKIT_EXTERN NSNotificationName const UIApplicationWillResignActiveNotification;
    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     NSLog(@"dealloc: %@",[self class]);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 -(BOOL)shouldAutorotate

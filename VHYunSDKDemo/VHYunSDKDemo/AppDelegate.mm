@@ -23,8 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     DEMO_Test
-//    [VHLiveBase setLogLevel:VHLogLevelError];
-//    [VHLiveBase printLogToConsole:YES];
+    [VHLiveBase setLogLevel:(VHLogLevel)5];
+    [VHLiveBase printLogToConsole:YES];
     
     NSLog(@"SDKVersion: %@",[VHLiveBase getSDKVersion]);
     [self showProcessInfo];

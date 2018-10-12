@@ -2,9 +2,6 @@
 微吼云 iOS SDK <br>
 集成和调用方式，参见官方文档：http://yun.vhall.com/document/document/index <br>
 
-## 注意：
-**1、打开终端 cd 到 downloadSDK.sh 所在目录** <br>
-**2、运行脚本下载 SDK , 终端输入: sh downloadSDK.sh** <br>
 
 ### APP工程集成SDK基本设置
 1、工程中AppDelegate.m 文件名修改为 AppDelegate.mm<br>
@@ -20,6 +17,11 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.2.3 更新时间：2018.10.12
+更新内容：<br>
+1、减少SDK大小<br>
+2、优化点播播放<br>
+3、修复文档模块bug<br>
 
 #### 版本 v1.2.2 更新时间：2018.08.10
 更新内容：<br>
