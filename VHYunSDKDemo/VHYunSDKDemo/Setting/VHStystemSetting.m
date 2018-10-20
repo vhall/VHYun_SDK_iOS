@@ -203,7 +203,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
     _publishRoomID = publishRoomID;
     if(publishRoomID.length == 0)
     {
-        _publishRoomID = DEMO_PublishRoomID;
+        _publishRoomID = publishRoomID;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHpublishRoomID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         return;

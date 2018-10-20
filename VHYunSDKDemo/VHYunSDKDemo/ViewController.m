@@ -11,7 +11,7 @@
 #import "WatchViewController.h"
 #import "WatchVodViewController.h"
 
-#import "DocumentViewController.h"
+#import "DocumentDemoViewController.h"
 #import "VodDocumentViewController.h"
 
 #import "IMViewController.h"
@@ -103,9 +103,17 @@
 
 #pragma mark - 直播文档
 - (IBAction)documentBtnClicked:(UIButton *)sender {
-    DocumentViewController * vc = [[DocumentViewController alloc] init];
+//    DocumentViewController * vc = [[DocumentViewController alloc] init];
+//    vc.channelID    = DEMO_Setting.docChannelID;
+//    vc.accessToken  = DEMO_Setting.accessToken;
+//    [self presentViewController:vc animated:YES completion:nil];
+    DocumentDemoViewController * vc = [[DocumentDemoViewController alloc] init];
     vc.channelID    = DEMO_Setting.docChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
+    vc.isPublish    = (sender.tag == 1);
+    if(vc.isPublish)
+        vc.roomID       = DEMO_Setting.publishRoomID;
+    
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - 点播文档

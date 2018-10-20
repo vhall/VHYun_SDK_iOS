@@ -69,8 +69,8 @@
     if(_docIDTextField.text.length > 0)
     {
         [_scrollView setZoomScale:1.0 animated:NO];
-        NSString *page = [NSString stringWithFormat:@"%d",(int)sender.value];
-        [_document nextPage:_docIDTextField.text pageID:page accessToken:self.accessToken];
+//        NSString *page = [NSString stringWithFormat:@"%d",(int)sender.value];
+//        [_document nextPage:_docIDTextField.text pageID:page accessToken:self.accessToken];
     }
 }
 

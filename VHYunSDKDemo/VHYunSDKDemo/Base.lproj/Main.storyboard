@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,9 +61,17 @@
                                     <constraint firstAttribute="height" constant="30" id="555-DJ-dj3"/>
                                     <constraint firstAttribute="width" constant="62" id="aAO-sp-dZe"/>
                                 </constraints>
-                                <state key="normal" title="文档"/>
+                                <state key="normal" title="文档观看"/>
                                 <connections>
                                     <action selector="documentBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7GA-Cv-xym"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4d-VU-Sxt">
+                                <rect key="frame" x="105" y="145" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="文档演示"/>
+                                <connections>
+                                    <action selector="documentBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fPs-hD-WIL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgZ-oA-LIs">
@@ -84,7 +92,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2B-1R-2Nv">
-                                <rect key="frame" x="165" y="609" width="44" height="21"/>
+                                <rect key="frame" x="165.5" y="609" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -99,18 +107,6 @@
                                 <state key="normal" title="观看点播"/>
                                 <connections>
                                     <action selector="watchVodBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CrO-gH-Kay"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fND-oQ-qVu">
-                                <rect key="frame" x="105" y="146" width="62" height="30"/>
-                                <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="NsB-dG-DET"/>
-                                    <constraint firstAttribute="height" constant="30" id="qCC-NS-pt6"/>
-                                </constraints>
-                                <state key="normal" title="点播文档"/>
-                                <connections>
-                                    <action selector="vodDocumentBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3mP-k8-plJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-xy-9vW">
@@ -137,31 +133,41 @@
                                     <action selector="interactiveBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efC-s0-O92"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fND-oQ-qVu">
+                                <rect key="frame" x="191" y="145" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="点播文档"/>
+                                <connections>
+                                    <action selector="vodDocumentBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3mP-k8-plJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pgZ-oA-LIs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="0TQ-Wo-fOF"/>
+                            <constraint firstItem="a4d-VU-Sxt" firstAttribute="leading" secondItem="bfo-h2-pQp" secondAttribute="trailing" constant="27" id="1nL-my-nEk"/>
                             <constraint firstItem="mVz-3A-4fU" firstAttribute="top" secondItem="b2B-1R-2Nv" secondAttribute="bottom" constant="8" id="7t2-Fc-PYs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mVz-3A-4fU" secondAttribute="bottom" constant="8" id="9h0-L2-PgL"/>
+                            <constraint firstItem="fND-oQ-qVu" firstAttribute="centerY" secondItem="a4d-VU-Sxt" secondAttribute="centerY" id="Amz-qr-SfA"/>
+                            <constraint firstItem="fND-oQ-qVu" firstAttribute="leading" secondItem="a4d-VU-Sxt" secondAttribute="trailing" constant="24" id="BgS-ly-dWK"/>
                             <constraint firstItem="Qof-nR-V04" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="D4l-N3-jDW"/>
                             <constraint firstItem="b2B-1R-2Nv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GIv-OS-0xR"/>
                             <constraint firstItem="zdE-pg-pmP" firstAttribute="top" secondItem="0b2-xy-9vW" secondAttribute="bottom" constant="39" id="LfQ-kI-Y1J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pgZ-oA-LIs" secondAttribute="trailing" constant="10" id="O2z-rE-ewu"/>
                             <constraint firstItem="YDx-wq-p8Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="RLo-G2-uEX"/>
-                            <constraint firstItem="fND-oQ-qVu" firstAttribute="top" secondItem="Q7T-qe-Ru5" secondAttribute="bottom" constant="31" id="RPH-49-VCw"/>
                             <constraint firstItem="Qof-nR-V04" firstAttribute="top" secondItem="DNw-qv-vkI" secondAttribute="bottom" constant="29" id="SJL-gt-gHL"/>
                             <constraint firstItem="zdE-pg-pmP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UDl-5a-n4M"/>
                             <constraint firstItem="bfo-h2-pQp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VRg-Pp-M8v"/>
                             <constraint firstItem="Q7T-qe-Ru5" firstAttribute="top" secondItem="YDx-wq-p8Z" secondAttribute="bottom" constant="29" id="VkL-PZ-gO5"/>
                             <constraint firstItem="0b2-xy-9vW" firstAttribute="top" secondItem="bfo-h2-pQp" secondAttribute="bottom" constant="46" id="WGh-qN-9fa"/>
                             <constraint firstItem="Q7T-qe-Ru5" firstAttribute="leading" secondItem="Qof-nR-V04" secondAttribute="trailing" constant="27" id="cVe-cs-rn4"/>
-                            <constraint firstItem="fND-oQ-qVu" firstAttribute="leading" secondItem="bfo-h2-pQp" secondAttribute="trailing" constant="27" id="h65-9C-eTy"/>
                             <constraint firstItem="0b2-xy-9vW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ikp-03-2px"/>
                             <constraint firstItem="mVz-3A-4fU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="o3d-4d-hDh"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="sZn-RF-PmZ"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tjW-It-uLY"/>
                             <constraint firstItem="bfo-h2-pQp" firstAttribute="top" secondItem="Qof-nR-V04" secondAttribute="bottom" constant="31" id="utK-fm-gm3"/>
                             <constraint firstItem="YDx-wq-p8Z" firstAttribute="leading" secondItem="DNw-qv-vkI" secondAttribute="trailing" constant="27" id="vf2-qb-hPt"/>
+                            <constraint firstItem="a4d-VU-Sxt" firstAttribute="top" secondItem="Q7T-qe-Ru5" secondAttribute="bottom" constant="30" id="xaF-AD-zzZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

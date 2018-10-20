@@ -98,5 +98,12 @@
  *  @param currentTime    当前播放器时间回调
  */
 - (void)player:(VHVodPlayer*)player currentTime:(NSTimeInterval)currentTime;
+
+/**
+ *  当前播放器 有文档回放
+ *  @param player   播放器实例
+ *  @param docChannels 文档channelID 列表
+ */
+- (void)player:(VHVodPlayer*)player docChannels:(NSArray*)docChannels;
 @end
 

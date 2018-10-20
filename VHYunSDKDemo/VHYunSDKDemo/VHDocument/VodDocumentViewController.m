@@ -63,10 +63,10 @@
 - (void)viewDidLayoutSubviews
 {
     _player.view.frame      = _preView.bounds;
+    _document.view.frame    = _scrollView.bounds;
     if(!isFirstLayout)
     {
         isFirstLayout = YES;
-        _document.view.frame    = _scrollView.bounds;
         _scrollView.contentSize = CGSizeMake(_document.view.width+1, _document.view.height+1);
     }
 }

@@ -164,6 +164,11 @@
     _pickerView.frame = [UIScreen mainScreen].bounds;
 }
 
+- (void)viewDidLayoutSubviews
+{
+    _tableView.frame = CGRectMake(0, 64, self.view.width, [UIScreen mainScreen].bounds.size.height-64);
+}
+
 /*
 #pragma mark - Navigation
 
@@ -345,7 +350,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     VHSettingGroup *group=self.groups [indexPath.section];
-    if(indexPath.section == 1 && indexPath.row == group.items.count)
+    if(indexPath.section == 1 || indexPath.row >= group.items.count)
     {
         return;
     }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +47,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waK-BQ-fRE">
-                                    <rect key="frame" x="40" y="12" width="49" height="13.5"/>
+                                    <rect key="frame" x="40" y="11" width="49" height="13.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="BBt-gF-IFd"/>
                                     </constraints>
@@ -57,7 +56,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-aF-To1">
-                                    <rect key="frame" x="92" y="4" width="191" height="31"/>
+                                    <rect key="frame" x="92" y="3" width="191" height="31"/>
                                     <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
@@ -69,7 +68,7 @@
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLv-LB-tqW">
-                                    <rect key="frame" x="286" y="12.5" width="49" height="13.5"/>
+                                    <rect key="frame" x="286" y="11" width="49" height="13.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="OAf-Hg-K8a"/>
                                     </constraints>
@@ -78,7 +77,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTY-Bg-hRp">
-                                    <rect key="frame" x="340" y="4.5" width="30" height="30"/>
+                                    <rect key="frame" x="340" y="3" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="Nhz-lT-xFf"/>
                                         <constraint firstAttribute="height" constant="30" id="Vjt-XA-cIb"/>
@@ -123,7 +122,7 @@
                         <action selector="backBtnClicked:" destination="-1" eventType="touchUpInside" id="aaW-uz-gu3"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
+                <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
                     <rect key="frame" x="10" y="302" width="355" height="355"/>
                     <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -131,7 +130,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.91612413189999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="YLT-T3-To4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="0E9-fN-3Aw"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="YLT-T3-To4" secondAttribute="bottom" constant="10" id="HGH-lk-goz"/>
