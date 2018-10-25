@@ -11,7 +11,7 @@
 #import "VHVodPlayer.h"
 #define CONTROLS_SHOW_TIME  10  //底部进度条显示时间
 
-@interface VodDocumentViewController ()<UIScrollViewDelegate,VHVodPlayerDelegate>
+@interface VodDocumentViewController ()<UIScrollViewDelegate,VHVodPlayerDelegate,VHDocumentDelegate>
 {
     NSTimer         *_timer;
     BOOL isFirstLayout;
@@ -40,8 +40,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self initView];
-    
+
     //阻止iOS设备锁屏
     [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
     
@@ -99,19 +98,6 @@
     }];
     [self.navigationController popViewControllerAnimated:NO];
 }
-
-
-- (void)initView
-{
-    _document = [[VHDocument alloc]initWithRecordID:self.recordID];
-//    _document.delegate = self;
-    _document.view.frame = _scrollView.bounds;
-    _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);
-    [_scrollView addSubview:_document.view];
-    _scrollView.delegate = self;
-    _scrollView.contentSize = CGSizeMake(_scrollView.width+1, _scrollView.height+1);
-}
-
 
 - (void)stopPlayer
 {
@@ -268,6 +254,30 @@
     [self hideProgressDialog:self.preView];
     [self stopPlayer];
     [self showMsg:[NSString stringWithFormat:@"%@",error.domain] afterDelay:2];
+}
+
+- (void)player:(VHVodPlayer*)player docChannels:(NSArray*)docChannels
+{
+    if(docChannels.count>0)
+    {
+        _document = [[VHDocument alloc]initWithRecordID:self.recordID channelID:docChannels[0]];
+        _document.delegate = self;
+        _document.view.frame = _scrollView.bounds;
+        _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);
+        [_scrollView addSubview:_document.view];
+        _scrollView.delegate = self;
+        _scrollView.contentSize = CGSizeMake(_scrollView.width+1, _scrollView.height+1);
+    }
+}
+
+#pragma mark - VHDocumentDelegate
+- (void)documentViewDidLoad
+{
+    
+}
+- (void)document:(VHDocument *)document documentID:(NSString*) documentID curPage:(int)curPage
+{
+    NSLog(@"---------documentID: %@ page: %d",documentID,curPage);
 }
 
 @end

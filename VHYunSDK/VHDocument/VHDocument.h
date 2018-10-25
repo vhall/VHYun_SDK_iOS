@@ -41,7 +41,7 @@
 
 /**
  * 点播文档模块初始化
- * channelID
+ * channelID 有点播模块回调数据
  */
 - (instancetype)initWithRecordID:(NSString*)recordID channelID:(NSString*)channelID;
 
