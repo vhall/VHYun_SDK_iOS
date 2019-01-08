@@ -14,6 +14,12 @@
 #import "VHSettingArrowItem.h"
 #import "CustomPickerView.h"
 
+#import "VHLiveBase.h"
+#import "VHLivePublisher.h"
+#import "VHVodPlayer.h"
+#import "VHInteractiveRoom.h"
+#import "VHImSDK.h"
+
 #define PushArr @[@"默认",@"标清",@"高清",@"超清",@"自定义"]
 #define OptionsSD   @{VHVideoWidthKey:@"192",VHVideoHeightKey:@"144",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
 #define OptionsHD   @{VHVideoWidthKey:@"480",VHVideoHeightKey:@"360",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
@@ -134,6 +140,17 @@
     }
     [_tableView reloadData];
     
+    UILabel *footerView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _tableView.width, 120)];
+    footerView.numberOfLines = 0;
+    footerView.textColor = [UIColor blackColor];
+    footerView.font = [UIFont systemFontOfSize:14];
+    footerView.text = [NSString stringWithFormat:@"    v%@\n    %@\n    %@\n    %@\n    %@\n",
+                       [VHLiveBase getSDKVersion],
+                       [VHLivePublisher getSDKVersion],
+                       [VHVodPlayer getSDKVersion],
+                       [VHInteractiveRoom getSDKVersion],
+                       [VHImSDK getSDKVersion]];
+    _tableView.tableFooterView = footerView;
 }
 
 

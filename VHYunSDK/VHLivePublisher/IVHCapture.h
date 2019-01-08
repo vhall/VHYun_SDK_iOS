@@ -90,10 +90,19 @@ typedef void(^OnErrorBlock)(NSDictionary* errorInfo);
  *  释放采集器资源
  */
 - (BOOL)destoryObject;
+
 @end
 
 @protocol IVHVideoCapture <NSObject,IVHCapture>
+/**
+ *  画面预览view
+ */
+- (UIView*)preView;
 
+/**
+ *  摄像头方向
+ */
+- (AVCaptureDevicePosition)captureDevicePosition;
 
 @end
 

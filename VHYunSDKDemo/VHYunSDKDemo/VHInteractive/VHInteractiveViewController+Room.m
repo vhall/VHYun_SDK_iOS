@@ -33,7 +33,7 @@ static NSString *infoDictKey    = @"infoDictKey";
 - (void)enterRoom
 {
     [self createRoom];
-    [self.room enterRoomWithRoomId:self.ilssRoomID accessToken:self.accessToken];
+    [self.room enterRoomWithRoomId:self.ilssRoomID accessToken:self.accessToken userData:@"userData"];
 }
 
 - (void)leaveRoom
@@ -236,6 +236,7 @@ static NSString *infoDictKey    = @"infoDictKey";
 {
     //布局连麦界面 renderViewsById 房间中所有上麦人视频view
     [self addView:attendView attributes:attendView.userId];
+    NSLog(@"--- userID: %@; userData %@",attendView.userId,attendView.userData);
 }
 - (void)room:(VHInteractiveRoom *)room didRemovedAttendView:(VHRenderView *)attendView
 {
@@ -352,11 +353,13 @@ static NSString *infoDictKey    = @"infoDictKey";
 #pragma mark - 进入后台
 - (void)willEnterForeground
 {
-    [self enterRoom];
+//    [self enterRoom];
+    [self performSelector:@selector(enterRoom) withObject:nil afterDelay:3];
 }
 
 - (void)didEnterBackground
 {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self leaveRoom];
 }
 #pragma mark - runtime 动态绑定 属性

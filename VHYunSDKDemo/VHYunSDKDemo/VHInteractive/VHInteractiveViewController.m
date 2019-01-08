@@ -101,6 +101,10 @@
     else
         [self showMsg:@"旁路直播房间ID为空" afterDelay:3];
 }
+- (IBAction)voiceChangeBtnClicked:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    self.cameraView.voiceChangeType = sender.selected?1:0;
+}
 
 #pragma mark - Public
 - (void)didPublish:(NSString*)streamId

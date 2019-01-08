@@ -81,6 +81,16 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
 - (void)enterRoomWithRoomId:(const NSString *)roomId accessToken:(const NSString *)accessToken;
 
 /*
+ * 加入房间
+ * @param roomId 互动房间id
+ * @param accessToken  accessToken
+ * @param userData  用户数据可以携带不超过255字符的字符串 可在VHRenderView中获取此值
+ * 调用完成等待代理回调确认接下来操作
+ */
+- (void)enterRoomWithRoomId:(const NSString *)roomId accessToken:(const NSString *)accessToken userData:(NSString*)userData;
+
+
+/*
  * 离开房间
  */
 - (void)leaveRoom;
@@ -205,6 +215,16 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  CANVAS_LAYOUT_PATTERN_CUSTOM     string     自定义，当使用坐标布局接口时
  */
 - (BOOL)publishAnotherLive:(BOOL)isOpen liveRoomId:(const NSString *)liveRoomId param:(NSDictionary*)param completeBlock:(void(^)(NSError *error)) block;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
+
+/**
+ * 是否开启扬声器输出音频
+ */
+- (void)setSpeakerphoneOn:(BOOL)on;
 @end
 
 /*
@@ -276,9 +296,4 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
 284001 VHRoomErrorClient
 284002 VHRoomErrorClientFailedSDP
 284003 VHRoomErrorSignaling
- 
- 
- 
- 
- 
 */

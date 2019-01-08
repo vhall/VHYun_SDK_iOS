@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel  *maxLabel;
 @property (weak, nonatomic) IBOutlet UIButton *fullscreenBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *rateBtn;
 
 @end
 
@@ -163,7 +164,7 @@
     }
     else
     {
-        if(_player.playerState == VHPlayerStatusStop)
+        if(_player.playerState == VHPlayerStatusStop || _player.playerState == VHPlayerStatusComplete )
         {
             [_player startPlay:self.recordID accessToken:self.accessToken];
             [self showProgressDialog:self.preView];
@@ -191,6 +192,15 @@
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:CONTROLS_SHOW_TIME];
 }
 
+- (IBAction)rateBtnClicked:(UIButton *)sender
+{
+    sender.tag+=5;
+    if (sender.tag >20)
+        sender.tag = 5;
+    
+    _player.rate = sender.tag/10.0;
+    [sender setTitle:[NSString stringWithFormat:@"%.1f",_player.rate] forState:0];
+}
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     return _document.view;
@@ -223,6 +233,8 @@
             break;
         case VHPlayerStatusPlaying:
         {
+            _rateBtn.tag = (NSInteger)(_player.rate*10.0);
+            [_rateBtn setTitle:[NSString stringWithFormat:@"%.1f",_player.rate] forState:0];
             [self showControls:NO];
             _playBtn.selected = YES;
             [self hideProgressDialog:self.preView];
@@ -251,6 +263,8 @@
 
 - (void)player:(VHVodPlayer *)player stoppedWithError:(NSError *)error
 {
+    //允许iOS设备锁屏
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     [self hideProgressDialog:self.preView];
     [self stopPlayer];
     [self showMsg:[NSString stringWithFormat:@"%@",error.domain] afterDelay:2];

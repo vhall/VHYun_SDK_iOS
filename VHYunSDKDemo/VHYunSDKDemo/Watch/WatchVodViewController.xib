@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +26,7 @@
                 <outlet property="minLabel" destination="O0N-KF-2aF" id="M3L-Or-Ixm"/>
                 <outlet property="playBtn" destination="2kW-AC-z9V" id="5zh-Ps-ZkE"/>
                 <outlet property="preView" destination="zSR-Gi-HxU" id="BL7-tS-yX6"/>
+                <outlet property="rateBtn" destination="n3l-q5-nhC" id="Ll2-ca-C3f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,7 +54,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0N-KF-2aF">
-                                    <rect key="frame" x="40" y="12" width="49" height="13.5"/>
+                                    <rect key="frame" x="40" y="11.5" width="49" height="13.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="Yt0-fa-jbK"/>
                                     </constraints>
@@ -62,7 +63,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="84M-jh-cc5">
-                                    <rect key="frame" x="92" y="2.5" width="191" height="31"/>
+                                    <rect key="frame" x="92" y="3" width="191" height="31"/>
                                     <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
@@ -74,7 +75,7 @@
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPU-0j-HjJ">
-                                    <rect key="frame" x="286" y="11" width="49" height="13.5"/>
+                                    <rect key="frame" x="286" y="11.5" width="49" height="13.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="nfF-LE-xRK"/>
                                     </constraints>
@@ -298,14 +299,43 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3l-q5-nhC">
+                            <rect key="frame" x="127" y="21" width="30" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="0.69630111880000001" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="3V8-Mx-xn3"/>
+                                <constraint firstAttribute="width" constant="30" id="XRd-xm-Vnf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="1.0">
+                                <color key="titleColor" red="1" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" title="铺满">
+                                <color key="titleColor" red="1" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="rateBtnClicked:" destination="-1" eventType="touchUpInside" id="YpF-qw-w43"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Z41-7p-LOm" firstAttribute="leading" secondItem="zSR-Gi-HxU" secondAttribute="leading" constant="51" id="2Js-Ks-ba3"/>
                         <constraint firstItem="Z41-7p-LOm" firstAttribute="top" secondItem="zSR-Gi-HxU" secondAttribute="top" constant="21" id="JVn-QA-EwJ"/>
                         <constraint firstItem="Ihu-hI-KQB" firstAttribute="centerY" secondItem="Z41-7p-LOm" secondAttribute="centerY" id="Z1A-lU-gdM"/>
+                        <constraint firstItem="n3l-q5-nhC" firstAttribute="leading" secondItem="Ihu-hI-KQB" secondAttribute="trailing" constant="8" id="bie-Ie-tM3"/>
                         <constraint firstItem="OXx-Mk-bUO" firstAttribute="leading" secondItem="zSR-Gi-HxU" secondAttribute="leading" id="dCx-J7-zoc"/>
                         <constraint firstAttribute="bottom" secondItem="OXx-Mk-bUO" secondAttribute="bottom" id="dPK-md-Yxt"/>
+                        <constraint firstItem="n3l-q5-nhC" firstAttribute="centerY" secondItem="Ihu-hI-KQB" secondAttribute="centerY" id="eDs-kr-d4w"/>
                         <constraint firstAttribute="trailing" secondItem="OXx-Mk-bUO" secondAttribute="trailing" id="rr2-MD-lrI"/>
                         <constraint firstItem="Ihu-hI-KQB" firstAttribute="leading" secondItem="Z41-7p-LOm" secondAttribute="trailing" constant="8" id="v0s-k3-TfO"/>
                     </constraints>
@@ -332,7 +362,7 @@
                 <constraint firstItem="Oxl-mX-ScB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="zf5-Nt-zwj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="26.5" y="52.5"/>
+            <point key="canvasLocation" x="-227" y="7"/>
         </view>
     </objects>
     <resources>

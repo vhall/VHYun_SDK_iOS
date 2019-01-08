@@ -23,6 +23,7 @@
 @property (nonatomic,assign)    int                     scalingMode;//设置画面的裁剪模式 VHPlayerScalingMode
 
 @property(nonatomic,assign)int timeout;                 //链接的超时时间 默认10000毫秒，单位为毫秒
+@property (nonatomic) float rate;//播放速率  0.50, 0.67, 0.80, 1.0, 1.25, 1.50, and 2.0
 
 /**
  *  设置默认播放的清晰度 默认原画
@@ -66,6 +67,11 @@
  *  销毁播放器
  */
 - (BOOL)destroyPlayer;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
 @end
 
 @protocol VHVodPlayerDelegate <NSObject>
@@ -105,5 +111,6 @@
  *  @param docChannels 文档channelID 列表
  */
 - (void)player:(VHVodPlayer*)player docChannels:(NSArray*)docChannels;
+
 @end
 

@@ -19,41 +19,22 @@
 //4、设置plist中 Privacy - Camera Usage Description      是否允许使用相机
 //5、设置plist中 Privacy - Microphone Usage Description  是否允许使用麦克风
 //6、设置以下数据 检查 Bundle ID 即可观看直播
+//7、互动功能暂不支持模拟器
 
-//#define DEMO_AppID                  @""
-//#define DEMO_AccessToken            @""
-//#define DEMO_third_party_user_id    [[[UIDevice currentDevice] identifierForVendor] UUIDString]
-//
-//#define DEMO_PlayerRoomID           @""
-//#define DEMO_PublishRoomID          @""
-//#define DEMO_RecordID               @""
-//#define DEMO_DocChannelID           @""
-//#define DEMO_IMChannelID            @""
-//#define DEMO_CustomDocID            @""
-//#define DEMO_InteractiveID          @""
+#define DEMO_AppID                  @""
+#define DEMO_AccessToken            @""
+#define DEMO_third_party_user_id    [[[UIDevice currentDevice] identifierForVendor] UUIDString]
 
-
-//#define DEMO_Test
-
-
-//////////////////////////////////////////////////////////发布要删除
-//http://www.vhallyun.com/  http://t-open.e.vhall.com  账号：vhall 123456       //18510248667 gaoyansing
-#define DEMO_Test //正式环境
-//#define DEMO_Test                   ((BOOL(*)(id,SEL))objc_msgSend)([VHLiveBase class],@selector(setTestServerUrl));//测试环境
-
-#define DEMO_AccessToken            @"vhall"
-#define DEMO_third_party_user_id    DEMO_Setting.third_party_user_id
-#define DEMO_PlayerRoomID           @"lss_772f6eda"
-#define DEMO_PublishRoomID          @"lss_772f6eda"
-#define DEMO_RecordID               @"bc74a5a5"
-#define DEMO_DocChannelID           @"ch_66c87f98"
+#define DEMO_PlayerRoomID           @""
+#define DEMO_PublishRoomID          @""
+#define DEMO_RecordID               @""
+#define DEMO_DocChannelID           @""
 #define DEMO_IMChannelID            @""
 #define DEMO_CustomDocID            @""
-#define DEMO_InteractiveID          @"inav_e301abbf"
-#define DEMO_AppID                  @"a3214366"
-//////////////////////////////////////////////////////////发布要删除
+#define DEMO_InteractiveID          @""
 
 
+#define DEMO_Test
 
 //#if DEBUG  // 调试状态, 打开LOG功能
 #define VHLog(...) NSLog(__VA_ARGS__)

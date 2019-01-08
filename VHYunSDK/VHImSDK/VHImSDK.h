@@ -23,6 +23,11 @@
  * @param message   IM消息 最长200字
  */
 - (void)sendMessage:(NSString*)message completed:(void (^)(NSError *error))completed;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
 @end
 
 @protocol VHImSDKDelegate <NSObject>

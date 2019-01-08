@@ -39,6 +39,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *definitionBtn2;
 @property (weak, nonatomic) IBOutlet UIButton *definitionBtn3;
 @property (weak, nonatomic) IBOutlet UIButton *definitionBtn4;
+@property (weak, nonatomic) IBOutlet UIButton *rateBtn;
+
+
+
 @end
 
 @implementation WatchVodViewController
@@ -124,7 +128,15 @@
     _definitionsView.hidden = YES;
 //    _logView.hidden = (sender.tag != VHDefinitionAudio);
 }
+- (IBAction)rateBtnClicked:(UIButton *)sender
+{
+    sender.tag+=5;
+    if (sender.tag >20)
+        sender.tag = 5;
 
+    _player.rate = sender.tag/10.0;
+    [sender setTitle:[NSString stringWithFormat:@"%.2f",_player.rate] forState:0];
+}
 #pragma mark - palyerControls
 - (void)showControls:(BOOL)isForever
 {
@@ -155,7 +167,7 @@
     }
     else
     {
-        if(_player.playerState == VHPlayerStatusStop)
+        if(_player.playerState == VHPlayerStatusStop || _player.playerState == VHPlayerStatusComplete )
         {
             [_player startPlay:self.recordID accessToken:self.accessToken];
             [self showProgressDialog:self.preView];
@@ -216,6 +228,8 @@
             break;
         case VHPlayerStatusPlaying:
         {
+            _rateBtn.tag = (NSInteger)(_player.rate*10.0);
+            [_rateBtn setTitle:[NSString stringWithFormat:@"%.2f",_player.rate] forState:0];
             [self showControls:NO];
             _playBtn.selected = YES;
             [self hideProgressDialog:self.preView];
@@ -298,4 +312,6 @@
     return UIInterfaceOrientationPortrait;
 }
     
+- (IBAction)rateBtn:(id)sender {
+}
 @end

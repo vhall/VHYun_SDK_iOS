@@ -8,6 +8,7 @@
 
 #import "DocumentDemoViewController.h"
 #import "VHDocument.h"
+//#import "UploadFileViewController.h"
 
 
 #define OBJ_Color @[@"#FF0000",@"#FF7D00",@"#FFFF00",@"#00FF00",@"#0000FF",@"#00FFFF",@"#FF00FF",@"#000000"]
@@ -180,6 +181,12 @@
     _document.view.editGraffitEnable = sender.selected;
     if(!_document.view.editGraffitEnable)
         [self btnClicked:nil];
+}
+
+- (IBAction)fileBtnClicked:(UIButton *)sender {
+//    UploadFileViewController * vc = [[UploadFileViewController alloc] init];
+//    vc.accessToken = _accessToken;
+//    [self presentViewController:vc animated:YES completion:nil];
 }
 
  #pragma mark - VHDocumentDelegate

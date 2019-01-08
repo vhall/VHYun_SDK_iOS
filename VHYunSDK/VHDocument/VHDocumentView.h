@@ -1,6 +1,6 @@
 //
-//  VHGraffitiBoardView.h
-//  VHGraffiti
+//  VHDocumentView.h
+//  VHDocumentView
 //
 //  Created by vhall on 2018/6/23.
 //  Copyright © 2018年 vhall. All rights reserved.
@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger,VHDrawType) {
 };
 
 @protocol VHDocumentViewDelegate;
+@class VHDocumentConfig;
 @interface VHDocumentView : UIView
 + (NSString*)getDocumentViewVersion;
 
@@ -152,21 +153,29 @@ typedef NS_ENUM(NSInteger,VHDrawType) {
  */
 - (void)redo;
 
+
 /*
  * 初始化
- * @param frame     frame     显示区域大小
+ * @param frame  显示区域大小
+ * @param type   文档类型
+
  */
 - (instancetype)initWithFrame:(CGRect)frame type:(VHDocumentViewType)type graffitiUrl:(NSString*)graffitiUrl;
+
 /*
- * 初始化文档播放器
+ * 配置文档显示区域 注意要在- (void)documentView:(VHDocumentView *)documentView load:(BOOL)isLoad; 事件中设置
+ * @param config 文档参数
  */
-- (void)initJSObject:(NSString*)ID opt:(NSString*)opt;
+- (void)setDocParamWithConfig:(VHDocumentConfig*)config;
+
 /*
  * resize 重置容器大小
  */
 - (void)resize;
 /*
  * 设置当前文档
+ * hash 文档hash
+ * extData jsonstr @"{\"height\":540,\"show_page\":\"2\",\"ext\":\"pptx\",\"width\":960,\"show_step\":0,\"page\":22,\"docId\":\"ac116232\",\"hash\":\"eb21f459f9a0661e4b54ea283be632bc\"}"
  */
 - (void)setDocByHash:(NSString*) hash extData:(NSString*)extData;
 

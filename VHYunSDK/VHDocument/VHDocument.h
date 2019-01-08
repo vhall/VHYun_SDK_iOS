@@ -56,6 +56,11 @@
  * @param documentID 文档id
  */
 - (void)setDocWithID:(NSString*) documentID success:(void(^)(void))success failed:(void(^)(NSError *error))failedBlock;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
 @end
 
 @protocol VHDocumentDelegate <NSObject>

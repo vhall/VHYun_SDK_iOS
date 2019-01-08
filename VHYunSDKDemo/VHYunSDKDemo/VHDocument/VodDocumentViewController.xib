@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +19,7 @@
                 <outlet property="minLabel" destination="waK-BQ-fRE" id="LkC-VM-a1p"/>
                 <outlet property="playBtn" destination="m5g-79-ios" id="HBv-2B-yTz"/>
                 <outlet property="preView" destination="rlO-Tw-Vzw" id="l66-Yu-x0W"/>
+                <outlet property="rateBtn" destination="rbr-Pn-OvD" id="eoK-WU-BIA"/>
                 <outlet property="scrollView" destination="YLT-T3-To4" id="Aib-Yd-bOh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -102,13 +103,42 @@
                                 <constraint firstItem="waK-BQ-fRE" firstAttribute="centerY" secondItem="m5g-79-ios" secondAttribute="centerY" id="gNK-dz-yvY"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbr-Pn-OvD">
+                            <rect key="frame" x="46" y="0.0" width="30" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="0.69630111880000001" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="Ijy-mo-Q6x"/>
+                                <constraint firstAttribute="height" constant="30" id="m0J-HF-kel"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="1.0">
+                                <color key="titleColor" red="1" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" title="铺满">
+                                <color key="titleColor" red="1" green="0.17254901959999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="rateBtnClicked:" destination="-1" eventType="touchUpInside" id="qfM-F9-g6Q"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="rlO-Tw-Vzw" secondAttribute="height" multiplier="16:9" id="Dg6-Nb-S3R"/>
                         <constraint firstItem="ME5-x2-xZz" firstAttribute="leading" secondItem="rlO-Tw-Vzw" secondAttribute="leading" id="JRx-7L-zps"/>
                         <constraint firstAttribute="bottom" secondItem="ME5-x2-xZz" secondAttribute="bottom" id="bR6-Xb-8ma"/>
+                        <constraint firstItem="rbr-Pn-OvD" firstAttribute="leading" secondItem="rlO-Tw-Vzw" secondAttribute="leading" constant="46" id="fCh-fW-jcT"/>
                         <constraint firstAttribute="trailing" secondItem="ME5-x2-xZz" secondAttribute="trailing" id="hvr-Fa-FW6"/>
+                        <constraint firstItem="rbr-Pn-OvD" firstAttribute="top" secondItem="rlO-Tw-Vzw" secondAttribute="top" id="tMh-dF-TWs"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGU-q0-Xmx">
@@ -122,7 +152,7 @@
                         <action selector="backBtnClicked:" destination="-1" eventType="touchUpInside" id="aaW-uz-gu3"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
+                <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
                     <rect key="frame" x="5" y="256" width="365" height="205"/>
                     <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

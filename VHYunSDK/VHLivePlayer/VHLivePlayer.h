@@ -83,6 +83,11 @@ typedef NS_ENUM(NSInteger,VHStreamType){
  *  销毁播放器
  */
 - (BOOL)destroyPlayer;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
 @end
 
 @protocol VHLivePlayerDelegate <NSObject>

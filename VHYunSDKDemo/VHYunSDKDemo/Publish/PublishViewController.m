@@ -90,6 +90,10 @@
 
 -(void)LaunchLiveDidBecomeActive
 {
+    [self performSelector:@selector(resume) withObject:nil afterDelay:1];
+}
+- (void)resume
+{
     [_publisher resume];
 }
 
@@ -122,8 +126,8 @@
 
 - (void)registerLiveNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveWillResignActive)name:UIApplicationWillResignActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveDidBecomeActive)name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveWillResignActive)name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveDidBecomeActive)name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)initDatas
@@ -189,6 +193,11 @@
     UIButton *btn=(UIButton*)sender;
     btn.enabled=NO;
     _isFontVideo = !_isFontVideo;
+    if(_isFontVideo)
+    {
+        _torchType = NO;
+        _torchBtn.selected = _torchType;
+    }
 
     BOOL success=  [_publisher switchCamera:_isFontVideo ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack];
     if(success)
@@ -266,7 +275,7 @@
 
 - (void)onPublishStatus:(VHPublishStatus)status info:(NSDictionary*)info
 {
-//    NSLog(@"状态：%ld %@",(long)status,info);
+    NSLog(@"状态：%ld %@",(long)status,info);
 
     switch (status) {
         case VHPublishStatusPushConnectSucceed:
@@ -296,7 +305,7 @@
 
 - (void)onPublishError:(VHPublishError)error info:(NSDictionary*)info
 {
-//    NSLog(@"错误：%ld %@",(long)error,info);
+    NSLog(@"错误：%ld %@",(long)error,info);
     [self showMsg:[NSString stringWithFormat:@"%@ %@",info[@"code"],info[@"content"]] afterDelay:2];
     
     [self stopPublish];

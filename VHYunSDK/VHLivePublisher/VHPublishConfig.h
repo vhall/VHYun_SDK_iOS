@@ -9,6 +9,69 @@
 #import <AVFoundation/AVFoundation.h>
 
 /**
+ *  推流状态
+ */
+typedef NS_ENUM(NSInteger, VHallPublishStatus) {
+    VHallPublishStatusNone,//
+    VHallPublishStatusPushConnectSucceed,//直播连接成功
+    VHallPublishStatusUploadSpeed,//直播上传速率
+    VHallPublishStatusUploadNetworkException,//发起端网络环境差
+    VHallPublishStatusUploadNetworkOK //发起端网络环境恢复正常
+};
+
+/**
+ *  推流错误码
+ */
+typedef NS_ENUM(NSInteger, VHallPublishError) {
+    VHallPublishErrorNone,
+    VHallPublishErrorPusherError,       //  推流相关错误@{code："10001" ,content: "xxxxx"}
+    VHallPublishErrorAuthError,         //  接口\验证等相关错误
+    VHallPublishErrorParamError,        //  参数相关错误
+    VHallPublishErrorCaptureError,      //  采集相关错误
+};
+
+/**
+ *  推流类型
+ */
+typedef NS_ENUM(int,VHStreamType){
+    VHStreamTypeNone = 0,
+    VHStreamTypeVideoAndAudio,
+    VHStreamTypeOnlyVideo,
+    VHStreamTypeOnlyAudio,
+};
+
+#pragma mark - VHallLivePublisherDelegate
+
+/**
+ *  推流代理
+ */
+@protocol VHallLivePublisherDelegate <NSObject>
+
+@optional
+/**
+ *  采集到第一帧的回调
+ *  @param image 第一帧的图片
+ */
+-(void)firstCaptureImage:(UIImage*)image;
+
+/**
+ *  推流状态回调
+ *  @param status   状态类型
+ *  @param info     状态信息2
+ */
+- (void)onPublishStatus:(VHallPublishStatus)status info:(NSDictionary*)info;
+
+/**
+ *  错误回调
+ *  @param error    错误类型
+ *  @param info     错误信息
+ */
+- (void)onPublishError:(VHallPublishError)error info:(NSDictionary*)info;//@{code："" ,content: ""}
+
+@end
+
+#pragma mark - VHPublishConfig
+/**
  *  config 模板
  */
 typedef NS_ENUM(NSInteger,VHPublishConfigType)
@@ -44,7 +107,7 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 + (VHPublishConfig*)configWithType:(VHPublishConfigType)type;
 
 /**
- *  采集画面方向
+ *  采集画面方向 默认VHDevicePortrait
  */
 @property (nonatomic,assign)VHDeviceOrientation orientation;
 
@@ -109,6 +172,17 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
  * 默认关闭 NO
  */
 @property (nonatomic,assign)BOOL beautifyFilterEnable;
+
+/**
+ * 推流类型 默认VHStreamTypeVideoAndAudio
+ */
+@property (nonatomic,assign)VHStreamType pushType;
+
+/**
+ * 是否打印日志
+ * 默认不打印 NO
+ */
+@property (nonatomic,assign)BOOL isPrintLog;
 
 /**
  * 自定义参数 用于高级自定义采集模块

@@ -96,7 +96,7 @@
 }
 
 - (IBAction)stratBtnClicked:(UIButton *)sender {
-    if(_player.playerState == VHPlayerStatusStop)
+    if(!_stratBtn.selected)
     {
         //设备锁屏
         [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
@@ -105,7 +105,7 @@
         _infoLabel.text = @"";
         [_player startPlay:self.roomId accessToken:self.accessToken];
     }
-    else if(_player.playerState != VHPlayerStatusStop)
+    else
     {
         [self stopPlayer];
     }
@@ -158,6 +158,7 @@
             break;
         case VHPlayerStatusPlaying:
         {
+            _operationView.hidden = NO;
             _stratBtn.selected = YES;
             [self hideProgressDialog:self.preView];
         }

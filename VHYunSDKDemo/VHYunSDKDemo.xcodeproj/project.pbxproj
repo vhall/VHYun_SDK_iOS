@@ -168,6 +168,7 @@
 		C027C95B21743DEC009D8A7A /* DocumentDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentDemoViewController.xib; sourceTree = "<group>"; };
 		C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHStatisticsStystem.m; sourceTree = "<group>"; };
 		C029512A20BE9B2300FD60BD /* VHStatisticsStystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHStatisticsStystem.h; sourceTree = "<group>"; };
+		C03A8722219AD15A00421C68 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		C055909F20872262007F1595 /* VHInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveViewController.h; sourceTree = "<group>"; };
 		C05590A020872262007F1595 /* VHInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveViewController.m; sourceTree = "<group>"; };
 		C05590A120872262007F1595 /* VHInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHInteractiveViewController.xib; sourceTree = "<group>"; };
@@ -607,6 +608,7 @@
 		C07B74B31FBD5A3B00189E0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C03A8722219AD15A00421C68 /* CoreServices.framework */,
 				C07B20AF21783E0700377F64 /* JavaScriptCore.framework */,
 				C09848D01FC5415C0045066C /* libbz2.tbd */,
 				C09848CD1FC540F20045066C /* CoreTelephony.framework */,
@@ -772,6 +774,11 @@
 					C07B74541FBD3AFA00189E0B = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

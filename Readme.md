@@ -10,6 +10,7 @@
 4、注册`AppKey`  [VHLiveBase registerApp:`AppKey`]; <br>
 5、检查工程 `Bundle ID` 是否与`AppKey`对应 <br>
 6、plist中添加相机、麦克风权限 <br>
+7、互动功能暂不支持模拟器 <br>
 
 
 ### SDK 各模块依赖关系图
@@ -17,6 +18,11 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.5.0 更新时间：2019.01.08
+更新内容：<br>
+1、回放倍速播放<br>
+2、互动新增变声功能<br>
+
 #### 版本 v1.3.1 更新时间：2018.10.25
 更新内容：<br>
 1、文档回放<br>

@@ -10,10 +10,12 @@
 #define VHPlayerTypeDef_h
 
 typedef NS_ENUM(NSInteger, VHPlayerStatus) {
+    VHPlayerStatusUnkown,       //初始化时指定的状态，播放器初始化
     VHPlayerStatusLoading,      //加载中
     VHPlayerStatusPlaying,      //播放中
+    VHPlayerStatusPause,        //播放暂停
     VHPlayerStatusStop,         //停止播放
-    VHPlayerStatusPause         //播放暂停
+    VHPlayerStatusComplete,     //本次播放完
 };
 
 typedef NS_ENUM(NSInteger, VHPlayerScalingMode) {

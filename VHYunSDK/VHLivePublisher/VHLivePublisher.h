@@ -150,6 +150,11 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
  *  @param saturation 饱和度 默认 1.0f
  */
 - (void)setBeautify:(CGFloat)beautify Brightness:(CGFloat)brightness Saturation:(CGFloat)saturation;
+
+/**
+ *  获得当前SDK版本号
+ */
++ (NSString *) getSDKVersion;
 @end
 
 @protocol VHLivePublisherDelegate <NSObject>

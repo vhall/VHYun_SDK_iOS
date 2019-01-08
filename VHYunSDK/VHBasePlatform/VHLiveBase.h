@@ -19,15 +19,40 @@ typedef NS_ENUM(NSInteger, VHLogLevel) {
 
 @interface VHLiveBase : NSObject
 
-
+/**
+ *  注册app
+ *  @param appid  http://www.vhallyun.com/ 控制台中创建app 并设置包名 获得
+ */
 + (BOOL) registerApp:(NSString *)appid;
 
+/**
+ *  注册app
+ *  @param appid  http://www.vhallyun.com/ 控制台中创建app 并设置包名 获得
+ *  @param completeBlock  SDK初始化成功回调， error 成功为 nil  如果不成功会5s重试一次
+ */
++ (BOOL) registerApp:(NSString *)appid completeBlock:(void(^)(NSError *error)) completeBlock;
+
+/**
+ *  设置第三方用户id  建议使用用户id保持唯一性
+ *  @param third_party_user_id  第三方用户id 使用您的App登录后获得用户id即可
+ */
 + (BOOL) setThirdPartyUserId:(NSString *)third_party_user_id;
 
+/**
+ *  设置日志等级
+ *  @param level  日志等级
+ */
 + (void) setLogLevel:(VHLogLevel)level;
-    
-+ (void) printLogToConsole:(BOOL)isPrint;//默认不显示到控制台
 
+/**
+ *  设置日志s是否输出到控制台
+ *  @param isPrint  否输出到控制台
+ */
++ (void) printLogToConsole:(BOOL)isPrint;//默认不显示到控制台、
+
+/**
+ *  获得当前SDK版本号
+ */
 + (NSString *) getSDKVersion;
 
 @end
