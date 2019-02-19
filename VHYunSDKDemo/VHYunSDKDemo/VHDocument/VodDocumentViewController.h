@@ -11,4 +11,5 @@
 @interface VodDocumentViewController : VHBaseViewController
 @property(nonatomic,copy)NSString * recordID;
 @property(nonatomic,copy)NSString * accessToken;
+@property(nonatomic, assign)BOOL      seekMode;
 @end

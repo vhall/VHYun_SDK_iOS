@@ -79,13 +79,15 @@
 
 - (void)showMsg:(NSString*)msg afterDelay:(NSTimeInterval)delay
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    //            hud.yOffset = 150.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:delay];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = msg;
+        hud.margin = 10.f;
+        //            hud.yOffset = 150.f;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:delay];
+    });
 }
 
 -(void) showRendererMsg:(NSString*)msg afterDelay:(NSTimeInterval)delay

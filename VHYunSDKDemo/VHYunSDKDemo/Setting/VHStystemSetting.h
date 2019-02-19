@@ -32,6 +32,7 @@
 
 //点播
 @property(nonatomic, strong)NSString* recordID;             //点播房间ID
+@property(nonatomic, assign)BOOL      seekMode;             //seek 播放器是否只支持在播放过的时段seek
 
 //文档直播
 @property(nonatomic, strong)NSString* docChannelID;         //文档ChannelID

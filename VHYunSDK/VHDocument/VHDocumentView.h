@@ -1,6 +1,6 @@
 //
-//  VHDocumentView.h
-//  VHDocumentView
+//  VHDocumentViewWK.h
+//  VHDocumentViewWK
 //
 //  Created by vhall on 2018/6/23.
 //  Copyright © 2018年 vhall. All rights reserved.

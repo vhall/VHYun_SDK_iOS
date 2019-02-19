@@ -326,11 +326,29 @@
                                 <action selector="rateBtnClicked:" destination="-1" eventType="touchUpInside" id="YpF-qw-w43"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6g-TR-k8Q">
+                            <rect key="frame" x="173" y="21" width="31" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="0.70173373283972607" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="截图">
+                                <color key="titleColor" red="1" green="0.046545039429999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="takeAPhotoBtnClicked:" destination="-1" eventType="touchUpInside" id="zNB-e0-X3e"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Z41-7p-LOm" firstAttribute="leading" secondItem="zSR-Gi-HxU" secondAttribute="leading" constant="51" id="2Js-Ks-ba3"/>
                         <constraint firstItem="Z41-7p-LOm" firstAttribute="top" secondItem="zSR-Gi-HxU" secondAttribute="top" constant="21" id="JVn-QA-EwJ"/>
+                        <constraint firstItem="J6g-TR-k8Q" firstAttribute="leading" secondItem="n3l-q5-nhC" secondAttribute="trailing" constant="16" id="KH8-hp-zYk"/>
+                        <constraint firstItem="J6g-TR-k8Q" firstAttribute="top" secondItem="zSR-Gi-HxU" secondAttribute="top" constant="21" id="SmX-8p-E8Z"/>
                         <constraint firstItem="Ihu-hI-KQB" firstAttribute="centerY" secondItem="Z41-7p-LOm" secondAttribute="centerY" id="Z1A-lU-gdM"/>
                         <constraint firstItem="n3l-q5-nhC" firstAttribute="leading" secondItem="Ihu-hI-KQB" secondAttribute="trailing" constant="8" id="bie-Ie-tM3"/>
                         <constraint firstItem="OXx-Mk-bUO" firstAttribute="leading" secondItem="zSR-Gi-HxU" secondAttribute="leading" id="dCx-J7-zoc"/>
@@ -362,7 +380,7 @@
                 <constraint firstItem="Oxl-mX-ScB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="zf5-Nt-zwj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-227" y="7"/>
+            <point key="canvasLocation" x="-353" y="-11"/>
         </view>
     </objects>
     <resources>

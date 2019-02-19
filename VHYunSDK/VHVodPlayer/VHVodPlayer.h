@@ -12,6 +12,12 @@
 
 @protocol VHVodPlayerDelegate;
 
+// 点播视播放器seek模式
+typedef NS_ENUM(int,VHVodPlayerSeeekModel){
+    VHVodPlayerSeeekModelDefault,     //默认seek，支持前进和后退seek
+    VHVodPlayerSeeekModelPlayed,      //设置此值后，播放器只支持在播放过的时段seek
+};
+
 @interface VHVodPlayer : NSObject
 @property (nonatomic,weak)id <VHVodPlayerDelegate>      delegate;
 @property (nonatomic,strong,readonly)UIView             *view;
@@ -34,6 +40,20 @@
  * 当前播放的清晰度 默认原画 只有在播放开始后调用 并在支持的清晰度列表中
  */
 @property(nonatomic,assign)VHDefinition             curDefinition;
+/**
+ * 点播视播放器seek模式设置 注意：需要播放前调用
+ */
+@property (nonatomic, assign) VHVodPlayerSeeekModel seekModel;
+
+/**
+ * 水印 ImageView 设置水印图片 及显示位置  注：只要使用了改属性 PaaS 控制台设置图片方式便失效
+ */
+@property (nonatomic,readonly) UIImageView* watermarkImageView;
+/**
+ * 点播视播放器seek模式设置 注意：需要播放前调用
+ * 如果是seekModel == VHVodPlayerSeeekModelPlayed 为指定播放过时间
+ */
+- (void)setSeekModel:(VHVodPlayerSeeekModel)seekModel maxTime:(NSTimeInterval)maxTime;
 
 /**
  *  开始播放
@@ -72,6 +92,12 @@
  *  获得当前SDK版本号
  */
 + (NSString *) getSDKVersion;
+
+/**
+ *  获得当前时间视频截图
+ */
+- (UIImage*)takeAPhoto;
+
 @end
 
 @protocol VHVodPlayerDelegate <NSObject>

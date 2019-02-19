@@ -8,6 +8,7 @@
 
 #import "WatchVodViewController.h"
 #import "VHVodPlayer.h"
+#import <Photos/Photos.h>
 
 #define CONTROLS_SHOW_TIME  10  //底部进度条显示时间
 
@@ -58,6 +59,7 @@
     
     [self.preView insertSubview:_player.view atIndex:0];
     _player.view.frame = _preView.bounds;
+    _player.seekModel = _seekMode?VHVodPlayerSeeekModelPlayed:VHVodPlayerSeeekModelDefault;
     [_player startPlay:self.recordID accessToken:self.accessToken];
     [self showProgressDialog:self.preView];
 
@@ -135,7 +137,7 @@
         sender.tag = 5;
 
     _player.rate = sender.tag/10.0;
-    [sender setTitle:[NSString stringWithFormat:@"%.2f",_player.rate] forState:0];
+    [sender setTitle:[NSString stringWithFormat:@"%.1f",_player.rate] forState:0];
 }
 #pragma mark - palyerControls
 - (void)showControls:(BOOL)isForever
@@ -215,7 +217,26 @@
     [_player resume];
     [self performSelector:@selector(hideControls) withObject:nil afterDelay:CONTROLS_SHOW_TIME];
 }
-
+- (IBAction)takeAPhotoBtnClicked:(id)sender {
+    
+    UIImage * image = [_player takeAPhoto];
+    if(image)
+    {
+        [self saveImage:image];
+    }
+}
+- (void)saveImage:(UIImage *)image
+{
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *req = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        NSLog(@"success = %d, error = %@", success, error);
+        NSString*ret = @"已保存到相册";
+        if(!success && error.userInfo[@"NSLocalizedDescription"])
+            ret = error.userInfo[@"NSLocalizedDescription"];
+        [self showMsg:ret afterDelay:2];
+    }];
+}
 
 #pragma mark - VHVodPlayerDelegate
 - (void)player:(VHVodPlayer *)player statusDidChange:(int)state
@@ -229,7 +250,7 @@
         case VHPlayerStatusPlaying:
         {
             _rateBtn.tag = (NSInteger)(_player.rate*10.0);
-            [_rateBtn setTitle:[NSString stringWithFormat:@"%.2f",_player.rate] forState:0];
+            [_rateBtn setTitle:[NSString stringWithFormat:@"%.1f",_player.rate] forState:0];
             [self showControls:NO];
             _playBtn.selected = YES;
             [self hideProgressDialog:self.preView];

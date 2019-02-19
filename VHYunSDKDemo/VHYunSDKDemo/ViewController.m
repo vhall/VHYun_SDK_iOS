@@ -98,6 +98,7 @@
     WatchVodViewController * watchVC = [[WatchVodViewController alloc] init];
     watchVC.recordID    = DEMO_Setting.recordID;
     watchVC.accessToken = DEMO_Setting.accessToken;
+    watchVC.seekMode    = DEMO_Setting.seekMode;
     [self presentViewController:watchVC animated:YES completion:nil];
 }
 
@@ -121,6 +122,7 @@
     VodDocumentViewController * vc = [[VodDocumentViewController alloc] init];
     vc.recordID      = DEMO_Setting.recordID;
     vc.accessToken   = DEMO_Setting.accessToken;
+    vc.seekMode    = DEMO_Setting.seekMode;
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - IM消息

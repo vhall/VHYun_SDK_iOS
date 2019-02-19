@@ -47,6 +47,7 @@
     
     _player = [[VHVodPlayer alloc]init];
     _player.delegate = self;
+    _player.seekModel = _seekMode?VHVodPlayerSeeekModelPlayed:VHVodPlayerSeeekModelDefault;
 
     [self.preView insertSubview:_player.view atIndex:0];
     _player.view.frame = _preView.bounds;

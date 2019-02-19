@@ -42,6 +42,7 @@
     VHSettingTextFieldItem *item24;
     //点播
     VHSettingTextFieldItem *item30;
+    VHSettingTextFieldItem *item31;
     //文档直播
     VHSettingTextFieldItem *item40;
     //IM
@@ -245,7 +246,9 @@
 {
     item30 = [VHSettingTextFieldItem  itemWithTitle:@"点播房间ID"];
     item30.text=DEMO_Setting.recordID;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item30]];
+    item31 = [VHSettingTextFieldItem  itemWithTitle:@"只播放过视频seek"];
+    item31.text= DEMO_Setting.seekMode?@"1":@"0";
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item30,item31]];
     group.headerTitle = @"点播设置";
     [self.groups addObject:group];
 }
@@ -473,7 +476,7 @@
     if(pickerView.tag == 1)
     {
         NSString * title =_selectArray[row];
-        [item22 setText:title];
+        [item21 setText:title];
         DEMO_Setting.videoResolution =  [NSString stringWithFormat:@"%ld",(long)row];
         [_tableView reloadData];
     }
@@ -576,6 +579,12 @@
                 {
                     DEMO_Setting.recordID = text;
                     item30.text = DEMO_Setting.recordID;
+                }
+                    break;
+                case 1:
+                {
+                    DEMO_Setting.seekMode = [text integerValue];
+                    item31.text = DEMO_Setting.seekMode?@"1":@"0";
                 }
                     break;
                 default:break;

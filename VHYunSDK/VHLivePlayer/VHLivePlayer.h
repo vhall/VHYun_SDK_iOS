@@ -54,9 +54,16 @@ typedef NS_ENUM(NSInteger,VHStreamType){
  * 设置画面的裁剪模式 详见 VHPlayerScalingMode 的定义
  */
 @property(nonatomic,assign)int                      scalingMode;
+
+/**
+ * 静音
+ */
 @property(nonatomic,assign)BOOL                     mute;
 
-
+/**
+ * 水印 ImageView 设置水印图片 及显示位置  注：只要使用了改属性 PaaS 控制台设置图片方式便失效
+ */
+@property (nonatomic,readonly) UIImageView* watermarkImageView;
 /**
  *  开始播放
  *  @param roomID       房间ID

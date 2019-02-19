@@ -18,6 +18,12 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.6.0 更新时间：2019.02.19
+更新内容：<br>
+1、新增回放水印功能<br>
+2、新增回放Seek限制功能<br>
+2、新增回放截图功能<br>
+
 #### 版本 v1.5.0 更新时间：2019.01.08
 更新内容：<br>
 1、回放倍速播放<br>
