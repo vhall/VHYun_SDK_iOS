@@ -20,9 +20,12 @@
         return;
     }
     __weak typeof(self) wf = self;
-    [self inviteUserList:^(NSArray *userList) {
-        wf.userList = userList;
-        [wf.tableView reloadData];
+    [self inviteUserList:^(NSArray *userList,NSError* error) {
+        if(userList)
+        {
+            wf.userList = userList;
+            [wf.tableView reloadData];
+        }
     }];
 }
 

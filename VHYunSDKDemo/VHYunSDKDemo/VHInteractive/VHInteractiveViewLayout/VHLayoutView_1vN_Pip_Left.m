@@ -7,6 +7,9 @@
 //
 
 #import "VHLayoutView_1vN_Pip_Left.h"
+@interface VHLayoutView_1vN_Pip_Left()<UIScrollViewDelegate>
+@end
+
 
 @implementation VHLayoutView_1vN_Pip_Left
 
@@ -69,9 +72,42 @@
     {
         _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 70, w, self.height-120)];
         _scrollView.backgroundColor = [UIColor clearColor];
+        _scrollView.delegate = self;
         [self addSubview:_scrollView];
     }
     _scrollView.frame = CGRectMake(0, 70, w, self.height-120);
     return _scrollView;
 }
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate)
+        [self scrollViewDidEndDecelerating:scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //超出范围的只播放音频
+    BOOL isLandscape = self.width>self.height;
+    float dot_h = self.scrollView.width* (isLandscape?3.0/4:4.0/3);
+    
+    float offsetY = self.scrollView.contentOffset.y;
+    float offsetYMax = self.scrollView.contentOffset.y+self.scrollView.height;
+    float startPos = 0;
+    for (int i = 1; i<self.items.count; i++)
+    {
+        int y = startPos+i*dot_h;
+        VHLayoutItem* itemT = self.items[i];
+        if(offsetY >= y || offsetYMax <= (y-dot_h))
+        {
+            [((VHRenderView*)itemT.view) muteVideo];
+        }
+        else
+        {
+            [((VHRenderView*)itemT.view) unmuteVideo];
+        }
+    }
+}
+
 @end

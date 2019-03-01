@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, VHallPublishError) {
 typedef NS_ENUM(int,VHStreamType){
     VHStreamTypeNone = 0,
     VHStreamTypeVideoAndAudio,
-    VHStreamTypeOnlyVideo,
+    VHStreamTypeOnlyVideo,//暂不支持
     VHStreamTypeOnlyAudio,
 };
 

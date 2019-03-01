@@ -70,7 +70,7 @@ static NSString *infoDictKey    = @"infoDictKey";
 {
     [self.room requestPublish];
 }
-- (BOOL)inviteUserList:(void(^)(NSArray* userList)) block
+- (BOOL)inviteUserList:(void(^)(NSArray* userList,NSError* error)) block
 {
     return [self.room inviteUserList:block];
 }

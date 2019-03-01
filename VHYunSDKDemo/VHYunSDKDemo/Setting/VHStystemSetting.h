@@ -29,6 +29,7 @@
 @property(nonatomic, assign)NSInteger videoCaptureFPS;      //发直播视频帧率 ［1～30］ 默认10
 @property(nonatomic, assign)BOOL      isOpenNoiseSuppresion;//开启降噪 默认YES
 @property(nonatomic, assign)float     volumeAmplificateSize;//开启降噪 默认1.0
+@property(nonatomic, assign)BOOL      isOnlyAudio;          //是否纯音频推流
 
 //点播
 @property(nonatomic, strong)NSString* recordID;             //点播房间ID

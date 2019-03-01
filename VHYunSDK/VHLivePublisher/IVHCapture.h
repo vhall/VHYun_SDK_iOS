@@ -104,6 +104,16 @@ typedef void(^OnErrorBlock)(NSDictionary* errorInfo);
  */
 - (AVCaptureDevicePosition)captureDevicePosition;
 
+/**
+ *  切换摄像头
+ *  @param captureDevicePosition  后置:AVCaptureDevicePositionBack 前置:AVCaptureDevicePositionFront
+ *  @return 是否切换成功
+ */
+- (BOOL)switchCamera:(AVCaptureDevicePosition)captureDevicePosition;//切换前后摄像头
+- (BOOL)zoomCamera:(CGFloat)zoomSize;   // 缩放摄像头
+- (BOOL)focusCameraAtAdjustedPoint:(CGPoint)point;//手动对焦 对焦完成后变为自动对焦
+- (BOOL)torchMode:(AVCaptureTorchMode)captureTorchMode;//前置摄像头无效
+
 @end
 
 @protocol IVHAudioCapture <NSObject,IVHCapture>

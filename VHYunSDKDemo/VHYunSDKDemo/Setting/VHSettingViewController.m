@@ -19,6 +19,7 @@
 #import "VHVodPlayer.h"
 #import "VHInteractiveRoom.h"
 #import "VHImSDK.h"
+#import "VHDocument.h"
 
 #define PushArr @[@"默认",@"标清",@"高清",@"超清",@"自定义"]
 #define OptionsSD   @{VHVideoWidthKey:@"192",VHVideoHeightKey:@"144",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
@@ -40,6 +41,7 @@
     VHSettingTextFieldItem *item22;
     VHSettingTextFieldItem *item23;
     VHSettingTextFieldItem *item24;
+    VHSettingTextFieldItem *item25;
     //点播
     VHSettingTextFieldItem *item30;
     VHSettingTextFieldItem *item31;
@@ -145,12 +147,13 @@
     footerView.numberOfLines = 0;
     footerView.textColor = [UIColor blackColor];
     footerView.font = [UIFont systemFontOfSize:14];
-    footerView.text = [NSString stringWithFormat:@"    v%@\n    %@\n    %@\n    %@\n    %@\n",
+    footerView.text = [NSString stringWithFormat:@"    v%@\n    %@\n    %@\n    %@\n    %@\n    %@\n",
                        [VHLiveBase getSDKVersion],
                        [VHLivePublisher getSDKVersion],
                        [VHVodPlayer getSDKVersion],
                        [VHInteractiveRoom getSDKVersion],
-                       [VHImSDK getSDKVersion]];
+                       [VHImSDK getSDKVersion],
+                       [VHDocument getSDKVersion]];
     _tableView.tableFooterView = footerView;
 }
 
@@ -236,7 +239,9 @@
     item23.text =  [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.videoCaptureFPS];
     item24 = [VHSettingTextFieldItem  itemWithTitle:@"音频码率(kpbs)"];
     item24.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24]];
+    item25 = [VHSettingTextFieldItem  itemWithTitle:@"纯音频推流"];
+    item25.text = DEMO_Setting.isOnlyAudio?@"1":@"0";
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24,item25]];
     group.headerTitle = @"推流设置";
     [self.groups addObject:group];
     //此处还有一个噪音开关 和 音频增益 tableView 读取时会加2行
@@ -566,6 +571,12 @@
                 {
                     DEMO_Setting.audioBitRate = [text integerValue];
                     item24.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
+                }
+                    break;
+                case 5:
+                {
+                    DEMO_Setting.isOnlyAudio = [text boolValue];
+                    item25.text = DEMO_Setting.isOnlyAudio?@"1":@"0";;
                 }
                     break;
                 default:break;

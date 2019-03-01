@@ -23,7 +23,7 @@
 - (void)unPublish;//下麦
 
 - (void)requestPublish;//申请上麦
-- (BOOL)inviteUserList:(void(^)(NSArray* userList)) block;//获取房间用户
+- (BOOL)inviteUserList:(void(^)(NSArray* userList,NSError* error)) block;//获取房间用户
 //踢出房间
 - (BOOL)kickoutRoomWithThirdUserId:(const NSString *_Nonnull)third_user_id;
 //踢出流  下麦

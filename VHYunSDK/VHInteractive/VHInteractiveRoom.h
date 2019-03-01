@@ -161,13 +161,13 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  * third_party_user_id  第三方用户ID
  * status               用户状态 1 推流中 2 观看中 3 受邀中  4 申请上麦中
  */
-- (BOOL)inviteUserList:(void(^)(NSArray* userList)) block;
+- (BOOL)inviteUserList:(void(^)(NSArray* userList,NSError* error)) block;
 
 /*
  * 互动房间被踢出用户列表
  * userList数据结构 [xxxxxx,...]
  */
-- (BOOL)kickoutUserList:(void(^)(NSArray* userList)) block;
+- (BOOL)kickoutUserList:(void(^)(NSArray* userList,NSError* error)) block;
 #pragma mark - 旁路操作
 /*
  * 开启/关闭旁路直播
@@ -225,6 +225,14 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  * 是否开启扬声器输出音频
  */
 - (void)setSpeakerphoneOn:(BOOL)on;
+
+/**
+ @brief 切换大小流
+ @param streamId 他人视频 streamId
+ @param type 0 是小流 1是大流
+ @param finish code 200 成功 message具体信息
+ */
+- (void)switchDualStream:(NSString *)streamId type:(int)type finish:(void(^)(int code, NSString * _Nullable message))finish;
 @end
 
 /*
@@ -273,7 +281,7 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
 /*
  * 房间人员信息变化
  * info 数据结构
- * status 1 上麦 2 下麦 3拒绝上麦
+ * status 0 人员变化 1 上麦 2 下麦 3拒绝上麦
  * third_party_user_id 操作人id
  * online 在线人数
  */
@@ -288,6 +296,12 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  */
 - (void)room:(VHInteractiveRoom *)room didUnpublish:(NSString *)reason;
 
+/**
+ @brief 流音视频开启情况
+ @param streamId 流id
+ @param muteStream 流音视频开启情况
+ */
+- (void)room:(VHInteractiveRoom *)room didUpdateOfStream:(NSString *)streamId muteStream:(NSDictionary *)muteStream;
 @end
 
 /*

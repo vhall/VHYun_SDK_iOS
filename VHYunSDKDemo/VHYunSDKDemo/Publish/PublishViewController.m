@@ -178,6 +178,8 @@
     config.isOpenNoiseSuppresion = DEMO_Setting.isOpenNoiseSuppresion;
     config.volumeAmplificateSize = DEMO_Setting.volumeAmplificateSize;
     config.videoResolution = _videoResolution;
+    if(DEMO_Setting.isOnlyAudio)
+        config.pushType = VHStreamTypeOnlyAudio;
     
     self.publisher = [[VHLivePublisher alloc] initWithConfig:config];
     self.publisher.delegate            = self;

@@ -18,6 +18,12 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.6.1 更新时间：2019.03.01
+更新内容：<br>
+1、解决蓝牙耳机无声bug<br>
+2、新增纯音频推流<br>
+
+
 #### 版本 v1.6.0 更新时间：2019.02.19
 更新内容：<br>
 1、新增回放水印功能<br>
