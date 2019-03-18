@@ -10,15 +10,6 @@
 #import "VHInteractiveViewController+Layout.h"
 #import "VHInteractiveViewController+TableView.h"
 #import "VHRenderView.h"
-#import <objc/runtime.h>
-
-static NSString *roomKey        = @"roomKey";
-static NSString *infoDictKey    = @"infoDictKey";
-
-@interface VHInteractiveViewController()
-@property(nonatomic,strong) VHInteractiveRoom *room;
-@property(nonatomic,strong) NSMutableDictionary *infoDict;
-@end
 
 @implementation VHInteractiveViewController (Room)
 #pragma mark - 房间控制
@@ -33,7 +24,7 @@ static NSString *infoDictKey    = @"infoDictKey";
 - (void)enterRoom
 {
     [self createRoom];
-    [self.room enterRoomWithRoomId:self.ilssRoomID accessToken:self.accessToken userData:@"userData"];
+    [self.room enterRoomWithRoomId:self.ilssRoomID accessToken:self.accessToken userData:self.userData];
 }
 
 - (void)leaveRoom
@@ -101,23 +92,42 @@ static NSString *infoDictKey    = @"infoDictKey";
 #pragma mark - 监听流信息
 - (void)startListeningStream
 {
-    __weak typeof(self) wf = self;
-    [self.cameraView startStatsWithCallback:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nullable values) {
-        [wf updateInfoView:mediaType kbps:kbps values:values streamid:wf.room.cameraView.streamId];
-    }];
+    if(!self.infoDict)
+        self.infoDict  = [NSMutableDictionary dictionary];
     
-    for (NSString *key in self.room.renderViewsById) {
+    __weak typeof(self) wf = self;
+    if(self.cameraView.streamId.length>0)
+    {
+        [self.cameraView startStatsWithCallback:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nullable values) {
+            [wf updateInfoView:mediaType kbps:kbps values:values streamid:wf.room.cameraView.streamId];
+        }];
+    }
+
+    for (NSString *key in self.room.renderViewsById.allKeys) {
         VHRenderView *view = self.room.renderViewsById[key];
         [view startStatsWithCallback:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nullable values) {
             [wf updateInfoView:mediaType kbps:kbps values:values streamid:view.streamId];
         }];
     }
+    
+    [self updateInfoText];
+}
+
+- (void)startListeningStream:(VHRenderView *)view
+{
+    if(self.infoTextView.hidden)
+        return;
+    
+    __weak typeof(self) wf = self;
+    [view startStatsWithCallback:^(NSString * _Nonnull mediaType, long kbps, NSDictionary<NSString *,NSString *> * _Nullable values) {
+        [wf updateInfoView:mediaType kbps:kbps values:values streamid:view.streamId];
+    }];
 }
 
 - (void)stopListeningStream
 {
     [self.cameraView stopStats];
-    for (NSString *key in self.room.renderViewsById) {
+    for (NSString *key in self.room.renderViewsById.allKeys) {
         VHRenderView *view = self.room.renderViewsById[key];
         [view stopStats];
     }
@@ -128,15 +138,12 @@ static NSString *infoDictKey    = @"infoDictKey";
 - (void)updateInfoView:(NSString *)mediaType kbps:(long)kbps values:(NSDictionary*)values streamid:(NSString *)streamid
 {
 //    NSLog(@"mediaType:%@ kbps:%ld info:%@",mediaType, kbps, [values description]);
-    if(!self.infoDict)
-        self.infoDict  = [NSMutableDictionary dictionary];
-    
     if(streamid.length<=0)
         return;
-    
+
     BOOL isocal = [self.room.cameraView.streamId isEqualToString:streamid];
 
-    NSString * info = [self.infoDict objectForKey:isocal?@"(myself)":streamid];
+    NSString * info = [self.infoDict objectForKey:streamid];
     NSRange r = [info rangeOfString:@";"];
     NSString *video = @"【video】";
     NSString *audio = @"【audio】";
@@ -165,17 +172,36 @@ static NSString *infoDictKey    = @"infoDictKey";
     {
         audio = [NSString stringWithFormat:@"[A]%ldkbps",kbps];
     }
+ 
+    info = [NSString stringWithFormat:@"%@;\n%@",video,audio];
+    self.infoDict[streamid] = info;
+    [self updateInfoText];
+}
 
-    info = [NSString stringWithFormat:@"%@;%@\n",video,audio];
-    self.infoDict[isocal?@"(myself)":streamid] = info;
+- (void)updateInfoText
+{
     NSMutableString *text = [NSMutableString string];
-    [text appendFormat:@"房间ID: %@\n",self.room.roomId];
-//    [text appendFormat:@"用户ID: %@\n",self.room.userId];
+    [text appendFormat:@"房间ID: %@ 旁路: %@ 推流路数: %lu\n",self.room.roomId,self.anotherLiveRoomId?self.anotherLiveRoomId:@"",self.room.streams.count+(self.room.isPublishing?1:0)];
+    //    [text appendFormat:@"用户ID: %@\n",self.room.userId];
     
-    for (NSString* key in self.infoDict) {
-        [text appendFormat:@"streamid: %@\n%@",key,self.infoDict[key]];
+    for (NSString* key in self.infoDict.allKeys) {
+        NSString *name = @"";
+        NSString *userdata = @"";
+        VHRenderView *view = self.room.renderViewsById[key];
+        if(view)
+        {
+            name = view.userId;
+            userdata = view.userData?view.userData:@"";
+        }
+        if([self.room.cameraView.streamId isEqualToString:key])
+        {
+            name = [NSString stringWithFormat:@"myself⭐️%@",DEMO_Setting.third_party_user_id];
+            userdata = self.userData;
+        }
+        
+        [text appendFormat:@"streamid: %@(%@)(%@)\n%@\n",key,name,userdata,self.infoDict[key]];
     }
-    [text appendFormat:@"SDK版本: v%@\n",[VHLiveBase getSDKVersion]];
+    [text appendFormat:@"SDK版本: %@ appID: %@\n",[VHInteractiveRoom getSDKVersion],DEMO_Setting.appID];
     [self updateInfoTextView:text];
 }
 
@@ -190,9 +216,12 @@ static NSString *infoDictKey    = @"infoDictKey";
         }
     }
     
+    [self updateInfoText];
+    [self didUnPublish];
+    
     NSString *str = [NSString stringWithFormat:@"%@(%ld)",error.domain,(long)error.code];
     [self showMsg:str afterDelay:2];
-//    [self showCallConnectViews:YES updateStatusMessage:[NSString stringWithFormat:@"Room error: %@", str]];
+    [self showCallConnectViews:YES updateStatusMessage:[NSString stringWithFormat:@"Room error: %@", str]];
 }
 
 - (void)room:(VHInteractiveRoom *)room didChangeStatus:(VHInteractiveRoomStatus)status {
@@ -235,11 +264,15 @@ static NSString *infoDictKey    = @"infoDictKey";
 - (void)room:(VHInteractiveRoom *)room didAddAttendView:(VHRenderView *)attendView
 {
     //布局连麦界面 renderViewsById 房间中所有上麦人视频view
+    [self startListeningStream:attendView];
+
     [self addView:attendView attributes:attendView.userId];
     NSLog(@"--- userID: %@; userData %@",attendView.userId,attendView.userData);
 }
 - (void)room:(VHInteractiveRoom *)room didRemovedAttendView:(VHRenderView *)attendView
 {
+    [self.infoDict removeObjectForKey:attendView.streamId];
+    [self updateInfoText];
     [self removeView:attendView];
 }
 
@@ -324,10 +357,10 @@ static NSString *infoDictKey    = @"infoDictKey";
  */
 - (void)room:(VHInteractiveRoom *)room didPublish:(VHRenderView *)cameraView
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self didPublish:cameraView.streamId];
-        [self showCallConnectViews:NO updateStatusMessage:[NSString stringWithFormat:@"已上麦%@",cameraView.streamId]];
-    });
+    [self startListeningStream:cameraView];
+  
+    [self didPublish:cameraView.streamId];
+    [self showCallConnectViews:NO updateStatusMessage:[NSString stringWithFormat:@"已上麦%@",cameraView.streamId]];
 }
 /*
  * 停止推流成功
@@ -335,10 +368,13 @@ static NSString *infoDictKey    = @"infoDictKey";
  */
 - (void)room:(VHInteractiveRoom *)room didUnpublish:(NSString *)reason
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self didUnPublish];
-        [self showCallConnectViews:NO updateStatusMessage:@"已下麦"];
-    });
+    if(self.cameraView.streamId)
+    {
+        [self.infoDict removeObjectForKey:self.cameraView.streamId];
+    }
+    [self updateInfoText];
+    [self didUnPublish];
+    [self showCallConnectViews:NO updateStatusMessage:@"已下麦"];
 }
 
 /*
@@ -348,6 +384,15 @@ static NSString *infoDictKey    = @"infoDictKey";
 {
     [self updateUserListData];
     self.onlineNumLabel.text = [NSString stringWithFormat:@"在线 %@ 人",info[@"online"]];
+}
+
+- (void)room:(VHInteractiveRoom *)room didUpdateOfStream:(NSString *)streamId muteStream:(NSDictionary *)muteStream {
+    
+}
+
+- (void)room:(VHInteractiveRoom *)room onStreamMixed:(NSDictionary *)msg
+{
+    
 }
 
 #pragma mark - 进入后台
@@ -362,17 +407,5 @@ static NSString *infoDictKey    = @"infoDictKey";
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self leaveRoom];
 }
-#pragma mark - runtime 动态绑定 属性
-- (void)setRoom:(VHInteractiveRoom *)room{
-    objc_setAssociatedObject(self, &roomKey, room, OBJC_ASSOCIATION_RETAIN);
-}
-- (VHInteractiveRoom *)room{
-    return objc_getAssociatedObject(self, &roomKey);
-}
-- (void)setInfoDict:(NSMutableDictionary *)infoDict{
-    objc_setAssociatedObject(self, &infoDictKey, infoDict, OBJC_ASSOCIATION_RETAIN);
-}
-- (NSMutableDictionary *)infoDict{
-    return objc_getAssociatedObject(self, &infoDictKey);
-}
+
 @end

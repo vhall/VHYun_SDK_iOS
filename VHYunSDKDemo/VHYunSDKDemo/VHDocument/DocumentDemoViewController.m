@@ -60,6 +60,12 @@
     _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);
     [_preView addSubview:_document.view];
     
+    self.isPublish = NO;
+}
+
+- (void)setIsPublish:(BOOL)isPublish
+{
+    _isPublish = isPublish;
     _document.view.editEnable = _isPublish;
     _pptOptView.hidden = !_isPublish;
 }
@@ -78,8 +84,7 @@
 - (IBAction)pptShowOptBtnClicked:(UIButton *)sender
 {
     sender.selected = !sender.selected;
-    _document.view.editEnable = sender.selected;
-    _pptOptView.hidden = !sender.selected;
+    self.isPublish = sender.selected;
 }
 
 - (IBAction)pptOptBtnClicked:(UIButton*)sender {

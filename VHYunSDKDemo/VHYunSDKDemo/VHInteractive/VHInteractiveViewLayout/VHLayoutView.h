@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VHLayoutItem.h"
+#import "VHInteractiveRoom.h"
 
 @interface VHLayoutView : UIView
 
@@ -63,20 +64,26 @@
 /*
  * 把item 切换到 0 号位
  * @param item 要切换到0号位的item
+ * @param room 用于切换大小流
  */
-- (void)changePosWithItem:(VHLayoutItem*) item;
+- (void)changePosWithItem:(VHLayoutItem*) item room:(VHInteractiveRoom*)room;
 
 /*
  * 把item 切换到 0 号位
  * @param view 要切换到0号位的 view
+ * @param room 用于切换大小流
  */
-- (void)changePosWithView:(UIView *)view;
+- (void)changePosWithView:(UIView *)view room:(VHInteractiveRoom*)room;
 
 /*
  * 限制刷新
  */
 @property (assign,nonatomic) BOOL isLimitUpdateUI;
 
+/*
+ * 手动关闭开启别人视频
+ */
+- (void)muteVideo:(BOOL)isMute view:(UIView *)view;
 
 //内部自动触发不需要调用 返回 NO 则不刷新UI
 - (BOOL)updateUI;

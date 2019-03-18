@@ -10,8 +10,8 @@
 
 extern NSString * const VHSimulcastLayersKey;   //推流参数-同时推流数  默认:1 只推1路流   2，发起端推送大小两路流，用于超多人互动场景
 
-extern NSString * const VHStreamOptionStreamType;//推流类型   VHInteractiveStreamType
-extern NSString * const VHFrameResolutionTypeKey;//推流分辨率 VHFrameResolutionValue
+extern NSString * const VHStreamOptionStreamType;//推流类型   VHInteractiveStreamType VHInteractiveStreamTypeAudioAndVideo 音视频
+extern NSString * const VHFrameResolutionTypeKey;//推流分辨率 VHFrameResolutionValue VHFrameResolution192x144
 
 //如果设置VHFrameResolutionTypeKey 以下参数可以不用设置
 extern NSString * const VHVideoWidthKey;        //推流视频宽度 默认192
@@ -48,8 +48,8 @@ typedef NS_ENUM(int, VHInteractiveStreamType) {
     VHInteractiveStreamTypeOnlyAudio       = 0,//纯音频
     VHInteractiveStreamTypeOnlyVideo       = 1,//纯视频
     VHInteractiveStreamTypeAudioAndVideo   = 2,//音视频 默认
-    VHInteractiveStreamTypeScreen          = 3,//共享桌面
-    VHInteractiveStreamTypeFile            = 4 //插播
+    VHInteractiveStreamTypeScreen          = 3,//共享桌面 暂不支持
+    VHInteractiveStreamTypeFile            = 4 //插播  暂不支持
 };
 
 typedef NS_ENUM(int, VHFrameResolutionValue) {
@@ -159,8 +159,16 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
 
 /*
  * 此流的 流音视频开启情况
+ * 数据结构 @{@"video":@(NO),@"audio":@(NO)} YES代表禁止，NO代表不禁止 可以用来更新ui状态
  */
-@property (nonatomic,strong, readonly) NSDictionary *muteStream;
+@property (strong, nonatomic) NSDictionary * remoteMuteStream;//推流端
+@property (nonatomic,strong, readonly) NSDictionary *muteStream;//订阅端 本地相机view 只有这一个属性
+
+/*
+ * 此流视频宽高
+ */
+@property (nonatomic,assign, readonly) CGSize videoSize;
+
 
 /*
  * 是否有音频

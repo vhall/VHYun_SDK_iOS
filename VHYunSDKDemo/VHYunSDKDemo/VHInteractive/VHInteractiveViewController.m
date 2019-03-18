@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *leaveButton;
 @property (weak, nonatomic) IBOutlet UIButton *unpublishButton;
 @property (weak, nonatomic) IBOutlet UILabel  *statusLabel;
-@property (weak, nonatomic) IBOutlet UITextView *infoTextView;
 
 @end
 
@@ -30,7 +29,7 @@
     
     //离开房间
     [self leaveRoom];
-    [self destroyRoom];
+    
     [self dismissViewControllerAnimated:YES completion:^{}];
     [self.navigationController popViewControllerAnimated:NO];
 }
@@ -51,6 +50,7 @@
 //离开房间
 - (IBAction)leave:(id)sender {
     [self leaveRoom];
+    [self destroyRoom];
     [self showCallConnectViews:YES updateStatusMessage:@"Ready"];
 }
 //推流or停止推流
@@ -96,10 +96,18 @@
                 sender.selected = !sender.selected;
                 [wf showMsg:sender.selected?@"已开启旁路":@"已关闭旁路" afterDelay:2];
             }
+            else
+            {
+                if(error.code == 40008)//旁路推流正在进行中，请先结束
+                {
+                    sender.selected = !sender.selected;
+                }
+                [wf showMsg:error.domain afterDelay:1];
+            }
         }];
     }
     else
-        [self showMsg:@"旁路直播房间ID为空" afterDelay:3];
+        [self showMsg:@"旁路直播房间ID为空" afterDelay:2];
 }
 - (IBAction)voiceChangeBtnClicked:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -208,8 +216,9 @@
     
     if(self.cameraView)
     {
-        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-        [self.cameraView setDeviceOrientation:(UIDeviceOrientation)orientation];
+//        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+//        NSLog(@"UIInterfaceOrientation: %d",orientation);
+        [self.cameraView setDeviceOrientation:[UIDevice currentDevice].orientation];
     }
     
 }

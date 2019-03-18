@@ -21,5 +21,9 @@ typedef void(^FrameChangeBlock)(VHLayoutItem* _Nonnull item);
 @property (nonatomic,strong)id attributes;
 @property (nonatomic,copy)ClickedItemBlock clickedItem;
 @property (nonatomic,copy)FrameChangeBlock frameChangeItem;
+@property (nonatomic,assign)BOOL isUserMuteVideo;//是否用户手动关闭视频
+
+- (void)muteVideo:(BOOL)isMute;
+- (void)userMuteVideo:(BOOL)isMute;//用户手动开启关闭视频//用户手动开启关闭视频
 
 @end

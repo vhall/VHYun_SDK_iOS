@@ -51,6 +51,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
     {
         NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
         //基础设置
+        _appID= [standardUserDefaults objectForKey:@"VHappID"];  //
         _third_party_user_id= [standardUserDefaults objectForKey:@"VHthird_party_user_id"];  //第三方ID
         _accessToken  = [standardUserDefaults objectForKey:@"VHaccessToken"];    //AccessToken
         
@@ -88,7 +89,11 @@ static VHStystemSetting *pub_sharedSetting = nil;
         _ilssLiveRoomID     = [standardUserDefaults objectForKey:@"VHilssLiveRoomID"];
         _ilssType           = [standardUserDefaults integerForKey:@"VHilssType"];            //摄像头及推流参数设置VHPushType
         _ilssOptions        = [standardUserDefaults objectForKey:@"VHilssOptions"];         //摄像头及推流参数设置
+        _userData           = @"iOSUserData";
         //基础设置
+        if(_appID == nil)
+            _appID = DEMO_AppID;
+        
         if(_third_party_user_id == nil)
 //            _third_party_user_id = @"third_party_user_id";
             _third_party_user_id = [[UIDevice currentDevice] name]; 
@@ -130,16 +135,28 @@ static VHStystemSetting *pub_sharedSetting = nil;
             _ilssLiveRoomID = DEMO_PublishRoomID;
         if(!_ilssOptions)
         {
-            _ilssOptions = @{VHVideoWidthKey:@"192",
-                             VHVideoHeightKey:@"144",
-                             VHVideoFpsKey:@(30),
-                             VHMaxVideoBitrateKey:@(200)};
+            _ilssOptions = @{VHFrameResolutionTypeKey:@(0),
+                             VHStreamOptionStreamType:@(2),
+                             VHSimulcastLayersKey:@(1)};
         }
         
     }
     return self;
 }
 #pragma mark - 基础设置
+- (void)setAppID:(NSString *)appID
+{
+    _appID = appID;
+    if(_appID.length == 0)
+    {
+        _appID = DEMO_AppID;
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHappID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:_appID forKey:@"VHappID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 - (void)setThird_party_user_id:(NSString *)third_party_user_id
 {
     _third_party_user_id = third_party_user_id;

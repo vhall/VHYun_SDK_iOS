@@ -302,6 +302,13 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  @param muteStream 流音视频开启情况
  */
 - (void)room:(VHInteractiveRoom *)room didUpdateOfStream:(NSString *)streamId muteStream:(NSDictionary *)muteStream;
+
+/**
+ @brief 服务器已准备好混流可以调用混流接口
+ @param msg msg
+ @discussion onStreamMixed
+ */
+- (void)room:(VHInteractiveRoom *)room onStreamMixed:(NSDictionary *)msg;
 @end
 
 /*

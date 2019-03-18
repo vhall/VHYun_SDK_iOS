@@ -131,7 +131,7 @@
 }
 
 
-- (void)changePosWithItem:(VHLayoutItem*) item
+- (void)changePosWithItem:(VHLayoutItem*) item room:(VHInteractiveRoom*)room
 {
     if (item.posId !=0)
     {
@@ -147,11 +147,23 @@
         [_items insertObject:item atIndex:0];
         [_items insertObject:items0 atIndex:items0.posId];
         
+        //大小流切换
+        if(!((VHRenderView*)item.view).isLocal && ((VHRenderView*)item.view).simulcastLayers > 1)//大窗口
+        {
+            [room switchDualStream:((VHRenderView*)item.view).streamId type:1 finish:^(int code, NSString * _Nullable message) {
+            }];
+        }
+        if(!((VHRenderView*)items0.view).isLocal && ((VHRenderView*)items0.view).simulcastLayers > 1)//小窗口
+        {
+            [room switchDualStream:((VHRenderView*)items0.view).streamId type:0 finish:^(int code, NSString * _Nullable message) {
+            }];
+        }
+        
         [self updateUI];
     }
 } ;
 
-- (void)changePosWithView:(UIView *)view
+- (void)changePosWithView:(UIView *)view room:(VHInteractiveRoom*)room
 {
     VHLayoutItem* item = nil;
     for (VHLayoutItem* i in _items) {
@@ -161,7 +173,21 @@
             break;
         }
     }
-    [self changePosWithItem:item];
+    [self changePosWithItem:item room:room];
+}
+
+- (void)muteVideo:(BOOL)isMute view:(UIView *)view
+{
+    VHLayoutItem* item = nil;
+    for (VHLayoutItem* i in _items) {
+        if([i.view isEqual:view])
+        {
+            item = i;
+            break;
+        }
+    }
+    
+    [item userMuteVideo:isMute];
 }
 #pragma mark - private
 - (BOOL)updateUI

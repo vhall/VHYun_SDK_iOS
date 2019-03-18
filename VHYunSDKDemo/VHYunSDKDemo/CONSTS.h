@@ -9,7 +9,7 @@
 #ifndef CONSTS_h
 #define CONSTS_h
 
-#define SHOW_CPU_INFO
+//#define SHOW_CPU_INFO
 
 
 //开发说明 http://www.vhallyun.com/document/detail/index?project_id=40&doc_id=949
@@ -33,10 +33,6 @@
 #define DEMO_CustomDocID            @""
 #define DEMO_InteractiveID          @""
 
-
-#define DEMO_Test
-
-
 //#if DEBUG  // 调试状态, 打开LOG功能
 #define VHLog(...) NSLog(__VA_ARGS__)
 //#else // 发布状态, 关闭LOG功能
@@ -59,5 +55,7 @@
 #define MakeColorARGB(hex)      ([UIColor colorWithRed:((hex>>16)&0xff)/255.0 green:((hex>>8)&0xff)/255.0 blue:(hex&0xff)/255.0 alpha:((hex>>24)&0xff)/255.0])
 
 #define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhoneXR            ([UIScreen instancesRespondToSelector:@selector(currentMode)]?CGSizeEqualToSize(CGSizeMake(828, 1792),[[UIScreen mainScreen] currentMode].size):NO)
+#define iPhoneXSMAX         ([UIScreen instancesRespondToSelector:@selector(currentMode)]?CGSizeEqualToSize(CGSizeMake(1242, 2688),[[UIScreen mainScreen] currentMode].size):NO)
 
 #endif /* CONSTS_h */

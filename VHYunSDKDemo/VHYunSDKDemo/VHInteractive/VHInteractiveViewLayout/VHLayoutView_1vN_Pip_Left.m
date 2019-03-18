@@ -46,12 +46,18 @@
             
             self.scrollView.contentSize = CGSizeMake(self.scrollView.width, (h<self.scrollView.height)?self.scrollView.height+1:h );
             
+            float offsetY = self.scrollView.contentOffset.y;
+            float offsetYMax = self.scrollView.contentOffset.y+self.scrollView.height;
+            
             for (int i = 1; i<self.items.count; i++) {
                 VHLayoutItem* itemT = self.items[i];
                 itemT.view.frame = CGRectMake(0,startPos+i*dot_h-dot_h , self.scrollView.width,dot_h);
                 if(itemT.frameChangeItem)
                     itemT.frameChangeItem(itemT);
                 [self.scrollView addSubview:itemT.view];
+
+                int y = startPos+i*dot_h;
+                [itemT muteVideo:(offsetY >= y || offsetYMax <= (y-dot_h))];
             }
         }
         VHLayoutItem* item = self.items[0];
@@ -59,10 +65,39 @@
         if(item.frameChangeItem)
             item.frameChangeItem(item);
         [self insertSubview:item.view atIndex:0];
+        [item muteVideo:NO];
+        
+        [self performSelector:@selector(updateInfo) withObject:nil afterDelay:2];
     }
     
     return YES;
 }
+
+- (BOOL)updateInfo
+{
+    for (int i = 0; i<self.items.count; i++) {
+        VHLayoutItem* itemT = self.items[i];
+        UILabel *l = [itemT.view viewWithTag:1001];
+        if(l)
+        {
+            if(((VHRenderView*)itemT.view).userId)
+            {
+                l.text = [NSString stringWithFormat:@"%@(%dx%d)",((VHRenderView*)itemT.view).userId,
+                          (int)((VHRenderView*)itemT.view).videoSize.width,
+                          (int)((VHRenderView*)itemT.view).videoSize.height];
+            }
+            else//userID不存在时删除此view
+            {
+                [self removeRenderView:itemT.view];  
+                break;
+            }
+        }
+
+    }
+    return YES;
+}
+
+
 #pragma mark - Set/Get
 - (UIScrollView*)scrollView
 {
@@ -99,14 +134,7 @@
     {
         int y = startPos+i*dot_h;
         VHLayoutItem* itemT = self.items[i];
-        if(offsetY >= y || offsetYMax <= (y-dot_h))
-        {
-            [((VHRenderView*)itemT.view) muteVideo];
-        }
-        else
-        {
-            [((VHRenderView*)itemT.view) unmuteVideo];
-        }
+        [itemT muteVideo:(offsetY >= y || offsetYMax <= (y-dot_h))];
     }
 }
 

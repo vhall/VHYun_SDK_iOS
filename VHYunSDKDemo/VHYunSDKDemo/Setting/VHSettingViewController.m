@@ -53,6 +53,8 @@
     VHSettingTextFieldItem *item60;
     VHSettingTextFieldItem *item61;
     VHSettingTextFieldItem *item62;
+    VHSettingTextFieldItem *item63;
+    VHSettingTextFieldItem *item64;
     
     UISwitch *_noiseSwitch;//降噪开关
     UISlider *_volumeAmplificateSlider;//增益
@@ -291,7 +293,12 @@
     {
         weakSelf.interactiveView.hidden = NO;
     };
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item60,item61,item62]];
+    item63 = [VHSettingTextFieldItem  itemWithTitle:@"是否推双流"];
+    item63.text=DEMO_Setting.isDouble?@"1":@"0";
+    item64 = [VHSettingTextFieldItem  itemWithTitle:@"用户自定义数据"];
+    item64.text=DEMO_Setting.userData;
+    
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item60,item61,item62,item63,item64]];
     group.headerTitle = @"互动";
     [self.groups addObject:group];
 }
@@ -641,6 +648,18 @@
                 {
                     DEMO_Setting.ilssLiveRoomID = text;
                     item61.text = DEMO_Setting.ilssLiveRoomID;
+                }
+                    break;
+                case 3:
+                {
+                    DEMO_Setting.isDouble = [text integerValue];
+                    item63.text = DEMO_Setting.isDouble?@"1":@"0";
+                }
+                    break;
+                case 4:
+                {
+                    DEMO_Setting.userData = text;
+                    item64.text = DEMO_Setting.userData;
                 }
                     break;
                 default:break;

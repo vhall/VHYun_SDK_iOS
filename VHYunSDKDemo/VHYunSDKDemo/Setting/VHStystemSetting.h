@@ -14,6 +14,7 @@
 + (VHStystemSetting *)sharedSetting;
 
 //基础设置
+@property(nonatomic, strong)NSString* appID;  
 @property(nonatomic, strong)NSString* third_party_user_id;  //第三方ID
 @property(nonatomic, strong)NSString* accessToken;          //AccessToken 根据开通的服务生成对应的 AccessToken
 
@@ -46,4 +47,7 @@
 @property(nonatomic, strong)NSString*   ilssLiveRoomID;       //旁路直播间ID
 @property(nonatomic, assign)VHPushType  ilssType;              //摄像头及推流参数设置
 @property(nonatomic, copy)NSDictionary* ilssOptions;            //摄像头及推流参数设置
+
+@property(nonatomic, assign)BOOL isDouble;            //是否开启双流
+@property(nonatomic, strong)NSString*   userData;           //互动房间userData
 @end

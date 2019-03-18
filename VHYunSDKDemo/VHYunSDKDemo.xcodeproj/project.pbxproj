@@ -30,6 +30,7 @@
 		C027C95C21743DEC009D8A7A /* DocumentDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C95A21743DEC009D8A7A /* DocumentDemoViewController.m */; };
 		C027C95D21743DEC009D8A7A /* DocumentDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C027C95B21743DEC009D8A7A /* DocumentDemoViewController.xib */; };
 		C029512B20BE9B2300FD60BD /* VHStatisticsStystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */; };
+		C04C24552237820F00728700 /* BeforehandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C04C24542237820F00728700 /* BeforehandViewController.m */; };
 		C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05590A020872262007F1595 /* VHInteractiveViewController.m */; };
 		C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05590A120872262007F1595 /* VHInteractiveViewController.xib */; };
 		C0716A2B21130B6400A3FB57 /* libVHBasePlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A0721130B6400A3FB57 /* libVHBasePlatform.a */; };
@@ -169,6 +170,8 @@
 		C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHStatisticsStystem.m; sourceTree = "<group>"; };
 		C029512A20BE9B2300FD60BD /* VHStatisticsStystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHStatisticsStystem.h; sourceTree = "<group>"; };
 		C03A8722219AD15A00421C68 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		C04C24532237820F00728700 /* BeforehandViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeforehandViewController.h; sourceTree = "<group>"; };
+		C04C24542237820F00728700 /* BeforehandViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeforehandViewController.m; sourceTree = "<group>"; };
 		C055909F20872262007F1595 /* VHInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveViewController.h; sourceTree = "<group>"; };
 		C05590A020872262007F1595 /* VHInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveViewController.m; sourceTree = "<group>"; };
 		C05590A120872262007F1595 /* VHInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHInteractiveViewController.xib; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				C0F4A86D1FD0F62E006D6DA9 /* CONSTS.h */,
 				C07B74581FBD3AFA00189E0B /* AppDelegate.h */,
 				C07B74591FBD3AFA00189E0B /* AppDelegate.mm */,
+				C04C24532237820F00728700 /* BeforehandViewController.h */,
+				C04C24542237820F00728700 /* BeforehandViewController.m */,
 				C07B745B1FBD3AFA00189E0B /* ViewController.h */,
 				C07B745C1FBD3AFA00189E0B /* ViewController.m */,
 				C07B745E1FBD3AFA00189E0B /* Main.storyboard */,
@@ -854,6 +859,7 @@
 				C00B64CE1FEA431E00DF36FF /* SDWebImageManager.m in Sources */,
 				C09C4F3320A2E07E00164B30 /* VHInteractiveViewController+TableView.m in Sources */,
 				C090308420B50C240051F6ED /* VHLayoutView_1vN.m in Sources */,
+				C04C24552237820F00728700 /* BeforehandViewController.m in Sources */,
 				C07B74851FBD431800189E0B /* VHBaseViewController.m in Sources */,
 				C090309920B69CE60051F6ED /* VHLayoutView_1vN_Left.m in Sources */,
 				C0F4A8811FD0FE2F006D6DA9 /* VHSettingArrowItem.m in Sources */,

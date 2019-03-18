@@ -18,6 +18,13 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.7.0 更新时间：2019.03.18
+更新内容：<br>
+1、互动最大支持16路，根据实际手机情况设置显示视频的路数<br>
+2、互动支持360p以上双流推送<br>
+3、修复文档底层bug
+4、修复直播模块bug
+
 #### 版本 v1.6.1 更新时间：2019.03.01
 更新内容：<br>
 1、解决蓝牙耳机无声bug<br>

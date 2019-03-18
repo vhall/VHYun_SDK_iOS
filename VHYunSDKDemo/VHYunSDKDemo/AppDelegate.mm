@@ -22,9 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    DEMO_Test
-    [VHLiveBase setLogLevel:(VHLogLevel)5];
-    [VHLiveBase printLogToConsole:YES];
+
+//    [VHLiveBase setLogLevel:(VHLogLevel)5];
+//    [VHLiveBase printLogToConsole:YES];
     
     NSLog(@"SDKVersion: %@",[VHLiveBase getSDKVersion]);
     [self showProcessInfo];
@@ -58,38 +58,50 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)updateInfo
+{
+    if(self.netInfoLabel)
+        [self.window addSubview:self.netInfoLabel];
+}
+
 -(void)showProcessInfo{
 #ifdef SHOW_CPU_INFO
     __weak typeof(self) wf = self;
     dispatch_queue_t queue = dispatch_queue_create("my queue", 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), 1 * NSEC_PER_SEC, 0);//间隔1秒
-    dispatch_source_set_event_handler(_timer, ^()
-                                      {
-                                          NSString *strInfo = @"";
-                                          NSArray* arr = [[VHStatisticsStystem sharedManager]getDataCounters];
-                                          if(arr)
-                                          {
-                                              strInfo = [NSString stringWithFormat:@"WIFI:↑%d ↓%d WWAN:↑%d ↓%d (KB/s)", [arr[0] intValue]/1024,[arr[1] intValue]/1024,[arr[2] intValue]/1024,[arr[3] intValue]/1024];
-                                          }
-                                          
-                                          float cpu = [[VHStatisticsStystem sharedManager]cpu_usage];
-                                          double availableMemory = [[VHStatisticsStystem sharedManager]availableMemory];
-                                          double usedMemory = [[VHStatisticsStystem sharedManager]usedMemory];
-                                          
-                                          strInfo = [strInfo stringByAppendingFormat:@" CPU:%.1f%% MEM:%d/%d(M)",cpu,(int)usedMemory,(int)availableMemory];
-                                          
-                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                              if(wf.netInfoLabel == nil)
-                                              {
-                                                  wf.netInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, [[UIScreen mainScreen] bounds].size.width, 20)];
-                                                  wf.netInfoLabel.textColor = [UIColor redColor];
-                                                  wf.netInfoLabel.font = [UIFont systemFontOfSize:7];
-                                                  [wf.window addSubview:wf.netInfoLabel];
-                                              }
-                                              wf.netInfoLabel.text = strInfo;
-                                          });
-                                      });
+    dispatch_source_set_event_handler(_timer, ^(){
+        NSString *strInfo = @"";
+        NSArray* arr = [[VHStatisticsStystem sharedManager]getDataCounters];
+        if(arr)
+        {
+            strInfo = [NSString stringWithFormat:@"WIFI:↑%d ↓%d WWAN:↑%d ↓%d (KB/s)", [arr[0] intValue]/1024,[arr[1] intValue]/1024,[arr[2] intValue]/1024,[arr[3] intValue]/1024];
+        }
+
+        float cpu = [[VHStatisticsStystem sharedManager]cpu_usage];
+        double availableMemory = [[VHStatisticsStystem sharedManager]availableMemory];
+        double usedMemory = [[VHStatisticsStystem sharedManager]usedMemory];
+
+        strInfo = [strInfo stringByAppendingFormat:@" CPU:%.1f%% MEM:%d/%d(M)",cpu,(int)usedMemory,(int)availableMemory];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(wf.netInfoLabel == nil)
+            {
+                wf.netInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, [[UIScreen mainScreen] bounds].size.width, 20)];
+                wf.netInfoLabel.textColor = [UIColor redColor];
+                wf.netInfoLabel.font = [UIFont systemFontOfSize:7];
+                [wf.window addSubview:wf.netInfoLabel];
+            }
+            float h = 0;
+            UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+            if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
+                h = (iPhoneX ||iPhoneXR||iPhoneXSMAX)? 25 : 10;
+            }
+
+            wf.netInfoLabel.top = h;
+            wf.netInfoLabel.text = strInfo;
+        });
+    });
     dispatch_resume(_timer);
 #endif
 }

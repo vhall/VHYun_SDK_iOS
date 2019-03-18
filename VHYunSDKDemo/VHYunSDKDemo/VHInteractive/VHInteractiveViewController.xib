@@ -149,7 +149,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3y3-jp-Wgw">
-                    <rect key="frame" x="302" y="624" width="62" height="30"/>
+                    <rect key="frame" x="302" y="607" width="62" height="30"/>
                     <state key="normal" title="开启旁路"/>
                     <state key="selected" title="关闭旁路"/>
                     <connections>
@@ -180,14 +180,14 @@
                     </connections>
                 </button>
                 <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vy-xK-b80">
-                    <rect key="frame" x="10" y="88" width="290" height="254"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="90" y="88" width="280" height="250"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40175513698630139" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="254" id="HXR-Th-zpJ"/>
-                        <constraint firstAttribute="width" constant="290" id="Hie-tg-z8d"/>
+                        <constraint firstAttribute="height" constant="250" id="HXR-Th-zpJ"/>
+                        <constraint firstAttribute="width" constant="280" id="Hie-tg-z8d"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
@@ -216,14 +216,14 @@
                 <constraint firstItem="DoU-wt-Ftp" firstAttribute="leading" secondItem="j6G-8a-BR0" secondAttribute="leading" constant="10" id="dEO-e5-eGb"/>
                 <constraint firstItem="j6G-8a-BR0" firstAttribute="trailing" secondItem="3cu-lw-EdS" secondAttribute="trailing" constant="8" id="dgn-48-fWZ"/>
                 <constraint firstItem="sBw-Cs-SgE" firstAttribute="centerY" secondItem="HZa-85-Mgz" secondAttribute="centerY" id="e5P-xh-oQ2"/>
-                <constraint firstItem="j6G-8a-BR0" firstAttribute="bottom" secondItem="3y3-jp-Wgw" secondAttribute="bottom" constant="13" id="etc-bG-Upb"/>
+                <constraint firstItem="j6G-8a-BR0" firstAttribute="bottom" secondItem="3y3-jp-Wgw" secondAttribute="bottom" constant="30" id="etc-bG-Upb"/>
                 <constraint firstItem="HZa-85-Mgz" firstAttribute="centerY" secondItem="0SE-tg-ehh" secondAttribute="centerY" id="h6P-ee-6in"/>
                 <constraint firstItem="j6G-8a-BR0" firstAttribute="trailing" secondItem="3y3-jp-Wgw" secondAttribute="trailing" constant="11" id="hJz-Pu-XBs"/>
                 <constraint firstItem="F0B-dE-Sg2" firstAttribute="centerY" secondItem="caU-XD-Dja" secondAttribute="centerY" id="hQS-6n-VVe"/>
-                <constraint firstItem="6Vy-xK-b80" firstAttribute="leading" secondItem="DoU-wt-Ftp" secondAttribute="leading" id="kJo-0d-vSm"/>
                 <constraint firstItem="a3q-em-nuY" firstAttribute="leading" secondItem="sBw-Cs-SgE" secondAttribute="trailing" constant="7" id="m2w-P4-M0J"/>
                 <constraint firstItem="j6G-8a-BR0" firstAttribute="bottom" secondItem="Bhk-zo-ElM" secondAttribute="bottom" id="q59-P0-AMn"/>
                 <constraint firstItem="3cu-lw-EdS" firstAttribute="top" secondItem="j6G-8a-BR0" secondAttribute="top" constant="20" id="sSJ-j7-iuo"/>
+                <constraint firstItem="j6G-8a-BR0" firstAttribute="trailing" secondItem="6Vy-xK-b80" secondAttribute="trailing" constant="5" id="xMi-zn-Ryk"/>
                 <constraint firstItem="j6G-8a-BR0" firstAttribute="bottom" secondItem="0SE-tg-ehh" secondAttribute="bottom" constant="13" id="ztY-i1-vNb"/>
                 <constraint firstItem="Bhk-zo-ElM" firstAttribute="top" secondItem="j6G-8a-BR0" secondAttribute="top" id="zze-wH-OIJ"/>
             </constraints>

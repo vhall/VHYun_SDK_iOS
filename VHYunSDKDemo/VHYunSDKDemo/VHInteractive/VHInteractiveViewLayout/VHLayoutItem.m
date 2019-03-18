@@ -7,6 +7,7 @@
 //
 
 #import "VHLayoutItem.h"
+#import "VHRenderView.h"
 
 @implementation VHLayoutItem
 
@@ -27,4 +28,25 @@
         _clickedItem(self);
 }
 
+- (void)muteVideo:(BOOL)isMute;
+{
+    if([_view isKindOfClass:[VHRenderView class]] && !((VHRenderView*)_view).isLocal && !_isUserMuteVideo)//用户手动关闭后不用处理
+    {
+        if(isMute)
+            [((VHRenderView*)_view) muteVideo];
+        else
+            [((VHRenderView*)_view) unmuteVideo];
+    }
+}
+- (void)userMuteVideo:(BOOL)isMute//用户手动开启关闭视频
+{
+    if([_view isKindOfClass:[VHRenderView class]] && !((VHRenderView*)_view).isLocal)
+    {
+        _isUserMuteVideo=isMute;
+        if(isMute)
+            [((VHRenderView*)_view) muteVideo];
+        else
+            [((VHRenderView*)_view) unmuteVideo];
+    }
+}
 @end
