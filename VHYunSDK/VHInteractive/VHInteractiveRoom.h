@@ -57,6 +57,9 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
  */
 @property (nonatomic, assign) int reconnectTimes;
 
+// 是否只订阅音频流 默认为NO 订阅音视频流 enterRoomWithToken 前有效， YES只订阅音频流，可以 unmuteVideo 打开视频
+@property (nonatomic, assign) BOOL isOnlyAudioSubscribe;
+
 /*
  * 进入互动房间后可用权限
  * 注: didEnterRoom 后调用有效 具体权限如下：

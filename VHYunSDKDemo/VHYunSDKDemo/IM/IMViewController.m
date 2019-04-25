@@ -156,7 +156,7 @@
  */
 - (void)imSDK:(VHImSDK *)imSDK error:(NSError *)error
 {
-    [self showMsg:[NSString stringWithFormat:@"%ld%@",error.code,error.domain] afterDelay:2];
+    [self showMsg:[NSString stringWithFormat:@"%ld%@",(long)error.code,error.domain] afterDelay:2];
 }
 
 

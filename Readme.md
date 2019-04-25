@@ -18,6 +18,12 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.7.1 更新时间：2019.04.24
+更新内容：<br>
+1、多方互动优化<br>
+2、文档支持更多图形绘制<br>
+3、demo优化
+
 #### 版本 v1.7.0 更新时间：2019.03.18
 更新内容：<br>
 1、互动最大支持16路，根据实际手机情况设置显示视频的路数<br>

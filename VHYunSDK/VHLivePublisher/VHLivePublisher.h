@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "VHPublishConfig.h"
+#import "IVHCapture.h"
 
 typedef NS_ENUM(NSInteger, VHPublishStatus) {
     VHPublishStatusNone,//
@@ -27,8 +28,6 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
 };
 
 @protocol VHLivePublisherDelegate;
-@protocol IVHVideoCapture;
-@protocol IVHAudioCapture;
 
 @interface VHLivePublisher : NSObject
 
@@ -141,6 +140,10 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
  *  @param captureTorchMode 闪光灯模式
  */
 - (BOOL)torchMode:(AVCaptureTorchMode)captureTorchMode;
+/**
+ *  预览填充模式
+ */
+- (void)setContentMode:(VHVideoCaptureContentMode)contentMode;
 
 /**
  *  美颜参数设置

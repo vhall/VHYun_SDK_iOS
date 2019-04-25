@@ -19,6 +19,7 @@
     {
         self.room = [[VHInteractiveRoom alloc] init];
         self.room.delegate = self;
+        self.room.isOnlyAudioSubscribe = YES;
     }
 }
 - (void)enterRoom
@@ -211,13 +212,12 @@
     {
         [self.infoDict removeAllObjects];
         [self removeAllViews];
+        [self updateInfoText];
+        [self didUnPublish];
         if (error.code == 284003) { //断网
             [self showDisConectAlertWithStatusMessage:@"互动房间连接出错"];
         }
     }
-    
-    [self updateInfoText];
-    [self didUnPublish];
     
     NSString *str = [NSString stringWithFormat:@"%@(%ld)",error.domain,(long)error.code];
     [self showMsg:str afterDelay:2];
@@ -309,7 +309,10 @@
         case 1:
         {
             if(canPublish)
-                [self publish];
+            {
+                //修改为进入房间后不自动上麦
+//                [self publish];
+            }
             else
                 [self showMsg:@"没有上麦权限，请申请上麦" afterDelay:2];
         }

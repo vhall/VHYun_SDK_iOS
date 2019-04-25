@@ -46,13 +46,18 @@
     if(![self isCaptureDeviceOK])
         return;
     PublishViewController * rtmpLivedemoVC = [[PublishViewController alloc] init];
-    rtmpLivedemoVC.videoResolution  = 2;
+    rtmpLivedemoVC.videoResolution  = DEMO_Setting.videoResolution.intValue;
     rtmpLivedemoVC.roomId           = DEMO_Setting.publishRoomID;
     rtmpLivedemoVC.accessToken      = DEMO_Setting.accessToken;
-    rtmpLivedemoVC.videoBitRate     = DEMO_Setting.videoBitRate*1000;
+    rtmpLivedemoVC.videoBitRate     = DEMO_Setting.videoBitRate;
     rtmpLivedemoVC.videoCaptureFPS  = DEMO_Setting.videoCaptureFPS;
-    rtmpLivedemoVC.interfaceOrientation = (sender.tag == 1)?UIInterfaceOrientationLandscapeRight :UIInterfaceOrientationPortrait;
+    rtmpLivedemoVC.interfaceOrientation  = (sender.tag == 1)?UIInterfaceOrientationLandscapeRight :UIInterfaceOrientationPortrait;
     rtmpLivedemoVC.isOpenNoiseSuppresion = YES;
+    rtmpLivedemoVC.beautifyFilterEnable  = DEMO_Setting.isBeautifyFilterEnable;
+    rtmpLivedemoVC.volumeAmplificateSize = DEMO_Setting.volumeAmplificateSize;
+    rtmpLivedemoVC.isOnlyAudio           = DEMO_Setting.isOnlyAudio;
+    
+    
     [self presentViewController:rtmpLivedemoVC animated:YES completion:nil];
 }
 
@@ -83,9 +88,7 @@
     DocumentDemoViewController * vc = [[DocumentDemoViewController alloc] init];
     vc.channelID    = DEMO_Setting.docChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
-//    vc.isPublish    = (sender.tag == 1);
-//    if(vc.isPublish)
-        vc.roomID       = DEMO_Setting.publishRoomID;
+    vc.roomID       = DEMO_Setting.docRoomID;
     
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -94,7 +97,7 @@
     VodDocumentViewController * vc = [[VodDocumentViewController alloc] init];
     vc.recordID      = DEMO_Setting.recordID;
     vc.accessToken   = DEMO_Setting.accessToken;
-    vc.seekMode    = DEMO_Setting.seekMode;
+    vc.seekMode      = DEMO_Setting.seekMode;
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - IM消息

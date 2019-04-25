@@ -42,11 +42,13 @@
     VHSettingTextFieldItem *item23;
     VHSettingTextFieldItem *item24;
     VHSettingTextFieldItem *item25;
+    VHSettingTextFieldItem *item26;
     //点播
     VHSettingTextFieldItem *item30;
     VHSettingTextFieldItem *item31;
     //文档直播
     VHSettingTextFieldItem *item40;
+    VHSettingTextFieldItem *item41;
     //IM
     VHSettingTextFieldItem *item50;
     //互动
@@ -243,7 +245,9 @@
     item24.text = [NSString stringWithFormat:@"%ld",(long)DEMO_Setting.audioBitRate];
     item25 = [VHSettingTextFieldItem  itemWithTitle:@"纯音频推流"];
     item25.text = DEMO_Setting.isOnlyAudio?@"1":@"0";
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24,item25]];
+    item26 = [VHSettingTextFieldItem  itemWithTitle:@"开启美颜"];
+    item26.text = DEMO_Setting.isBeautifyFilterEnable?@"1":@"0";
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item20,item21,item22,item23,item24,item25,item26]];
     group.headerTitle = @"推流设置";
     [self.groups addObject:group];
     //此处还有一个噪音开关 和 音频增益 tableView 读取时会加2行
@@ -264,7 +268,9 @@
 {
     item40 = [VHSettingTextFieldItem  itemWithTitle:@"文档channelID"];
     item40.text=DEMO_Setting.docChannelID;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40]];
+    item41 = [VHSettingTextFieldItem  itemWithTitle:@"文档绑定roomID"];
+    item41.text=DEMO_Setting.docRoomID;
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40,item41]];
     group.headerTitle = @"文档设置";
     [self.groups addObject:group];
 }
@@ -586,6 +592,12 @@
                     item25.text = DEMO_Setting.isOnlyAudio?@"1":@"0";;
                 }
                     break;
+                case 6:
+                {
+                    DEMO_Setting.isBeautifyFilterEnable = [text boolValue];
+                    item25.text = DEMO_Setting.isBeautifyFilterEnable?@"1":@"0";;
+                }
+                    break;
                 default:break;
             }
         }
@@ -616,6 +628,12 @@
                 {
                     DEMO_Setting.docChannelID = text;
                     item40.text = DEMO_Setting.docChannelID;
+                }
+                    break;
+                case 1:
+                {
+                    DEMO_Setting.docRoomID = text;
+                    item41.text = DEMO_Setting.docRoomID;
                 }
                     break;
                 default:break;

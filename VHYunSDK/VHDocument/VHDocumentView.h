@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger,VHDocumentViewType) {
-    VHDocumentViewType_PPT          = 1 ,   //文档模式
-    VHDocumentViewType_WhiteBoard   = 2 ,   //白板模式 此版本暂不支持
+    VHDocumentViewType_WKWebView    = 1 ,   //WKWebView
+    VHDocumentViewType_UIWebView   = 2 ,   //此版本暂不支持
 };
 
 typedef NS_ENUM(NSInteger,VHDrawAction) {
@@ -21,19 +21,32 @@ typedef NS_ENUM(NSInteger,VHDrawAction) {
 
 
 typedef NS_ENUM(NSInteger,VHDrawType) {
-    VHDrawType_Pen          = 1 ,   //画笔
-    VHDrawType_Highlighter  = 2 ,   //荧光笔
-    VHDrawType_Rectangle    = 3 ,   //矩形
-    VHDrawType_Circle       = 4 ,   //圆
-    VHDrawType_Arrow        = 5 ,   //箭头 此版本暂不支持
-    VHDrawType_Text         = 6 ,   //文字 此版本暂不支持
-    VHDrawType_Image        = 7 ,   //图片 此版本暂不支持
+    VHDrawType_Pen                  = 1 ,   //画笔
+    VHDrawType_Highlighter          = 2 ,   //荧光笔
+    VHDrawType_Rectangle            = 3 ,   //矩形
+    VHDrawType_Circle               = 4 ,   //圆
+    VHDrawType_Arrow                = 5 ,   //箭头 此版本暂不支持
+    VHDrawType_Text                 = 6 ,   //文字 此版本暂不支持
+    VHDrawType_Image                = 7 ,   //图片 此版本暂不支持
+    VHDrawType_Isosceles_Triangle   = 8 ,   //等腰三角形
+    VHDrawType_right_Triangle       = 9 ,   //直角三角形
+    VHDrawType_Single_Arrow         = 11 ,  //单箭头
+    VHDrawType_Double_Arrow         = 12 ,  //双箭头
 };
 
 @protocol VHDocumentViewDelegate;
 @class VHDocumentConfig;
 @interface VHDocumentView : UIView
+/*
+ * 获取文档演示模块版本号
+ */
 + (NSString*)getDocumentViewVersion;
+/*
+ * 初始化
+ * @param frame  显示区域大小
+ * @param type   文档类型
+ */
++ (instancetype)initWithFrame:(CGRect)frame type:(VHDocumentViewType)type graffitiUrl:(NSString*)graffitiUrl;
 
 /*
  * 接收消息并在涂鸦画板处理
@@ -48,7 +61,6 @@ typedef NS_ENUM(NSInteger,VHDrawType) {
  * 文档播发器准备完成
  */
 @property (nonatomic,assign,readonly)BOOL   isLoad;//load完
-
 
 #pragma mark - edit Option
 /*
@@ -152,15 +164,6 @@ typedef NS_ENUM(NSInteger,VHDrawType) {
  * 重做
  */
 - (void)redo;
-
-
-/*
- * 初始化
- * @param frame  显示区域大小
- * @param type   文档类型
-
- */
-- (instancetype)initWithFrame:(CGRect)frame type:(VHDocumentViewType)type graffitiUrl:(NSString*)graffitiUrl;
 
 /*
  * 配置文档显示区域 注意要在- (void)documentView:(VHDocumentView *)documentView load:(BOOL)isLoad; 事件中设置

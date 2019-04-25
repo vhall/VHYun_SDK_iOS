@@ -13,6 +13,9 @@ extern NSString * const VHSimulcastLayersKey;   //推流参数-同时推流数  
 extern NSString * const VHStreamOptionStreamType;//推流类型   VHInteractiveStreamType VHInteractiveStreamTypeAudioAndVideo 音视频
 extern NSString * const VHFrameResolutionTypeKey;//推流分辨率 VHFrameResolutionValue VHFrameResolution192x144
 
+extern NSString * const VHStreamOptionVideo;  //视频
+extern NSString * const VHStreamOptionAudio;  //音频
+
 //如果设置VHFrameResolutionTypeKey 以下参数可以不用设置
 extern NSString * const VHVideoWidthKey;        //推流视频宽度 默认192
 extern NSString * const VHVideoHeightKey;       //推流视频高度 默认144
@@ -124,6 +127,11 @@ typedef void(^FinishBlock)(int code, NSString * _Nullable message);//code 200 �
  * 用户数据进入房间时传的数据
  */
 @property (nonatomic, copy, readonly) NSString      *userData;
+
+/*
+ * 用户推流上麦时所传数据
+ */
+@property (nonatomic, copy, readonly) NSString      *streamAttributes;
 
 /*
  * 设置的音视频参数

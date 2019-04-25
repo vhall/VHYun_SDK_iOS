@@ -158,37 +158,47 @@
 #pragma mark - Camera
 - (void)initCameraEngine
 {
-    VHDeviceOrientation deviceOrientation;
+    AVCaptureVideoOrientation captureVideoOrientation;
     if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
     {
-        deviceOrientation = VHDevicePortrait;
+        captureVideoOrientation = AVCaptureVideoOrientationPortrait;
     }else {
-        deviceOrientation = VHDeviceLandSpaceLeft;//设备左转，摄像头在左边
+        captureVideoOrientation = AVCaptureVideoOrientationLandscapeRight;//设备左转，摄像头在左边
     }
     
     _torchBtn.hidden = YES;
     _isFontVideo = YES;
 
     VHPublishConfig* config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
-    config.orientation = deviceOrientation;
+    config.orientation = captureVideoOrientation;
     config.captureDevicePosition = AVCaptureDevicePositionFront;
     config.publishConnectTimes = 1;
     config.videoBitRate = self.videoBitRate;
     config.videoCaptureFPS = self.videoCaptureFPS;
-    config.isOpenNoiseSuppresion = DEMO_Setting.isOpenNoiseSuppresion;
-    config.volumeAmplificateSize = DEMO_Setting.volumeAmplificateSize;
-    config.videoResolution = _videoResolution;
-    if(DEMO_Setting.isOnlyAudio)
+    config.isOpenNoiseSuppresion = self.isOpenNoiseSuppresion;
+    config.volumeAmplificateSize = self.volumeAmplificateSize;
+    config.videoResolution = self.videoResolution;
+    if(self.isOnlyAudio)
         config.pushType = VHStreamTypeOnlyAudio;
+    
+    config.beautifyFilterEnable = self.beautifyFilterEnable;
+    if(self.beautifyFilterEnable)//开启美颜后建议使用双倍码率 效果会更好
+        config.videoBitRate = self.videoBitRate*2;
+//    config.isPrintLog = YES;
     
     self.publisher = [[VHLivePublisher alloc] initWithConfig:config];
     self.publisher.delegate            = self;
-    self.publisher.preView.frame = _perView.bounds;
+    self.publisher.preView.frame = self.perView.bounds;
     [self.perView insertSubview:self.publisher.preView atIndex:0];
 
+    [self.publisher setContentMode:VHVideoCaptureContentModeAspectFill];
+    
     //开始视频采集、并显示预览界面
     [self.publisher startCapture];
 }
+//UIViewContentModeScaleToFill,
+//UIViewContentModeScaleAspectFit,      // contents scaled to fit with fixed aspect. remainder is transparent
+//UIViewContentModeScaleAspectFill,
 
 - (IBAction)swapBtnClick:(id)sender
 {

@@ -80,6 +80,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
         
         //文档直播
         _docChannelID       = [standardUserDefaults objectForKey:@"VHdocChannelID"];        //文档ChannelID
+        _docRoomID          = [standardUserDefaults objectForKey:@"VHdocRoomID"];
         
         //IM
         _imChannelID        = [standardUserDefaults objectForKey:@"VHimChannelID"];        //文档ChannelID
@@ -310,6 +311,19 @@ static VHStystemSetting *pub_sharedSetting = nil;
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:_docChannelID forKey:@"VHdocChannelID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)setDocRoomID:(NSString *)docRoomID
+{
+    _docRoomID = docRoomID;
+    if(docRoomID.length == 0)
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"VHdocRoomID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_docRoomID forKey:@"VHdocRoomID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 #pragma mark - IM

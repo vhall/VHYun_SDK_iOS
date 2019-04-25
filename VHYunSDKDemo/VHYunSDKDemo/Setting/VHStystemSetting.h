@@ -31,6 +31,7 @@
 @property(nonatomic, assign)BOOL      isOpenNoiseSuppresion;//开启降噪 默认YES
 @property(nonatomic, assign)float     volumeAmplificateSize;//开启降噪 默认1.0
 @property(nonatomic, assign)BOOL      isOnlyAudio;          //是否纯音频推流
+@property(nonatomic, assign)BOOL      isBeautifyFilterEnable;//是否开启美颜
 
 //点播
 @property(nonatomic, strong)NSString* recordID;             //点播房间ID
@@ -38,6 +39,7 @@
 
 //文档直播
 @property(nonatomic, strong)NSString* docChannelID;         //文档ChannelID
+@property(nonatomic, strong)NSString* docRoomID;            //文档绑定roomID
 
 //IM
 @property(nonatomic, strong)NSString* imChannelID;          //im ChannelID

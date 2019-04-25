@@ -113,7 +113,7 @@
 
 
 - (IBAction)btnClicked:(UIButton*)sender {
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 99; i++) {
         UIButton*v = [_pptOptView viewWithTag:i];
         if([v isKindOfClass:[UIButton class]])
         {
@@ -130,7 +130,11 @@
         case VHDrawType_Highlighter:
         case VHDrawType_Rectangle:
         case VHDrawType_Circle:
-        case VHDrawType_Arrow:
+//        case VHDrawType_Arrow:
+        case VHDrawType_Isosceles_Triangle:
+        case VHDrawType_right_Triangle:
+        case VHDrawType_Single_Arrow:
+        case VHDrawType_Double_Arrow:
         {
             sender.selected = YES;
             _document.view.drawType = sender.tag;
@@ -138,27 +142,27 @@
             [_document.view setSize:_size];
         }
             break;
-        case VHDrawType_Text:
-        {
-            sender.selected = YES;
-            _document.view.drawType = sender.tag;
-        }
-            break;
-        case VHDrawType_Image:
-        {
-
-        }
-            break;
-        case 10://选择修改模式
+//        case VHDrawType_Text:
+//        {
+//            sender.selected = YES;
+//            _document.view.drawType = sender.tag;
+//        }
+//            break;
+//        case VHDrawType_Image:
+//        {
+//
+//        }
+//            break;
+        case 110://选择修改模式
         {
             sender.selected = YES;
             _document.view.drawAction = VHDrawAction_Modify;
         }
             break;
-        case 11:_document.view.drawAction = VHDrawAction_Delete; break;//Del
-        case 12:[_document.view clear];break;//DelAll
-        case 13:[_document.view undo];break;//Undo
-        case 14:[_document.view redo];break;//Redo
+        case 111:_document.view.drawAction = VHDrawAction_Delete; break;//Del
+        case 112:[_document.view clear];break;//DelAll
+        case 113:[_document.view undo];break;//Undo
+        case 114:[_document.view redo];break;//Redo
         default:break;
     }
 }

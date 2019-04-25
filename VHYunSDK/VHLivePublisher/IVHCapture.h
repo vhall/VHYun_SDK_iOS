@@ -21,6 +21,17 @@ typedef NS_ENUM(NSInteger,VHCaptureStatus)
     VHCaptureStatusStoped        = 3 //已结束采集
 };
 
+// 画面填充模式
+typedef NS_ENUM(NSInteger, VHVideoCaptureContentMode) {
+    //拉伸至完全填充显示区域
+    VHVideoCaptureContentModeFill,
+    //将图像等比例缩放，适配最长边，缩放后的宽和高都不会超过显示区域，居中显示，画面可能会留有黑边
+    VHVideoCaptureContentModeAspectFit,
+    //将图像等比例铺满整个屏幕，多余部分裁剪掉，此模式下画面不会留黑边，但可能因为部分区域被裁剪而显示不全
+    VHVideoCaptureContentModeAspectFill,
+};
+
+
 @protocol IVHCapture;
 @protocol IVHVideoCapture;
 @protocol IVHAudioCapture;
@@ -105,6 +116,12 @@ typedef void(^OnErrorBlock)(NSDictionary* errorInfo);
 - (AVCaptureDevicePosition)captureDevicePosition;
 
 /**
+ *  预览填充模式
+ */
+- (void)setContentMode:(VHVideoCaptureContentMode)contentMode;
+
+
+/**
  *  切换摄像头
  *  @param captureDevicePosition  后置:AVCaptureDevicePositionBack 前置:AVCaptureDevicePositionFront
  *  @return 是否切换成功
@@ -117,6 +134,11 @@ typedef void(^OnErrorBlock)(NSDictionary* errorInfo);
 @end
 
 @protocol IVHAudioCapture <NSObject,IVHCapture>
+/**
+ *  静音
+ */
+- (void)setMute:(BOOL)mute;
+- (BOOL)mute;
 
 /**
  *  设置数据回调
