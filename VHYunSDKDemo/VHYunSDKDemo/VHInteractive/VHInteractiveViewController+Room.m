@@ -382,9 +382,30 @@
 
 /*
  * 房间人员信息变化
+ * info 数据结构
+ * status 0 人员变化 1 上麦 2 下麦 3拒绝上麦
+ * third_party_user_id 操作人id
+ * online 在线人数
  */
 - (void)room:(VHInteractiveRoom *)room userChangeInfo:(NSDictionary *)info
 {
+    if([info[@"status"] intValue] == 3)//tatus 0 人员变化 1 上麦 2 下麦 3拒绝上麦
+        switch ([info[@"status"] intValue] ) {
+            case 1:
+                [self showMsg:[NSString stringWithFormat:@"%@上麦",info[@"third_party_user_id"]] afterDelay:2];
+                break;
+            case 2:
+                [self showMsg:[NSString stringWithFormat:@"%@下麦",info[@"third_party_user_id"]] afterDelay:2];
+                break;
+            case 3:
+                [self showMsg:[NSString stringWithFormat:@"%@拒绝上麦",info[@"third_party_user_id"]] afterDelay:2];
+                break;
+                
+            default:
+                break;
+        }
+    
+    
     [self updateUserListData];
     self.onlineNumLabel.text = [NSString stringWithFormat:@"在线 %@ 人",info[@"online"]];
 }

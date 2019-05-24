@@ -96,6 +96,7 @@
 - (IBAction)backBtnClicked:(id)sender {
     [self stopPlayer];
     [_player destroyPlayer];
+    [_document destroyDocument];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
     [self.navigationController popViewControllerAnimated:NO];

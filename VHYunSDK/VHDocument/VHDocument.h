@@ -57,6 +57,9 @@
  */
 - (void)setDocWithID:(NSString*) documentID success:(void(^)(void))success failed:(void(^)(NSError *error))failedBlock;
 
+
+- (void)destroyDocument;
+
 /**
  *  获得当前SDK版本号
  */

@@ -84,7 +84,7 @@ typedef NS_ENUM(int,VHVodPlayerSeeekModel){
 - (BOOL)seek:(float)time;
 
 /**
- *  销毁播放器
+ *  销毁播放器，销毁播放器后需将VHVodPlayer对象制为nil。
  */
 - (BOOL)destroyPlayer;
 

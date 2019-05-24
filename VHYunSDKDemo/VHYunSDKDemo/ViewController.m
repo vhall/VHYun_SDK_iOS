@@ -21,6 +21,7 @@
 #import "VHInteractiveViewController.h"
 
 #import "VHSettingViewController.h"
+#import "DocUploadViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *verLabel;
@@ -100,6 +101,13 @@
     vc.seekMode      = DEMO_Setting.seekMode;
     [self presentViewController:vc animated:YES completion:nil];
 }
+//文档上传
+- (IBAction)DocUploadBtnClick:(UIButton *)sender {
+    DocUploadViewController * vc = [[DocUploadViewController alloc] init];
+    vc.accessToken = DEMO_Setting.accessToken;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - IM消息
 - (IBAction)imBtnClicked:(UIButton *)sender {
     IMViewController * vc = [[IMViewController alloc] init];

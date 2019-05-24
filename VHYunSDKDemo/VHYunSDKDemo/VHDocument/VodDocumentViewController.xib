@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,24 +152,34 @@
                         <action selector="backBtnClicked:" destination="-1" eventType="touchUpInside" id="aaW-uz-gu3"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z40-cP-R94">
                     <rect key="frame" x="5" y="256" width="365" height="205"/>
-                    <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLT-T3-To4">
+                            <rect key="frame" x="0.0" y="0.0" width="365" height="205"/>
+                            <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="YLT-T3-To4" secondAttribute="height" multiplier="16:9" id="eQJ-iD-x7J"/>
+                        <constraint firstAttribute="width" secondItem="z40-cP-R94" secondAttribute="height" multiplier="16:9" id="GvZ-NK-rF0"/>
+                        <constraint firstAttribute="trailing" secondItem="YLT-T3-To4" secondAttribute="trailing" id="IGe-Vw-b8K"/>
+                        <constraint firstItem="YLT-T3-To4" firstAttribute="top" secondItem="z40-cP-R94" secondAttribute="top" id="Now-GC-rIS"/>
+                        <constraint firstItem="YLT-T3-To4" firstAttribute="leading" secondItem="z40-cP-R94" secondAttribute="leading" id="sxc-5v-pwd"/>
+                        <constraint firstAttribute="bottom" secondItem="YLT-T3-To4" secondAttribute="bottom" id="yqq-lQ-yJh"/>
                     </constraints>
-                </scrollView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.91612413189999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="YLT-T3-To4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="5" id="2QU-As-BQR"/>
-                <constraint firstItem="YLT-T3-To4" firstAttribute="top" secondItem="rlO-Tw-Vzw" secondAttribute="bottom" constant="5" id="BYZ-Nk-Zgf"/>
+                <constraint firstItem="z40-cP-R94" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="5" id="BCc-xu-myS"/>
+                <constraint firstItem="z40-cP-R94" firstAttribute="top" secondItem="rlO-Tw-Vzw" secondAttribute="bottom" constant="5" id="KTL-ei-izk"/>
                 <constraint firstItem="AGU-q0-Xmx" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="RCa-uR-DJe"/>
                 <constraint firstItem="rlO-Tw-Vzw" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="TTl-0y-r3C"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="YLT-T3-To4" secondAttribute="trailing" constant="5" id="Tj7-Vr-5yl"/>
                 <constraint firstItem="AGU-q0-Xmx" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="VV4-i9-Oyy"/>
                 <constraint firstItem="rlO-Tw-Vzw" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="gYI-Hd-scn"/>
                 <constraint firstItem="rlO-Tw-Vzw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="noE-MC-RC5"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="z40-cP-R94" secondAttribute="trailing" constant="5" id="oTb-aL-QlP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="26.399999999999999" y="50.824587706146929"/>

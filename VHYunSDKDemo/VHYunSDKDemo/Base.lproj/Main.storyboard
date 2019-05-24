@@ -191,7 +191,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="com.vhall.opensdk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVz-3A-4fU">
-                                <rect key="frame" x="131.5" y="643" width="112.5" height="16"/>
+                                <rect key="frame" x="131" y="643" width="113" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -241,9 +241,24 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fND-oQ-qVu">
                                 <rect key="frame" x="103" y="145" width="62" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ne9-Zq-Og8"/>
+                                    <constraint firstAttribute="width" constant="62" id="zX9-WN-a7M"/>
+                                </constraints>
                                 <state key="normal" title="点播文档"/>
                                 <connections>
                                     <action selector="vodDocumentBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3mP-k8-plJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQp-YS-I9J">
+                                <rect key="frame" x="193" y="145" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="1cq-1n-twR"/>
+                                </constraints>
+                                <state key="normal" title="文档上传"/>
+                                <connections>
+                                    <action selector="DocUploadBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3y3-b1-UwI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -269,10 +284,13 @@
                             <constraint firstItem="0b2-xy-9vW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ikp-03-2px"/>
                             <constraint firstItem="mVz-3A-4fU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="o3d-4d-hDh"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="sZn-RF-PmZ"/>
+                            <constraint firstItem="bQp-YS-I9J" firstAttribute="leading" secondItem="fND-oQ-qVu" secondAttribute="trailing" constant="28" id="tCe-h0-Ryt"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tjW-It-uLY"/>
+                            <constraint firstItem="fND-oQ-qVu" firstAttribute="leading" secondItem="a4d-VU-Sxt" secondAttribute="trailing" constant="24" id="u07-An-nc0"/>
                             <constraint firstItem="bfo-h2-pQp" firstAttribute="top" secondItem="Qof-nR-V04" secondAttribute="bottom" constant="31" id="utK-fm-gm3"/>
                             <constraint firstItem="YDx-wq-p8Z" firstAttribute="leading" secondItem="DNw-qv-vkI" secondAttribute="trailing" constant="27" id="vf2-qb-hPt"/>
                             <constraint firstItem="a4d-VU-Sxt" firstAttribute="top" secondItem="Q7T-qe-Ru5" secondAttribute="bottom" constant="30" id="xaF-AD-zzZ"/>
+                            <constraint firstItem="bQp-YS-I9J" firstAttribute="baseline" secondItem="fND-oQ-qVu" secondAttribute="baseline" id="xbM-ZY-ifa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

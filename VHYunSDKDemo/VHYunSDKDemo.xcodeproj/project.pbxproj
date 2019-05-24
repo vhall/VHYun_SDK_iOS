@@ -33,6 +33,8 @@
 		C04C24552237820F00728700 /* BeforehandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C04C24542237820F00728700 /* BeforehandViewController.m */; };
 		C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05590A020872262007F1595 /* VHInteractiveViewController.m */; };
 		C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05590A120872262007F1595 /* VHInteractiveViewController.xib */; };
+		C070DAD022703746005FF309 /* DocUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C070DACE22703746005FF309 /* DocUploadViewController.m */; };
+		C070DAD122703746005FF309 /* DocUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C070DACF22703746005FF309 /* DocUploadViewController.xib */; };
 		C0716A2B21130B6400A3FB57 /* libVHBasePlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A0721130B6400A3FB57 /* libVHBasePlatform.a */; };
 		C0716A2C21130B6500A3FB57 /* libVHDocument.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A0A21130B6400A3FB57 /* libVHDocument.a */; };
 		C0716A2D21130B6500A3FB57 /* libVHImSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A1021130B6400A3FB57 /* libVHImSDK.a */; };
@@ -52,6 +54,7 @@
 		C0716A3B21130B7200A3FB57 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A1821130B6400A3FB57 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0716A3C21130B7200A3FB57 /* VhallLiveBaseApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A2621130B6400A3FB57 /* VhallLiveBaseApi.framework */; };
 		C0716A3D21130B7200A3FB57 /* VhallLiveBaseApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A2621130B6400A3FB57 /* VhallLiveBaseApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C077BFE92282781800083A81 /* VHDocImgPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C077BFE82282781800083A81 /* VHDocImgPickerViewController.m */; };
 		C07B20B021783E0700377F64 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07B20AF21783E0700377F64 /* JavaScriptCore.framework */; };
 		C07B745A1FBD3AFA00189E0B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C07B74591FBD3AFA00189E0B /* AppDelegate.mm */; };
 		C07B745D1FBD3AFA00189E0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B745C1FBD3AFA00189E0B /* ViewController.m */; };
@@ -175,6 +178,10 @@
 		C055909F20872262007F1595 /* VHInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveViewController.h; sourceTree = "<group>"; };
 		C05590A020872262007F1595 /* VHInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveViewController.m; sourceTree = "<group>"; };
 		C05590A120872262007F1595 /* VHInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHInteractiveViewController.xib; sourceTree = "<group>"; };
+		C070DACD22703746005FF309 /* DocUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocUploadViewController.h; sourceTree = "<group>"; };
+		C070DACE22703746005FF309 /* DocUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocUploadViewController.m; sourceTree = "<group>"; };
+		C070DACF22703746005FF309 /* DocUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocUploadViewController.xib; sourceTree = "<group>"; };
+		C070DAD922703E50005FF309 /* VHYunSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VHYunSDKDemo.entitlements; sourceTree = "<group>"; };
 		C0716A0721130B6400A3FB57 /* libVHBasePlatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVHBasePlatform.a; sourceTree = "<group>"; };
 		C0716A0821130B6400A3FB57 /* VHLiveBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHLiveBase.h; sourceTree = "<group>"; };
 		C0716A0A21130B6400A3FB57 /* libVHDocument.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVHDocument.a; sourceTree = "<group>"; };
@@ -201,6 +208,8 @@
 		C0716A2821130B6400A3FB57 /* libVHVodPlayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVHVodPlayer.a; sourceTree = "<group>"; };
 		C0716A2921130B6400A3FB57 /* VHPlayerTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHPlayerTypeDef.h; sourceTree = "<group>"; };
 		C0716A2A21130B6400A3FB57 /* VHVodPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHVodPlayer.h; sourceTree = "<group>"; };
+		C077BFE72282781800083A81 /* VHDocImgPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHDocImgPickerViewController.h; sourceTree = "<group>"; };
+		C077BFE82282781800083A81 /* VHDocImgPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VHDocImgPickerViewController.m; sourceTree = "<group>"; };
 		C07B20AF21783E0700377F64 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		C07B74551FBD3AFA00189E0B /* VHYunSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VHYunSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07B74581FBD3AFA00189E0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -274,6 +283,7 @@
 		C0A38B0B1FC8058A00A8998F /* WatchVodViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchVodViewController.h; sourceTree = "<group>"; };
 		C0A38B0C1FC8058A00A8998F /* WatchVodViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchVodViewController.m; sourceTree = "<group>"; };
 		C0A38B0D1FC8058A00A8998F /* WatchVodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchVodViewController.xib; sourceTree = "<group>"; };
+		C0B21B58227323A900A74B68 /* VHDocUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDocUpload.h; sourceTree = "<group>"; };
 		C0B7AE392088782300C3C691 /* VHInteractiveViewController+Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHInteractiveViewController+Room.h"; sourceTree = "<group>"; };
 		C0B7AE3A2088782300C3C691 /* VHInteractiveViewController+Room.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VHInteractiveViewController+Room.m"; sourceTree = "<group>"; };
 		C0BF2BBA21774118001C13FF /* VHDocumentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHDocumentView.h; sourceTree = "<group>"; };
@@ -345,6 +355,7 @@
 				C00B64631FE23E2400DF36FF /* VodDocumentViewController.h */,
 				C00B64641FE23E2400DF36FF /* VodDocumentViewController.m */,
 				C00B64651FE23E2400DF36FF /* VodDocumentViewController.xib */,
+				C070DAD822703A44005FF309 /* VHDocUpload */,
 			);
 			path = VHDocument;
 			sourceTree = "<group>";
@@ -418,6 +429,18 @@
 			path = VHInteractive;
 			sourceTree = "<group>";
 		};
+		C070DAD822703A44005FF309 /* VHDocUpload */ = {
+			isa = PBXGroup;
+			children = (
+				C070DACD22703746005FF309 /* DocUploadViewController.h */,
+				C070DACE22703746005FF309 /* DocUploadViewController.m */,
+				C070DACF22703746005FF309 /* DocUploadViewController.xib */,
+				C077BFE72282781800083A81 /* VHDocImgPickerViewController.h */,
+				C077BFE82282781800083A81 /* VHDocImgPickerViewController.m */,
+			);
+			path = VHDocUpload;
+			sourceTree = "<group>";
+		};
 		C0716A0521130B6400A3FB57 /* VHYunSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +469,7 @@
 		C0716A0921130B6400A3FB57 /* VHDocument */ = {
 			isa = PBXGroup;
 			children = (
+				C0B21B58227323A900A74B68 /* VHDocUpload.h */,
 				C0716A0A21130B6400A3FB57 /* libVHDocument.a */,
 				C0716A0B21130B6400A3FB57 /* VHDocument.h */,
 				C0BF2BBA21774118001C13FF /* VHDocumentView.h */,
@@ -537,6 +561,7 @@
 		C07B74571FBD3AFA00189E0B /* VHYunSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C070DAD922703E50005FF309 /* VHYunSDKDemo.entitlements */,
 				C0F4A86D1FD0F62E006D6DA9 /* CONSTS.h */,
 				C07B74581FBD3AFA00189E0B /* AppDelegate.h */,
 				C07B74591FBD3AFA00189E0B /* AppDelegate.mm */,
@@ -781,7 +806,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -814,6 +839,7 @@
 				C0A38B0F1FC8058A00A8998F /* WatchVodViewController.xib in Resources */,
 				C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */,
 				C00B64671FE23E2400DF36FF /* VodDocumentViewController.xib in Resources */,
+				C070DAD122703746005FF309 /* DocUploadViewController.xib in Resources */,
 				C07C13691FC5287B000D57FE /* PublishViewController.xib in Resources */,
 				C07B74651FBD3AFA00189E0B /* LaunchScreen.storyboard in Resources */,
 				C0F4A8911FD16AB8006D6DA9 /* CustomPickerView.xib in Resources */,
@@ -855,6 +881,7 @@
 				C00B64D41FEA431E00DF36FF /* UIImageView+HighlightedWebCache.m in Sources */,
 				C07C136E1FC528EA000D57FE /* WatchViewController.m in Sources */,
 				C029512B20BE9B2300FD60BD /* VHStatisticsStystem.m in Sources */,
+				C070DAD022703746005FF309 /* DocUploadViewController.m in Sources */,
 				C0F4A8831FD0FE2F006D6DA9 /* VHSettingItem.m in Sources */,
 				C00B64CE1FEA431E00DF36FF /* SDWebImageManager.m in Sources */,
 				C09C4F3320A2E07E00164B30 /* VHInteractiveViewController+TableView.m in Sources */,
@@ -889,6 +916,7 @@
 				C07B749B1FBD437600189E0B /* MBProgressHUD.m in Sources */,
 				C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */,
 				C00B64C91FEA431E00DF36FF /* SDImageCache.m in Sources */,
+				C077BFE92282781800083A81 /* VHDocImgPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1056,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VHYunSDKDemo/VHYunSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1064,6 +1093,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VHYunSDKDemo/VHYunSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
