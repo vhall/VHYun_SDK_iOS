@@ -24,6 +24,12 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 lss v1.7.3 更新时间：2019.05.29
+更新内容：<br>
+1、修复推流切后台错误，注意要在 UIApplicationWillResignActiveNotification 事件中处理进入后台推流情况<br>
+2、解决直播清晰度切换失败问题<br>
+3、解决底层内存问题<br>
+
 #### 版本 v1.7.2 更新时间：2019.05.24
 更新内容：<br>
 1、文档服务新增文档上传功能<br>

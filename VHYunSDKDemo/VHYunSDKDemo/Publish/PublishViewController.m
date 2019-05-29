@@ -126,8 +126,8 @@
 
 - (void)registerLiveNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveWillResignActive)name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveDidBecomeActive)name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveWillResignActive)name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LaunchLiveDidBecomeActive)name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 -(void)initDatas
@@ -282,7 +282,7 @@
 #pragma mark - VHLivePublisherDelegate
 -(void)firstCaptureImage:(UIImage *)image
 {
-    NSLog(@"第一张图片");
+    NSLog(@"第一张图片，%dx%d",(int)image.size.width,(int)image.size.height);
 }
 
 - (void)onPublishStatus:(VHPublishStatus)status info:(NSDictionary*)info
