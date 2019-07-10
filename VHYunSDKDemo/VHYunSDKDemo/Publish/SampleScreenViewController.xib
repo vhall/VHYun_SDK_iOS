@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SampleScreenViewController">
+            <connections>
+                <outlet property="startBtn" destination="tDQ-c3-mqo" id="H2H-9L-iSd"/>
+                <outlet property="statueLabel" destination="DZR-e8-HmZ" id="eVi-Iw-poK"/>
+                <outlet property="uploadSpeedLabel" destination="5b2-Qg-wNc" id="Ocg-C2-Zqf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您正在共享屏幕" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DZR-e8-HmZ">
+                    <rect key="frame" x="0.0" y="203" width="414" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPD-ai-wV0">
+                    <rect key="frame" x="123.5" y="415" width="167" height="34"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="关闭">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="closeBtnClikced:" destination="-1" eventType="touchUpInside" id="MAQ-FU-LTW"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0kb/s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b2-Qg-wNc">
+                    <rect key="frame" x="190" y="235" width="34" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDQ-c3-mqo">
+                    <rect key="frame" x="123.5" y="302" width="167" height="34"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="167" id="bCh-j5-Prw"/>
+                        <constraint firstAttribute="height" constant="34" id="zno-LF-SLb"/>
+                    </constraints>
+                    <state key="normal" title="开始直播">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" title="停止直播"/>
+                    <connections>
+                        <action selector="startBtnClikced:" destination="-1" eventType="touchUpInside" id="BNZ-bD-Tk8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DZR-e8-HmZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="6AW-19-gaK"/>
+                <constraint firstItem="5b2-Qg-wNc" firstAttribute="centerX" secondItem="DZR-e8-HmZ" secondAttribute="centerX" id="KZL-0W-AE8"/>
+                <constraint firstItem="MPD-ai-wV0" firstAttribute="leading" secondItem="tDQ-c3-mqo" secondAttribute="leading" id="Qwi-jf-wEq"/>
+                <constraint firstItem="tDQ-c3-mqo" firstAttribute="top" secondItem="5b2-Qg-wNc" secondAttribute="bottom" constant="51" id="Rfi-b7-sN0"/>
+                <constraint firstItem="MPD-ai-wV0" firstAttribute="width" secondItem="tDQ-c3-mqo" secondAttribute="width" id="YlX-4j-RoH"/>
+                <constraint firstItem="MPD-ai-wV0" firstAttribute="top" secondItem="DZR-e8-HmZ" secondAttribute="bottom" constant="188" id="fyf-G0-nXx"/>
+                <constraint firstItem="DZR-e8-HmZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="159" id="jgF-Oi-Ip5"/>
+                <constraint firstItem="tDQ-c3-mqo" firstAttribute="centerX" secondItem="DZR-e8-HmZ" secondAttribute="centerX" id="kVb-ib-edo"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="DZR-e8-HmZ" secondAttribute="trailing" id="qif-m8-PRe"/>
+                <constraint firstItem="5b2-Qg-wNc" firstAttribute="top" secondItem="DZR-e8-HmZ" secondAttribute="bottom" constant="8" id="zoL-kF-KUT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="257" y="48"/>
+        </view>
+    </objects>
+</document>

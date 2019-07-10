@@ -137,18 +137,17 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 @property (nonatomic,assign)NSInteger videoBitRate;
 
 /**
- *  音频码率设置 取值范围 [16 - 100]
+ *  音频码率设置 取值范围 [16,32,48,96,128]  单位 kbps
  */
 @property (nonatomic,assign)NSInteger audioBitRate;
 
 /**
- * 是否开启噪声消除，默认开启，最高支持32k的音频采样率,直播前设置，当采样率大于32k时，自动关闭噪声消除
- * 注：开始直播后调用无效
+ * 是否开启噪声消除，默认不开启，最高支持32k的音频采样率,直播前设置，当采样率大于32k时，自动关闭噪声消除
  */
 @property(assign,nonatomic)BOOL isOpenNoiseSuppresion;
 
 /**
- * 音频增益
+ * 音频增益 [0.0-1.0]
  */
 @property(assign,nonatomic)float volumeAmplificateSize;
 
@@ -162,6 +161,12 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
  * 默认关闭 NO
  */
 @property (nonatomic,assign)BOOL beautifyFilterEnable;
+
+/**
+ * 是否使用软件编码
+ * 默认关闭 NO，使用硬件编码，进入后台推流时，需要设置此值为YES。
+ */
+@property (nonatomic,assign)BOOL enableForBacgroundEncode;
 
 /**
  * 推流类型 默认VHStreamTypeVideoAndAudio

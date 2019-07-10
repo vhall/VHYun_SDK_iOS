@@ -7,6 +7,8 @@ cd $SCRIPT_DIR
 
 echo "|-------------------------------  Del Start    ---------------------------|"
 
+lipo -remove x86_64 ./VHScreenShareService/VhallLiveBaseApi.framework/VhallLiveBaseApi -o ./VHScreenShareService/VhallLiveBaseApi.framework/VhallLiveBaseApi
+
 lipo -remove x86_64 ./VHMediaSDK/VhallLiveBaseApi.framework/VhallLiveBaseApi -o ./VHMediaSDK/VhallLiveBaseApi.framework/VhallLiveBaseApi
 
 lipo -remove x86_64 ./VHInteractive/VhallSignalingDynamic.framework/VhallSignalingDynamic -o ./VHInteractive/VhallSignalingDynamic.framework/VhallSignalingDynamic

@@ -85,25 +85,37 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:Identifier];
 
     VHMessage *message = _msgArr[indexPath.row];
-    NSString *str = [NSString stringWithFormat:@"[%@][%@]%@",message.nick_name?message.nick_name:@"",message.third_party_user_id,message.date_time];
+    NSString *str = [NSString stringWithFormat:@"[%@][%@]%@",message.nick_name?message.nick_name:@"",message.sender_id,message.date_time];
     cell.textLabel.text = str;
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
     cell.textLabel.font = [UIFont systemFontOfSize:10];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",message.data];
-    if([message.event isEqualToString:@"CustomBroadcast"])
+    if([message.service_type isEqualToString:MSG_Service_Type_IM])
+    {
+        if([message.data[MSG_Type] isEqualToString:MSG_IM_Type_Text])
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",message.data[MSG_IM_Text_Content]];
+        else if([message.data[MSG_Type] isEqualToString:MSG_IM_Type_Image])
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",message.data[MSG_IM_Image_Url]];
+        //其他情况可自行处理
+    }
+    else if([message.service_type isEqualToString:MSG_Service_Type_Customt])
     {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"【自定义】%@",message.data];
     }
-    else if([message.event isEqualToString:@"Join"])
+    else if([message.service_type isEqualToString:MSG_Service_Type_Online])
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"【上线】在线 %ld 人",(long)message.user_online_num];
-    }
-    else if([message.event isEqualToString:@"Leave"])
-    {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"【下线】在线 %ld 人",(long)message.user_online_num];
+        if([message.data[MSG_Type] isEqualToString:MSG_Online_Join])
+        {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"【上线】pv: %ld uv: %ld ",(long)message.pv,(long)message.uv];
+        }
+        else if([message.data[MSG_Type] isEqualToString:MSG_Online_Leave])
+        {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"【下线】pv: %ld uv: %ld ",(long)message.pv,(long)message.uv];
+        }
     }
     
     cell.detailTextLabel.font = [UIFont systemFontOfSize:9];
     cell.detailTextLabel.numberOfLines = 0;
+    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:message.avatar] placeholderImage:[UIImage imageNamed:@"defaultHead"]];
     cell.imageView.contentMode = UIViewContentModeScaleToFill; 
     return cell;

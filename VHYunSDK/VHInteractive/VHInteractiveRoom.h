@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, VHInteractiveRoomStatus) {
 @protocol  VHInteractiveRoomDelegate;
 
 @interface VHInteractiveRoom : NSObject
-
+- (instancetype)initWithLogParam:(NSDictionary*)logParam;
 @property (nonatomic, weak) id <VHInteractiveRoomDelegate> delegate;
 /*
  * 当前房间状态

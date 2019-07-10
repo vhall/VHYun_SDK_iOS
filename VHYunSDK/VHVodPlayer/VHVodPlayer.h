@@ -19,6 +19,7 @@ typedef NS_ENUM(int,VHVodPlayerSeeekModel){
 };
 
 @interface VHVodPlayer : NSObject
+- (instancetype)initWithLogParam:(NSDictionary*)logParam;
 @property (nonatomic,weak)id <VHVodPlayerDelegate>      delegate;
 @property (nonatomic,strong,readonly)UIView             *view;
 @property (nonatomic,assign,readonly)int                playerState;//播放器状态  详见 VHPlayerStatus 的定义.
@@ -96,7 +97,7 @@ typedef NS_ENUM(int,VHVodPlayerSeeekModel){
 /**
  *  获得当前时间视频截图
  */
-- (UIImage*)takeAPhoto;
+- (void)takeVideoScreenshot:(void (^)(UIImage* image))screenshotBlock;
 
 @end
 

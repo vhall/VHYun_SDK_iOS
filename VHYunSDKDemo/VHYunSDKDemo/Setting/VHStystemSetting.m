@@ -64,7 +64,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
         _videoResolution    = [standardUserDefaults objectForKey:@"VHvideoResolution"];      //发起直播分辨率 VideoResolution [0,3] 默认1
         _videoBitRate       = [standardUserDefaults integerForKey:@"VHvideoBitRate"];         //发直播视频码率
         _audioBitRate       = [standardUserDefaults integerForKey:@"VHaudioBitRate"];         //发直播视频码率
-        _videoCaptureFPS    = [standardUserDefaults integerForKey:@"VHvideoCaptureFPS"];      //发直播视频帧率 ［1～30］ 默认10
+        _videoCaptureFPS    = [standardUserDefaults integerForKey:@"VHvideoCaptureFPS"];      //发直播视频帧率 ［1～30］ 默认15
         if([standardUserDefaults valueForKey:@"VHisOpenNoiseSuppresion"])
             self.isOpenNoiseSuppresion = [standardUserDefaults boolForKey:@"VHisOpenNoiseSuppresion"];
         else

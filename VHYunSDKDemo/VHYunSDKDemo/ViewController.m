@@ -23,6 +23,8 @@
 #import "VHSettingViewController.h"
 #import "DocUploadViewController.h"
 
+#import "SampleScreenViewController.h"
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *verLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bundleIDLabel;
@@ -60,6 +62,22 @@
     
     
     [self presentViewController:rtmpLivedemoVC animated:YES completion:nil];
+}
+
+- (IBAction)screenShareBtnClicked:(UIButton*)sender {
+    if([[UIDevice currentDevice] systemVersion].floatValue<12.0)
+    {
+        [self showMsg:@"请更新系统到 iOS 12" afterDelay:2];
+        return;
+    }
+    
+    SampleScreenViewController * sampleScreenVC = [[SampleScreenViewController alloc] init];
+    sampleScreenVC.roomId           = DEMO_Setting.publishRoomID;
+    sampleScreenVC.accessToken      = DEMO_Setting.accessToken;
+    sampleScreenVC.videoBitRate     = DEMO_Setting.videoBitRate;
+    sampleScreenVC.videoCaptureFPS  = DEMO_Setting.videoCaptureFPS;
+
+    [self presentViewController:sampleScreenVC animated:YES completion:nil];
 }
 
 #pragma mark - 观看直播

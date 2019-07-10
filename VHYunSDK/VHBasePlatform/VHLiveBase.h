@@ -53,11 +53,16 @@ typedef NS_ENUM(NSInteger, VHLogLevel) {
 + (void) setLogLevel:(VHLogLevel)level;
 
 /**
- *  设置日志s是否输出到控制台
+ *  设置日志是否输出到控制台
  *  @param isPrint  否输出到控制台
  */
 + (void) printLogToConsole:(BOOL)isPrint;//默认不显示到控制台、
 
+/**
+ *  设置AppGroup 用于 录屏直播功能
+ *  @param appGroup  AppGroup
+ */
++ (BOOL) setAppGroup:(NSString *)appGroup;
 /**
  *  获得当前SDK版本号
  */

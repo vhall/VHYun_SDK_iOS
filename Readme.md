@@ -14,9 +14,9 @@
 
 ### 上传App Store时会报模拟器错误
 1、从 v1.7.2 版本开始 VHYunSDK 支持模拟器编译（包含模拟器的 framework 库打包上传App Store时会报错）<br> 
-2、打开终端(Terminal) 
-3、cd VHYunSDK 文件夹 
-4、sh del_simulator.sh      即删除 VHYunSDK 文件夹中动态库的模拟器部分，再打包上传App Store。
+2、打开终端(Terminal) <br>
+3、cd VHYunSDK 文件夹 <br>
+4、sh del_simulator.sh      即删除 VHYunSDK 文件夹中动态库的模拟器部分，再打包上传App Store。<br>
 
 
 ### SDK 各模块依赖关系图
@@ -24,6 +24,13 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.8.0 更新时间：2019.07.10
+更新内容：<br>
+1、新增录屏直播功能<br>
+2、消息模块优化使用新消息结构<br>
+3、新增直播截图功能<br>
+
+
 #### 版本 lss v1.7.3 更新时间：2019.05.29
 更新内容：<br>
 1、修复推流切后台错误，注意要在 UIApplicationWillResignActiveNotification 事件中处理进入后台推流情况<br>

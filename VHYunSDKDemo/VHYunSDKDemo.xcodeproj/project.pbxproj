@@ -27,12 +27,19 @@
 		C00B64D41FEA431E00DF36FF /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C00B64C21FEA431D00DF36FF /* UIImageView+HighlightedWebCache.m */; };
 		C00B64D51FEA431E00DF36FF /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C00B64C41FEA431D00DF36FF /* UIImageView+WebCache.m */; };
 		C00B64D61FEA431E00DF36FF /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C00B64C61FEA431D00DF36FF /* UIView+WebCacheOperation.m */; };
+		C01ED20B22D3266C002F582C /* VhallLiveBaseApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01ED20A22D3266C002F582C /* VhallLiveBaseApi.framework */; };
 		C027C95C21743DEC009D8A7A /* DocumentDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C95A21743DEC009D8A7A /* DocumentDemoViewController.m */; };
 		C027C95D21743DEC009D8A7A /* DocumentDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C027C95B21743DEC009D8A7A /* DocumentDemoViewController.xib */; };
 		C029512B20BE9B2300FD60BD /* VHStatisticsStystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C029512920BE9B2200FD60BD /* VHStatisticsStystem.m */; };
 		C04C24552237820F00728700 /* BeforehandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C04C24542237820F00728700 /* BeforehandViewController.m */; };
 		C05590A220872262007F1595 /* VHInteractiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05590A020872262007F1595 /* VHInteractiveViewController.m */; };
 		C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05590A120872262007F1595 /* VHInteractiveViewController.xib */; };
+		C06D62CE22A8D4EA00A5D69E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06D62CD22A8D4EA00A5D69E /* ReplayKit.framework */; };
+		C06D62D222A8D4EA00A5D69E /* SampleHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = C06D62D122A8D4EA00A5D69E /* SampleHandler.mm */; };
+		C06D62D622A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C06D62CC22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C06D62DE22A8D56400A5D69E /* SampleScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06D62DC22A8D56400A5D69E /* SampleScreenViewController.m */; };
+		C06D62DF22A8D56400A5D69E /* SampleScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06D62DD22A8D56400A5D69E /* SampleScreenViewController.xib */; };
+		C06D62FE22A8EB3D00A5D69E /* libVHScreenShareService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C06D62FC22A8EB3D00A5D69E /* libVHScreenShareService.a */; };
 		C070DAD022703746005FF309 /* DocUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C070DACE22703746005FF309 /* DocUploadViewController.m */; };
 		C070DAD122703746005FF309 /* DocUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C070DACF22703746005FF309 /* DocUploadViewController.xib */; };
 		C0716A2B21130B6400A3FB57 /* libVHBasePlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0716A0721130B6400A3FB57 /* libVHBasePlatform.a */; };
@@ -111,6 +118,16 @@
 		C0F4A8921FD16AB8006D6DA9 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F4A88F1FD16AB7006D6DA9 /* CustomPickerView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C06D62D422A8D4EA00A5D69E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C07B744D1FBD3AFA00189E0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C06D62CB22A8D4EA00A5D69E;
+			remoteInfo = VHYunSDKDemoScreenShare;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C05590AB20873211007F1595 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -123,6 +140,17 @@
 				C0716A3D21130B7200A3FB57 /* VhallLiveBaseApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C06D62DA22A8D4EA00A5D69E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C06D62D622A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -167,6 +195,7 @@
 		C00B64C41FEA431D00DF36FF /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C00B64C51FEA431D00DF36FF /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C00B64C61FEA431D00DF36FF /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		C01ED20A22D3266C002F582C /* VhallLiveBaseApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VhallLiveBaseApi.framework; path = ../VHYunSDK/VHScreenShareService/VhallLiveBaseApi.framework; sourceTree = "<group>"; };
 		C027C95921743DEC009D8A7A /* DocumentDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentDemoViewController.h; sourceTree = "<group>"; };
 		C027C95A21743DEC009D8A7A /* DocumentDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentDemoViewController.m; sourceTree = "<group>"; };
 		C027C95B21743DEC009D8A7A /* DocumentDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentDemoViewController.xib; sourceTree = "<group>"; };
@@ -178,6 +207,17 @@
 		C055909F20872262007F1595 /* VHInteractiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHInteractiveViewController.h; sourceTree = "<group>"; };
 		C05590A020872262007F1595 /* VHInteractiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHInteractiveViewController.m; sourceTree = "<group>"; };
 		C05590A120872262007F1595 /* VHInteractiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VHInteractiveViewController.xib; sourceTree = "<group>"; };
+		C06D62CC22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VHYunSDKDemoScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C06D62CD22A8D4EA00A5D69E /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		C06D62D022A8D4EA00A5D69E /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
+		C06D62D122A8D4EA00A5D69E /* SampleHandler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SampleHandler.mm; sourceTree = "<group>"; };
+		C06D62D322A8D4EA00A5D69E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C06D62DB22A8D56400A5D69E /* SampleScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleScreenViewController.h; sourceTree = "<group>"; };
+		C06D62DC22A8D56400A5D69E /* SampleScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleScreenViewController.m; sourceTree = "<group>"; };
+		C06D62DD22A8D56400A5D69E /* SampleScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleScreenViewController.xib; sourceTree = "<group>"; };
+		C06D62E022A8E5EF00A5D69E /* VHYunSDKDemoScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VHYunSDKDemoScreenShare.entitlements; sourceTree = "<group>"; };
+		C06D62FC22A8EB3D00A5D69E /* libVHScreenShareService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVHScreenShareService.a; path = ../../VHYunSDK/VHScreenShareService/libVHScreenShareService.a; sourceTree = "<group>"; };
+		C06D62FD22A8EB3D00A5D69E /* VHScreenShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VHScreenShareService.h; path = ../../VHYunSDK/VHScreenShareService/VHScreenShareService.h; sourceTree = "<group>"; };
 		C070DACD22703746005FF309 /* DocUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocUploadViewController.h; sourceTree = "<group>"; };
 		C070DACE22703746005FF309 /* DocUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocUploadViewController.m; sourceTree = "<group>"; };
 		C070DACF22703746005FF309 /* DocUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocUploadViewController.xib; sourceTree = "<group>"; };
@@ -286,6 +326,7 @@
 		C0B21B58227323A900A74B68 /* VHDocUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHDocUpload.h; sourceTree = "<group>"; };
 		C0B7AE392088782300C3C691 /* VHInteractiveViewController+Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VHInteractiveViewController+Room.h"; sourceTree = "<group>"; };
 		C0B7AE3A2088782300C3C691 /* VHInteractiveViewController+Room.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VHInteractiveViewController+Room.m"; sourceTree = "<group>"; };
+		C0B80DB022AF790900B55877 /* VHScreenLivePublisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHScreenLivePublisher.h; sourceTree = "<group>"; };
 		C0BF2BBA21774118001C13FF /* VHDocumentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VHDocumentView.h; sourceTree = "<group>"; };
 		C0F4A86D1FD0F62E006D6DA9 /* CONSTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CONSTS.h; sourceTree = "<group>"; };
 		C0F4A8721FD0FE2F006D6DA9 /* VHSettingArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHSettingArrowItem.h; sourceTree = "<group>"; };
@@ -309,6 +350,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C06D62C922A8D4EA00A5D69E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C06D62CE22A8D4EA00A5D69E /* ReplayKit.framework in Frameworks */,
+				C06D62FE22A8EB3D00A5D69E /* libVHScreenShareService.a in Frameworks */,
+				C01ED20B22D3266C002F582C /* VhallLiveBaseApi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C07B74521FBD3AFA00189E0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,6 +480,19 @@
 			path = VHInteractive;
 			sourceTree = "<group>";
 		};
+		C06D62CF22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare */ = {
+			isa = PBXGroup;
+			children = (
+				C06D62D022A8D4EA00A5D69E /* SampleHandler.h */,
+				C06D62D122A8D4EA00A5D69E /* SampleHandler.mm */,
+				C06D62D322A8D4EA00A5D69E /* Info.plist */,
+				C06D62FD22A8EB3D00A5D69E /* VHScreenShareService.h */,
+				C06D62FC22A8EB3D00A5D69E /* libVHScreenShareService.a */,
+				C06D62E022A8E5EF00A5D69E /* VHYunSDKDemoScreenShare.entitlements */,
+			);
+			path = VHYunSDKDemoScreenShare;
+			sourceTree = "<group>";
+		};
 		C070DAD822703A44005FF309 /* VHDocUpload */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +581,7 @@
 				C0716A2021130B6400A3FB57 /* libVHLivePublisher.a */,
 				C0716A2121130B6400A3FB57 /* VHLivePublisher.h */,
 				C0716A2221130B6400A3FB57 /* VHPublishConfig.h */,
+				C0B80DB022AF790900B55877 /* VHScreenLivePublisher.h */,
 			);
 			path = VHLivePublisher;
 			sourceTree = "<group>";
@@ -545,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				C07B74571FBD3AFA00189E0B /* VHYunSDKDemo */,
+				C06D62CF22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare */,
 				C07B74561FBD3AFA00189E0B /* Products */,
 				C07B74B31FBD5A3B00189E0B /* Frameworks */,
 			);
@@ -554,6 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				C07B74551FBD3AFA00189E0B /* VHYunSDKDemo.app */,
+				C06D62CC22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -638,6 +705,7 @@
 		C07B74B31FBD5A3B00189E0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C01ED20A22D3266C002F582C /* VhallLiveBaseApi.framework */,
 				C03A8722219AD15A00421C68 /* CoreServices.framework */,
 				C07B20AF21783E0700377F64 /* JavaScriptCore.framework */,
 				C09848D01FC5415C0045066C /* libbz2.tbd */,
@@ -653,6 +721,7 @@
 				C07B74B61FBD5A6800189E0B /* OpenGLES.framework */,
 				C07B74B51FBD5A5500189E0B /* libicucore.tbd */,
 				C07B74B41FBD5A3B00189E0B /* libiconv.tbd */,
+				C06D62CD22A8D4EA00A5D69E /* ReplayKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -663,6 +732,9 @@
 				C07C13651FC5287B000D57FE /* PublishViewController.h */,
 				C07C13661FC5287B000D57FE /* PublishViewController.m */,
 				C07C13671FC5287B000D57FE /* PublishViewController.xib */,
+				C06D62DB22A8D56400A5D69E /* SampleScreenViewController.h */,
+				C06D62DC22A8D56400A5D69E /* SampleScreenViewController.m */,
+				C06D62DD22A8D56400A5D69E /* SampleScreenViewController.xib */,
 			);
 			path = Publish;
 			sourceTree = "<group>";
@@ -774,6 +846,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C06D62CB22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C06D62D922A8D4EA00A5D69E /* Build configuration list for PBXNativeTarget "VHYunSDKDemoScreenShare" */;
+			buildPhases = (
+				C06D62C822A8D4EA00A5D69E /* Sources */,
+				C06D62C922A8D4EA00A5D69E /* Frameworks */,
+				C06D62CA22A8D4EA00A5D69E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VHYunSDKDemoScreenShare;
+			productName = VHYunSDKDemoScreenShare;
+			productReference = C06D62CC22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C07B74541FBD3AFA00189E0B /* VHYunSDKDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C07B746B1FBD3AFA00189E0B /* Build configuration list for PBXNativeTarget "VHYunSDKDemo" */;
@@ -782,10 +871,12 @@
 				C07B74521FBD3AFA00189E0B /* Frameworks */,
 				C07B74531FBD3AFA00189E0B /* Resources */,
 				C05590AB20873211007F1595 /* Embed Frameworks */,
+				C06D62DA22A8D4EA00A5D69E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C06D62D522A8D4EA00A5D69E /* PBXTargetDependency */,
 			);
 			name = VHYunSDKDemo;
 			productName = VHOpenSDKDemo;
@@ -801,12 +892,24 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = www.vhall.com;
 				TargetAttributes = {
+					C06D62CB22A8D4EA00A5D69E = {
+						CreatedOnToolsVersion = 10.2.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C07B74541FBD3AFA00189E0B = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -829,11 +932,19 @@
 			projectRoot = "";
 			targets = (
 				C07B74541FBD3AFA00189E0B /* VHYunSDKDemo */,
+				C06D62CB22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C06D62CA22A8D4EA00A5D69E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C07B74531FBD3AFA00189E0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -841,6 +952,7 @@
 				C027C95D21743DEC009D8A7A /* DocumentDemoViewController.xib in Resources */,
 				C0A38B0F1FC8058A00A8998F /* WatchVodViewController.xib in Resources */,
 				C05590A320872262007F1595 /* VHInteractiveViewController.xib in Resources */,
+				C06D62DF22A8D56400A5D69E /* SampleScreenViewController.xib in Resources */,
 				C00B64671FE23E2400DF36FF /* VodDocumentViewController.xib in Resources */,
 				C070DAD122703746005FF309 /* DocUploadViewController.xib in Resources */,
 				C07C13691FC5287B000D57FE /* PublishViewController.xib in Resources */,
@@ -858,6 +970,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C06D62C822A8D4EA00A5D69E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C06D62D222A8D4EA00A5D69E /* SampleHandler.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C07B74511FBD3AFA00189E0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -865,6 +985,7 @@
 				C07B74991FBD437600189E0B /* ITTXibViewUtils.m in Sources */,
 				C00B64D61FEA431E00DF36FF /* UIView+WebCacheOperation.m in Sources */,
 				C090308720B50C950051F6ED /* VHLayoutItem.m in Sources */,
+				C06D62DE22A8D56400A5D69E /* SampleScreenViewController.m in Sources */,
 				C0F4A8821FD0FE2F006D6DA9 /* VHSettingGroup.m in Sources */,
 				C00B64D51FEA431E00DF36FF /* UIImageView+WebCache.m in Sources */,
 				C09C4F2E20A2A85300164B30 /* JXTAlertController.m in Sources */,
@@ -925,6 +1046,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C06D62D522A8D4EA00A5D69E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C06D62CB22A8D4EA00A5D69E /* VHYunSDKDemoScreenShare */;
+			targetProxy = C06D62D422A8D4EA00A5D69E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C07B745E1FBD3AFA00189E0B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -945,6 +1074,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C06D62D722A8D4EA00A5D69E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = VHYunSDKDemoScreenShare/VHYunSDKDemoScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHScreenShareService";
+				INFOPLIST_FILE = VHYunSDKDemoScreenShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHScreenShareService";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhallyun.sdk.VHYunSDKDemoScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C06D62D822A8D4EA00A5D69E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = VHYunSDKDemoScreenShare/VHYunSDKDemoScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H49DK955B9;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHScreenShareService";
+				INFOPLIST_FILE = VHYunSDKDemoScreenShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../VHYunSDK/VHScreenShareService";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vhallyun.sdk.VHYunSDKDemoScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		C07B74691FBD3AFA00189E0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1132,6 +1306,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C06D62D922A8D4EA00A5D69E /* Build configuration list for PBXNativeTarget "VHYunSDKDemoScreenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C06D62D722A8D4EA00A5D69E /* Debug */,
+				C06D62D822A8D4EA00A5D69E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C07B74501FBD3AFA00189E0B /* Build configuration list for PBXProject "VHYunSDKDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

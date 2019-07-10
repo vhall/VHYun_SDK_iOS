@@ -30,9 +30,17 @@
 - (instancetype)initWithChannelID:(NSString*)channelID accessToken:(NSString*)accessToken;
 
 /**
- * 直播+文档模块初始化
+ * 直播+文档模块初始化 生成roomID的回放时会 绑定演示的文档
+ * roomID 绑定到直播间
  */
 - (instancetype)initWithChannelID:(NSString*)channelID roomID:(NSString*)roomID accessToken:(NSString*)accessToken;
+
+/**
+ * 直播+文档模块初始化 生成roomID的回放时会 绑定演示的文档
+ * roomID 绑定到直播间
+ * isLoadLastDoc 是否加载上次演示的文档及调到对应页码，一般用于主播演示端不显示上次演示内容 设置后需先设置文档再演示
+ */
+- (instancetype)initWithChannelID:(NSString*)channelID roomID:(NSString*)roomID accessToken:(NSString*)accessToken loadLastDoc:(BOOL)isLoadLastDoc;
 
 /**
  * 点播文档模块初始化

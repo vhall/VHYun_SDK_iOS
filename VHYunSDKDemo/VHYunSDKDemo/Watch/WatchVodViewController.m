@@ -219,11 +219,15 @@
 }
 - (IBAction)takeAPhotoBtnClicked:(id)sender {
     
-    UIImage * image = [_player takeAPhoto];
-    if(image)
-    {
-        [self saveImage:image];
-    }
+    __weak typeof(self) wf = self;
+    [_player takeVideoScreenshot:^(UIImage *image) {
+        if(image)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [wf saveImage:image];
+            });
+        }
+    }];
 }
 - (void)saveImage:(UIImage *)image
 {

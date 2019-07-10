@@ -34,12 +34,13 @@ typedef NS_ENUM(NSInteger,VHStreamType){
 @protocol VHLivePlayerDelegate;
 
 @interface VHLivePlayer : NSObject
+- (instancetype)initWithLogParam:(NSDictionary*)logParam;
 @property(nonatomic,weak)id <VHLivePlayerDelegate>  delegate;
 @property(nonatomic,strong,readonly)UIView          *view;
 @property(nonatomic,assign,readonly)int             playerState;//播放器状态  详见 VHPlayerStatus 的定义.
 @property(nonatomic,assign)NSInteger                bufferTime; //设置缓冲区时间 默认 6秒 单位为秒 必须>0 值越小延时越小,卡顿增加
 @property(nonatomic,assign)int                      timeout;             //RTMP链接的超时时间 默认5000毫秒，单位为毫秒
-@property(assign,readonly)int                       realityBufferTime;    //获取播放实际的缓冲时间 即延迟时间
+@property(assign,readonly)int                       realityBufferTime;    //获取播放实际的缓冲时间 即延迟时间 单位为毫秒
 /**
  *  设置默认播放的清晰度 默认原画
  */
@@ -92,6 +93,11 @@ typedef NS_ENUM(NSInteger,VHStreamType){
 - (BOOL)destroyPlayer;
 
 /**
+ *  获得当前时间视频截图
+ */
+- (void)takeVideoScreenshot:(void (^)(UIImage* image))screenshotBlock;
+
+/**
  *  获得当前SDK版本号
  */
 + (NSString *) getSDKVersion;
@@ -140,15 +146,15 @@ typedef NS_ENUM(NSInteger,VHStreamType){
  *  接收流中消息
  *
  *  @param player       player
- *  @param msg          流中消息
+ *  @param msg          流中消息 用于直播答题等消息
  */
 - (void)player:(VHLivePlayer *)player receiveMessage:(NSDictionary*)msg;
 
 /**
- *  上下线消息
+ *  直播消息 包括 MSG_Service_Type_Room 和 MSG_Service_Type_Online 消息
  *
  *  @param player       player
- *  @param msg          消息
+ *  @param msg         类型VHMessage.h 消息包括 MSG_Service_Type_Room 和 MSG_Service_Type_Online 消息 
  */
-- (void)player:(VHLivePlayer *)player onlineMessage:(id)msg;
+- (void)player:(VHLivePlayer *)player roomMessage:(id)msg;
 @end

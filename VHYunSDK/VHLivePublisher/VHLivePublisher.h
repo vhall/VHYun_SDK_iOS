@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, VHPublishStatus) {
     VHPublishStatusPushConnectSucceed,//直播连接成功
     VHPublishStatusUploadSpeed,//直播上传速率
     VHPublishStatusUploadNetworkException,//发起端网络环境差
-    VHPublishStatusUploadNetworkOK //发起端网络环境恢复正常
+    VHPublishStatusUploadNetworkOK, //发起端网络环境恢复正常
+    VHPublishStatusStoped//发起端停止推流
 };
 
 typedef NS_ENUM(NSInteger, VHPublishError) {
@@ -145,14 +146,25 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
  */
 - (void)setContentMode:(VHVideoCaptureContentMode)contentMode;
 
+// 打开噪声抑制 直播开始后有效
+-(void)openNoiseSuppresion:(BOOL)enable;
+
+/**
+ 设置音频增益大小，注意只有当开启噪音消除时可用
+ 
+ @param size 音频增益的大小 [0.0,1.0]
+ */
+- (void)setVolumeAmplificateSize:(float)size;
+
 /**
  *  美颜参数设置
  *  VHPublishConfig beautifyFilterEnable为YES时设置生效 根据具体使用情况微调
- *  @param beautify 美白 默认 2.0f
- *  @param brightness 亮度  默认 1.20f
- *  @param saturation 饱和度 默认 1.0f
+ *  @param beautify   磨皮   默认 2.0f  取值范围[1.0, 10.0]  1.0 正常图片没有磨皮
+ *  @param brightness 亮度   默认 1.20f 取值范围[0.0, 2.0]  1.0 正常亮度
+ *  @param saturation 饱和度 默认 1.0f  取值范围[0.0, 2.0]  1.0 正常饱和度
+ *  @param sharpness  锐化   默认 0.5f  取值范围[-4.0，4.0] 0.0 正常锐化
  */
-- (void)setBeautify:(CGFloat)beautify Brightness:(CGFloat)brightness Saturation:(CGFloat)saturation;
+- (void)setBeautify:(CGFloat)beautify Brightness:(CGFloat)brightness Saturation:(CGFloat)saturation Sharpness:(CGFloat)sharpness;
 
 /**
  *  获得当前SDK版本号

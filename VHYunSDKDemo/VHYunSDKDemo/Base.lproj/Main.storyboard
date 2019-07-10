@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bv4-Oz-8zn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bv4-Oz-8zn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -127,7 +127,6 @@
                                 <rect key="frame" x="105" y="26" width="62" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="51b-12-b3O"/>
                                     <constraint firstAttribute="height" constant="30" id="cke-vb-wMN"/>
                                 </constraints>
                                 <state key="normal" title="横屏直播"/>
@@ -140,7 +139,6 @@
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Wrr-6Z-xiz"/>
-                                    <constraint firstAttribute="width" constant="62" id="dGe-ds-5YD"/>
                                 </constraints>
                                 <state key="normal" title="竖屏直播"/>
                                 <connections>
@@ -152,7 +150,6 @@
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="94k-Oy-rr1"/>
-                                    <constraint firstAttribute="width" constant="62" id="zEu-Es-GtV"/>
                                 </constraints>
                                 <state key="normal" title="观看直播"/>
                                 <connections>
@@ -164,7 +161,6 @@
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="555-DJ-dj3"/>
-                                    <constraint firstAttribute="width" constant="62" id="aAO-sp-dZe"/>
                                 </constraints>
                                 <state key="normal" title="文档观看"/>
                                 <connections>
@@ -180,11 +176,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgZ-oA-LIs">
-                                <rect key="frame" x="319" y="26" width="46" height="30"/>
+                                <rect key="frame" x="334" y="26" width="31" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="1R7-ZX-g3X"/>
-                                </constraints>
                                 <state key="normal" title="设置"/>
                                 <connections>
                                     <action selector="settingBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aaY-so-EVy"/>
@@ -206,7 +199,6 @@
                                 <rect key="frame" x="105" y="85" width="62" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="gmY-Ez-dm6"/>
                                     <constraint firstAttribute="height" constant="30" id="svi-Tp-HK8"/>
                                 </constraints>
                                 <state key="normal" title="观看点播"/>
@@ -215,11 +207,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-xy-9vW">
-                                <rect key="frame" x="16" y="206" width="62" height="30"/>
+                                <rect key="frame" x="16" y="206" width="48" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tuj-5l-Uzc"/>
-                                    <constraint firstAttribute="width" constant="62" id="adG-Dr-uGd"/>
                                 </constraints>
                                 <state key="normal" title="IM消息"/>
                                 <connections>
@@ -230,7 +221,6 @@
                                 <rect key="frame" x="16" y="266" width="62" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="J4F-ij-U0i"/>
                                     <constraint firstAttribute="height" constant="30" id="XsZ-eO-PZa"/>
                                 </constraints>
                                 <state key="normal" title="互动直播"/>
@@ -243,7 +233,6 @@
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ne9-Zq-Og8"/>
-                                    <constraint firstAttribute="width" constant="62" id="zX9-WN-a7M"/>
                                 </constraints>
                                 <state key="normal" title="点播文档"/>
                                 <connections>
@@ -253,12 +242,17 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQp-YS-I9J">
                                 <rect key="frame" x="193" y="145" width="62" height="30"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="1cq-1n-twR"/>
-                                </constraints>
                                 <state key="normal" title="文档上传"/>
                                 <connections>
                                     <action selector="DocUploadBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3y3-b1-UwI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2K-lh-DuX">
+                                <rect key="frame" x="193" y="26" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="录屏直播"/>
+                                <connections>
+                                    <action selector="screenShareBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0cf-6w-uyS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -272,6 +266,9 @@
                             <constraint firstItem="fND-oQ-qVu" firstAttribute="leading" secondItem="a4d-VU-Sxt" secondAttribute="trailing" constant="24" id="BgS-ly-dWK"/>
                             <constraint firstItem="Qof-nR-V04" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="D4l-N3-jDW"/>
                             <constraint firstItem="b2B-1R-2Nv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GIv-OS-0xR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zdE-pg-pmP" secondAttribute="trailing" symbolic="YES" id="Hfh-hn-Odq"/>
+                            <constraint firstItem="v2K-lh-DuX" firstAttribute="leading" secondItem="YDx-wq-p8Z" secondAttribute="trailing" constant="26" id="IYT-Wo-R6N"/>
+                            <constraint firstItem="v2K-lh-DuX" firstAttribute="centerY" secondItem="YDx-wq-p8Z" secondAttribute="centerY" id="LDo-8h-xLa"/>
                             <constraint firstItem="zdE-pg-pmP" firstAttribute="top" secondItem="0b2-xy-9vW" secondAttribute="bottom" constant="30" id="LfQ-kI-Y1J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pgZ-oA-LIs" secondAttribute="trailing" constant="10" id="O2z-rE-ewu"/>
                             <constraint firstItem="YDx-wq-p8Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="RLo-G2-uEX"/>
@@ -280,17 +277,19 @@
                             <constraint firstItem="bfo-h2-pQp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VRg-Pp-M8v"/>
                             <constraint firstItem="Q7T-qe-Ru5" firstAttribute="top" secondItem="YDx-wq-p8Z" secondAttribute="bottom" constant="29" id="VkL-PZ-gO5"/>
                             <constraint firstItem="0b2-xy-9vW" firstAttribute="top" secondItem="bfo-h2-pQp" secondAttribute="bottom" constant="30" id="WGh-qN-9fa"/>
+                            <constraint firstItem="bQp-YS-I9J" firstAttribute="centerX" secondItem="v2K-lh-DuX" secondAttribute="centerX" id="YLz-F4-5e8"/>
                             <constraint firstItem="Q7T-qe-Ru5" firstAttribute="leading" secondItem="Qof-nR-V04" secondAttribute="trailing" constant="27" id="cVe-cs-rn4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0b2-xy-9vW" secondAttribute="trailing" symbolic="YES" id="fBr-fd-cUy"/>
                             <constraint firstItem="0b2-xy-9vW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ikp-03-2px"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q7T-qe-Ru5" secondAttribute="trailing" symbolic="YES" id="mhW-54-7Xn"/>
                             <constraint firstItem="mVz-3A-4fU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="o3d-4d-hDh"/>
+                            <constraint firstItem="bQp-YS-I9J" firstAttribute="centerY" secondItem="fND-oQ-qVu" secondAttribute="centerY" id="ppt-OI-zNY"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="sZn-RF-PmZ"/>
-                            <constraint firstItem="bQp-YS-I9J" firstAttribute="leading" secondItem="fND-oQ-qVu" secondAttribute="trailing" constant="28" id="tCe-h0-Ryt"/>
                             <constraint firstItem="DNw-qv-vkI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tjW-It-uLY"/>
                             <constraint firstItem="fND-oQ-qVu" firstAttribute="leading" secondItem="a4d-VU-Sxt" secondAttribute="trailing" constant="24" id="u07-An-nc0"/>
                             <constraint firstItem="bfo-h2-pQp" firstAttribute="top" secondItem="Qof-nR-V04" secondAttribute="bottom" constant="31" id="utK-fm-gm3"/>
                             <constraint firstItem="YDx-wq-p8Z" firstAttribute="leading" secondItem="DNw-qv-vkI" secondAttribute="trailing" constant="27" id="vf2-qb-hPt"/>
                             <constraint firstItem="a4d-VU-Sxt" firstAttribute="top" secondItem="Q7T-qe-Ru5" secondAttribute="bottom" constant="30" id="xaF-AD-zzZ"/>
-                            <constraint firstItem="bQp-YS-I9J" firstAttribute="baseline" secondItem="fND-oQ-qVu" secondAttribute="baseline" id="xbM-ZY-ifa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

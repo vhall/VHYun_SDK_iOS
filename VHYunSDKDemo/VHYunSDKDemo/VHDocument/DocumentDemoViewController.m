@@ -55,6 +55,7 @@
 - (void)initView
 {
     _document = [[VHDocument alloc]initWithChannelID:self.channelID roomID:self.roomID  accessToken:self.accessToken];
+//    _document = [[VHDocument alloc]initWithChannelID:self.channelID roomID:self.roomID  accessToken:self.accessToken loadLastDoc:NO];
     _document.delegate = self;
     _document.view.frame = _preView.bounds;
     _document.view.backgroundColor = MakeColorRGB(0xE2E8EB);

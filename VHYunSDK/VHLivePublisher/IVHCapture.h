@@ -9,7 +9,7 @@
 #ifndef IVHCapture_h
 #define IVHCapture_h
 #import <AVFoundation/AVFoundation.h>
-
+#import <UIKit/UIKit.h>
 /**
  *  采集器状态
  */

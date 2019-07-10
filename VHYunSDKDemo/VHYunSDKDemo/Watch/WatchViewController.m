@@ -8,6 +8,8 @@
 
 #import "WatchViewController.h"
 #import "VHLivePlayer.h"
+#import <Photos/Photos.h>
+#import "VHMessage.h"
 
 #define DefinitionNameList  (@[@"原画",@"超清",@"高清",@"标清",@"音频"])
 
@@ -56,6 +58,7 @@
     [_definitionBtn setTitle:DefinitionNameList[0] forState:UIControlStateNormal];
     _definitionsView.hidden = YES;
     _definitionBtns = @[_definitionBtn0,_definitionBtn1,_definitionBtn2,_definitionBtn3,_definitionBtn4];
+    [self stratBtnClicked:nil];
 }
 
 - (void)viewDidLayoutSubviews
@@ -109,6 +112,30 @@
     {
         [self stopPlayer];
     }
+}
+- (IBAction)takeAPhotoBtnClicked:(id)sender {
+    
+    __weak typeof(self) wf = self;
+    [_player takeVideoScreenshot:^(UIImage *image) {
+        if(image)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [wf saveImage:image];
+            });
+        }
+    }];
+}
+- (void)saveImage:(UIImage *)image
+{
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *req = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        NSLog(@"success = %d, error = %@", success, error);
+        NSString*ret = @"已保存到相册";
+        if(!success && error.userInfo[@"NSLocalizedDescription"])
+            ret = error.userInfo[@"NSLocalizedDescription"];
+        [self showMsg:ret afterDelay:2];
+    }];
 }
 
 - (void)stopPlayer
@@ -231,6 +258,29 @@
     NSLog(@"streamtype: %ld",(long)streamtype);
 }
 
+- (void)player:(VHLivePlayer *)player roomMessage:(id)msg
+{
+    VHMessage *roommsg = (VHMessage *)msg;
+    if([roommsg.service_type isEqualToString:MSG_Service_Type_Room])
+    {
+        if([roommsg.data[MSG_Type] isEqualToString:MSG_Room_Live_Start])
+        {
+            [self showMsg:@"主持人已开始推流" afterDelay:1.5];
+        }
+        else if([roommsg.data[MSG_Type] isEqualToString:MSG_Room_Live_Over])
+        {
+            [self hideProgressDialog:self.preView];
+            [self stopPlayer];
+            [self showMsg:@"主持人已停止推流" afterDelay:1.5];
+        }
+    }
+    else if([roommsg.service_type isEqualToString:MSG_Service_Type_Online])
+    {
+        NSLog(@"直播间pv: %ld uv:%ld",(long)roommsg.pv,(long)roommsg.uv);
+    }
+}
+
+#pragma mark - shouldAutorotate
 -(BOOL)shouldAutorotate
 {
     return YES;

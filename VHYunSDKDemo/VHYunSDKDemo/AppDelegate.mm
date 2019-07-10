@@ -26,6 +26,8 @@
 //    [VHLiveBase setLogLevel:VHLogLevelError];
 //    [VHLiveBase printLogToConsole:YES];
     
+//    [VHLiveBase setAppGroup:@""];//填写group ID 用于录屏直播
+    
     NSLog(@"SDKVersion: %@",[VHLiveBase getSDKVersion]);
     [self showProcessInfo];
     return YES;
