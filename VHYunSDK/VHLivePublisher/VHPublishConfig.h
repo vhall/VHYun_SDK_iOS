@@ -102,12 +102,12 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 @property (nonatomic,assign)AVCaptureVideoOrientation orientation;
 
 /**
- *  mic 音频采样率
+ *  mic 音频采样率 44100(默认)、32000
  */
 @property (nonatomic,assign)NSInteger sampleRate;
 
 /**
- *  mic 音频采样通道 默认位数 16位
+ *  mic 音频采样通道  默认 2 双通道（采样点位数 16 位）
  */
 @property (nonatomic,assign)NSInteger channelNum;
 
@@ -122,7 +122,7 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 @property (nonatomic,assign)NSInteger publishConnectTimes;
 
 /**
- *  推流帧率 范围［10～30］小于摄像头采集帧率
+ *  推流帧率 范围［10～30］小于摄像头采集帧率  默认15
  */
 @property (nonatomic,assign)NSInteger videoCaptureFPS;
 
@@ -132,22 +132,22 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 @property (nonatomic,assign)VHVideoResolution videoResolution;
 
 /**
- *  视频码率设置 取值范围 [100 - 1024]
+ *  视频码率设置 取值范围 [100 - 1024] 单位 kbps
  */
 @property (nonatomic,assign)NSInteger videoBitRate;
 
 /**
- *  音频码率设置 取值范围 [16,32,48,96,128]  单位 kbps
+ *  音频码率设置 取值范围 [32,48,96,128]  单位 kbps  默认64
  */
 @property (nonatomic,assign)NSInteger audioBitRate;
 
 /**
- * 是否开启噪声消除，默认不开启，最高支持32k的音频采样率,直播前设置，当采样率大于32k时，自动关闭噪声消除
+ * 是否开启噪声消除，默认不开启
  */
 @property(assign,nonatomic)BOOL isOpenNoiseSuppresion;
 
 /**
- * 音频增益 [0.0-1.0]
+ * 音频增益 [0.0-1.0] 默认0.0
  */
 @property(assign,nonatomic)float volumeAmplificateSize;
 
@@ -174,20 +174,22 @@ typedef NS_ENUM(NSInteger,VHVideoResolution)
 @property (nonatomic,assign)VHStreamType pushType;
 
 /**
- * 是否打印日志
+ * 是否打印详细推流日志
  * 默认不打印 NO
  */
 @property (nonatomic,assign)BOOL isPrintLog;
 
 
 /**
+ * 高级功能 用于自定义采集模块
  * 自定义视频宽高,默认为 0 ，若设置此项后 videoResolution 属性自动失效
  */
 @property(nonatomic,assign)int customVideoWidth;
 @property(nonatomic,assign)int customVideoHeight;
 
 /**
- * 自定义参数 用于高级自定义采集模块
+ * 高级功能 用于自定义采集模块
+ * 自定义参数 用于自定义采集模块
  */
 @property (nonatomic,strong)NSDictionary* customParam;
 

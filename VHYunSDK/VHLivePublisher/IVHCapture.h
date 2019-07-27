@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, VHVideoCaptureContentMode) {
  * @param curCapture 当前采集器
  * @param sampleBuffer 采集到的数据
  */
-typedef void(^OutputSampleBufferBlock)(id<IVHCapture> curCapture,CMSampleBufferRef sampleBuffer);
+typedef void(^OutputSampleBufferBlock)(id<IVHCapture> curCapture,CMSampleBufferRef sampleBuffer,uint64_t pts);
 
 /**
  *  OutputDataBlock 自定义Capture 数据回调 CMSampleBufferRef版本 音频回调支持CMSampleBufferRef格式封装的数据 和 char* 数据
@@ -53,7 +53,7 @@ typedef void(^OutputSampleBufferBlock)(id<IVHCapture> curCapture,CMSampleBufferR
  * @param dataBuffer 采集到的数据
  * @param bufferSize 数据大小
  */
-typedef void(^OutputDataBufferBlock)(id<IVHCapture> curCapture,char* dataBuffer,long bufferSize);
+typedef void(^OutputDataBufferBlock)(id<IVHCapture> curCapture,char* dataBuffer,long bufferSize,uint64_t pts);
 
 /**
  *  OnErrorBlock 自定义Capture 错误回调 类型为 VHPublishErrorCaptureError,    //  40000-49999 采集相关错误

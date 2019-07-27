@@ -68,12 +68,12 @@ static VHStystemSetting *pub_sharedSetting = nil;
         if([standardUserDefaults valueForKey:@"VHisOpenNoiseSuppresion"])
             self.isOpenNoiseSuppresion = [standardUserDefaults boolForKey:@"VHisOpenNoiseSuppresion"];
         else
-            self.isOpenNoiseSuppresion = YES;
+            self.isOpenNoiseSuppresion = NO;
         
         if([standardUserDefaults valueForKey:@"VHvolumeAmplificateSize"])
             self.volumeAmplificateSize = [standardUserDefaults floatForKey:@"VHvolumeAmplificateSize"];
         else
-            self.volumeAmplificateSize = 1.0;
+            self.volumeAmplificateSize = 0.0;
         
         //点播
         _recordID           = [standardUserDefaults objectForKey:@"VHrecordID"];            //点播房间ID
@@ -115,7 +115,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
         if(_videoBitRate<=0)
             _videoBitRate = 600;
         if(_audioBitRate<=0)
-            _audioBitRate = 16;
+            _audioBitRate = 64;
         if(_videoCaptureFPS < 10 || _videoCaptureFPS >30)
             _videoCaptureFPS = 15;
         //点播

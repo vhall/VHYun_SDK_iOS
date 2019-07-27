@@ -24,6 +24,10 @@
 ![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v1.8.1 更新时间：2019.07.27
+更新内容：<br>
+1、优化直播美颜效果<br>
+
 #### 版本 v1.8.0 更新时间：2019.07.10
 更新内容：<br>
 1、新增录屏直播功能<br>
