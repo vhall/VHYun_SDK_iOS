@@ -159,7 +159,7 @@ typedef NS_ENUM(NSInteger, VHPublishError) {
 /**
  *  美颜参数设置
  *  VHPublishConfig beautifyFilterEnable为YES时设置生效 根据具体使用情况微调
- *  @param beautify   磨皮   默认 2.0f  取值范围[1.0, 10.0]  1.0 正常图片没有磨皮
+ *  @param beautify   磨皮   默认 2.0f  取值范围[1.0, 10.0]  10.0 正常图片没有磨皮
  *  @param brightness 亮度   默认 1.20f 取值范围[0.0, 2.0]  1.0 正常亮度
  *  @param saturation 饱和度 默认 1.0f  取值范围[0.0, 2.0]  1.0 正常饱和度
  *  @param sharpness  锐化   默认 0.5f  取值范围[-4.0，4.0] 0.0 正常锐化

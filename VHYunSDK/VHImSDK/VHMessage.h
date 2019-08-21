@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #define MSG_Type                    @"type"                //消息通用类型区分
+#define MSG_Nick_name               @"nick_name"           //消息中昵称
+#define MSG_Avatar                  @"avatar"              //消息中头像
 
 #define MSG_Service_Type_IM         @"service_im"           //聊天服务
 #define MSG_Service_Type_Document   @"service_document"     //文档服务

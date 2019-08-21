@@ -182,8 +182,6 @@
         config.pushType = VHStreamTypeOnlyAudio;
     
     config.beautifyFilterEnable = self.beautifyFilterEnable;
-    if(self.beautifyFilterEnable)//开启美颜后建议使用双倍码率 效果会更好
-        config.videoBitRate = self.videoBitRate*2;
 //    config.isPrintLog = YES;
     
     self.publisher = [[VHLivePublisher alloc] initWithConfig:config];

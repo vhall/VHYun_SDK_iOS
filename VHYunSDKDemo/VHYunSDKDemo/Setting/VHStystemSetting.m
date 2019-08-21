@@ -68,7 +68,7 @@ static VHStystemSetting *pub_sharedSetting = nil;
         if([standardUserDefaults valueForKey:@"VHisOpenNoiseSuppresion"])
             self.isOpenNoiseSuppresion = [standardUserDefaults boolForKey:@"VHisOpenNoiseSuppresion"];
         else
-            self.isOpenNoiseSuppresion = NO;
+            self.isOpenNoiseSuppresion = YES;
         
         if([standardUserDefaults valueForKey:@"VHvolumeAmplificateSize"])
             self.volumeAmplificateSize = [standardUserDefaults floatForKey:@"VHvolumeAmplificateSize"];

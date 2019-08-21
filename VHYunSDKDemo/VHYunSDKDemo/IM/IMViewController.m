@@ -132,7 +132,7 @@
  *  @param imSDK IM实例
  *  @param message   IM消息
  */
-- (void)imSDK:(VHImSDK *)imSDK receiveMessage:(VHMessage*)message
+- (void)imSDK:(VHImSDK *)imSDK receiveChatMessage:(VHMessage*)message
 {
     [_msgArr insertObject:message atIndex:0];
     [_tableView reloadData];
@@ -154,7 +154,7 @@
  *  @param imSDK IM实例
  *  @param message   消息
  */
-- (void)imSDK:(VHImSDK *)imSDK onlineMessage:(VHMessage*)message
+- (void)imSDK:(VHImSDK *)imSDK receiveOnlineMessage:(VHMessage*)message
 {
     [_msgArr insertObject:message atIndex:0];
     [_tableView reloadData];

@@ -41,19 +41,6 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
 - (void)sendMessage:(id)message type:(VHIMMessageType)type text:(NSString*)text completed:(void (^)(NSError *error))completed;
 
 /**
- * 禁言/取消禁言
- * @param isForbidden YES 禁言、NO 取消禁言
- * @param targetId   操作的 第三方ID third_party_user_id
- */
-- (void)forbidden:(BOOL)isForbidden targetId:(NSString*)targetId completed:(void (^)(NSError *error))completed;
-
-/**
- * 全员禁言/取消全员禁言
- * @param isForbidden YES 禁言、NO 取消禁言
- */
-- (void)forbiddenAll:(BOOL)isForbidden completed:(void (^)(NSError *error))completed;
-
-/**
  *  获得当前SDK版本号
  */
 + (NSString *) getSDKVersion;
@@ -64,9 +51,16 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
 /**
  *  接收IM消息
  *  @param imSDK IM实例
- *  @param message   IM消息
+ *  @param message   chat消息  data中聊天消息格式  说明详见本文件底部注释
  */
-- (void)imSDK:(VHImSDK *)imSDK receiveMessage:(VHMessage*)message;
+- (void)imSDK:(VHImSDK *)imSDK receiveChatMessage:(VHMessage*)message;
+
+/**
+ *  接收上下线消息
+ *  @param imSDK IM实例
+ *  @param message   消息
+ */
+- (void)imSDK:(VHImSDK *)imSDK receiveOnlineMessage:(VHMessage*)message;
 
 /**
  *  接收自定义消息
@@ -76,11 +70,11 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
 - (void)imSDK:(VHImSDK *)imSDK receiveCustomMessage:(VHMessage*)message;
 
 /**
- *  上下线消息
+ *  接收room消息
  *  @param imSDK IM实例
- *  @param message   消息
+ *  @param message   room消息
  */
-- (void)imSDK:(VHImSDK *)imSDK onlineMessage:(VHMessage*)message;
+- (void)imSDK:(VHImSDK *)imSDK receiveRoomMessage:(VHMessage*)message;
 
 /**
  *  错误回调
@@ -89,12 +83,22 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
  */
 - (void)imSDK:(VHImSDK *)imSDK error:(NSError *)error;
 
+#pragma mark - 兼容v1.8.0 之前版本消息回调 请尽快升级到新的回调接口
 /**
- *  接收room消息
+ *  接收IM消息
  *  @param imSDK IM实例
- *  @param message   room消息
+ *  @param message   IM消息
+ *  注意：请尽快使用 imSDK: receiveChatMessage: 接收 聊天消息。支持更多功能
  */
-- (void)imSDK:(VHImSDK *)imSDK receiveRoomMessage:(VHMessage*)message;
+- (void)imSDK:(VHImSDK *)imSDK receiveMessage:(VHMessage*)message;
+
+/**
+ *  上下线消息
+ *  @param imSDK IM实例
+ *  @param message   消息
+ *  注意：请尽快使用 imSDK: receiveOnlineMessage: 接收 上下线消息
+ */
+- (void)imSDK:(VHImSDK *)imSDK onlineMessage:(VHMessage*)message;
 @end
 
 /*
