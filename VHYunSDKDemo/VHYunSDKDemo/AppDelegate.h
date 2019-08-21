@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  VHYunSDKDemo
+//  VHYunSDKDemo_IM
 //
-//  Created by vhall on 2017/11/16.
-//  Copyright © 2017年 www.vhall.com. All rights reserved.
+//  Created by vhall on 2019/7/19.
+//  Copyright © 2019 vhall. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void)updateInfo;
 
 @end
 

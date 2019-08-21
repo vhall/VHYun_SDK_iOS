@@ -7,9 +7,9 @@
 //
 
 #import "WatchViewController.h"
-#import "VHLivePlayer.h"
+#import <VHLSS/VHLivePlayer.h>
 #import <Photos/Photos.h>
-#import "VHMessage.h"
+#import <VHLSS/VHMessage.h>
 
 #define DefinitionNameList  (@[@"原画",@"超清",@"高清",@"标清",@"音频"])
 
@@ -253,7 +253,7 @@
     }
 }
 
-- (void)player:(VHLivePlayer *)player streamtype:(VHStreamType)streamtype
+- (void)player:(VHLivePlayer *)player streamtype:(int)streamtype
 {
     NSLog(@"streamtype: %ld",(long)streamtype);
 }
@@ -271,7 +271,7 @@
         {
             [self hideProgressDialog:self.preView];
             [self stopPlayer];
-            [self showMsg:@"主持人已停止推流" afterDelay:1.5];
+            [self showMsg:@"主持人没有推流" afterDelay:1.5];
         }
     }
     else if([roommsg.service_type isEqualToString:MSG_Service_Type_Online])

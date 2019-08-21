@@ -4,26 +4,20 @@
 
 
 ### APP工程集成SDK基本设置
-1、工程中AppDelegate.m 文件名修改为 AppDelegate.mm<br>
-2、关闭bitcode 设置<br>
-3、plist 中 App Transport Security Settings -> Allow Arbitrary Loads 设置为YES<br>
-4、注册`AppKey`  [VHLiveBase registerApp:`AppKey`]; <br>
-5、检查工程 `Bundle ID` 是否与`AppKey`对应 <br>
-6、plist中添加相机、麦克风权限 <br>
-7、互动功能暂不支持模拟器 <br>
+1、关闭bitcode 设置<br>
+2、plist 中 App Transport Security Settings -> Allow Arbitrary Loads 设置为YES<br>
+3、注册`AppKey`  [VHLiveBase registerApp:`AppKey`]; <br>
+4、检查工程 `Bundle ID` 是否与`AppKey`对应 <br>
+5、plist中添加相机、麦克风权限 <br>
 
-### 上传App Store时会报模拟器错误
-1、从 v1.7.2 版本开始 VHYunSDK 支持模拟器编译（包含模拟器的 framework 库打包上传App Store时会报错）<br> 
-2、打开终端(Terminal) <br>
-3、cd VHYunSDK 文件夹 <br>
-4、sh del_simulator.sh      即删除 VHYunSDK 文件夹中动态库的模拟器部分，再打包上传App Store。<br>
-
-
-### SDK 各模块依赖关系图
-
-![(VHYunSDK)](https://github.com/vhall/VHYun_SDK_iOS/blob/master/dependencies.png)
 
 ### 版本更新信息
+#### 版本 v2.0.0 更新时间：2019.08.21
+更新内容：<br>
+1、业务模块拆分<br>
+2、集成方式优化<br>
+3、全新文档演示功能<br>
+
 #### 版本 v1.8.2 更新时间：2019.08.21
 更新内容：<br>
 1、优化美颜直播性能<br>

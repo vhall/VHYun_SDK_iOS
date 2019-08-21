@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VHInteractiveRoom.h"
+#import <VHRTC/VHInteractiveRoom.h>
 #import "VHLayoutView_1vN_Pip_Left.h"
 
 @interface VHInteractiveViewController : VHBaseViewController

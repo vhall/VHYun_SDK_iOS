@@ -7,7 +7,7 @@
 //
 #import <ReplayKit/ReplayKit.h>
 #import "SampleScreenViewController.h"
-#import "VHScreenLivePublisher.h"
+#import <VHLSS/VHScreenLivePublisher.h>
 
 @interface SampleScreenViewController ()<VHLivePublisherDelegate>
 
@@ -107,12 +107,7 @@
 #pragma mark - Camera
 - (void)initCameraEngine
 {
-    VHPublishConfig* config = [VHPublishConfig configWithType:VHPublishConfigTypeDefault];
-    config.videoBitRate = self.videoBitRate;
-    config.videoCaptureFPS =self.videoCaptureFPS;
-//    config.isPrintLog = YES;
-    
-    self.publisher = [[VHScreenLivePublisher alloc] initWithConfig:config];
+    self.publisher = [[VHScreenLivePublisher alloc] initWithConfig:[VHPublishConfig configWithType:VHPublishConfigTypeDefault]];
     self.publisher.delegate            = self;
 }
 

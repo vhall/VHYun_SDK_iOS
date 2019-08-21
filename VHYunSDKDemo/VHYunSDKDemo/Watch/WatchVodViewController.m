@@ -7,7 +7,7 @@
 //
 
 #import "WatchVodViewController.h"
-#import "VHVodPlayer.h"
+#import <VHLSS/VHVodPlayer.h>
 #import <Photos/Photos.h>
 
 #define CONTROLS_SHOW_TIME  10  //底部进度条显示时间
@@ -87,6 +87,7 @@
 }
 - (void)dealloc
 {
+    [_player destroyPlayer];
     //允许iOS设备锁屏
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     NSLog(@"%@: dealloc",[self class]);

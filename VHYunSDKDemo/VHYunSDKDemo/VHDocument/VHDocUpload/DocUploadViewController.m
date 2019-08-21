@@ -9,7 +9,7 @@
 #import "DocUploadViewController.h"
 #import <Photos/Photos.h>
 #import "MBProgressHUD.h"
-#import "VHDocUpload.h"
+#import <VHDoc/VHDocUpload.h>
 
 @interface DocUploadViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIDocumentPickerDelegate>
 

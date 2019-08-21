@@ -7,7 +7,7 @@
 //
 
 #import "VHLayoutItem.h"
-#import "VHRenderView.h"
+#import <VHRTC/VHRenderView.h>
 
 @implementation VHLayoutItem
 

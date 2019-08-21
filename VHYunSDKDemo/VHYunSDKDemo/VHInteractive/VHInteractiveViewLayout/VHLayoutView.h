@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VHLayoutItem.h"
-#import "VHInteractiveRoom.h"
+#import <VHRTC/VHInteractiveRoom.h>
 
 @interface VHLayoutView : UIView
 

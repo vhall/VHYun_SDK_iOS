@@ -9,7 +9,8 @@
 #import "VHInteractiveViewController+Room.h"
 #import "VHInteractiveViewController+Layout.h"
 #import "VHInteractiveViewController+TableView.h"
-#import "VHRenderView.h"
+
+#import <VHRTC/VHRenderView.h>
 
 @implementation VHInteractiveViewController (Room)
 #pragma mark - 房间控制

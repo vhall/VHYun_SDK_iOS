@@ -7,7 +7,7 @@
 //
 
 #import "VHInteractiveViewController.h"
-#import "VHInteractiveRoom.h"
+#import <VHRTC/VHInteractiveRoom.h>
 @interface VHInteractiveViewController (Room)<VHInteractiveRoomDelegate>
 
 - (NSDictionary*)renderViewsById;

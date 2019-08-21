@@ -9,7 +9,7 @@
 
 #import "PublishViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#include "VHLivePublisher.h"
+#include <VHLSS/VHLivePublisher.h>
 
 @interface PublishViewController ()<VHLivePublisherDelegate>
 {
@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *hideKeyBtn;
+@property (weak, nonatomic) IBOutlet UISwitch *noiseSwitch;
 @end
 
 @implementation PublishViewController
@@ -58,6 +59,8 @@
     [self initViews];
     //初始化CameraEngine
     [self initCameraEngine];
+    
+    _noiseSwitch.on = self.isOpenNoiseSuppresion;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -174,10 +177,12 @@
     config.captureDevicePosition = AVCaptureDevicePositionFront;
     config.publishConnectTimes = 1;
     config.videoBitRate = self.videoBitRate;
+    config.audioBitRate = self.audioBitRate;
     config.videoCaptureFPS = self.videoCaptureFPS;
     config.isOpenNoiseSuppresion = self.isOpenNoiseSuppresion;
     config.volumeAmplificateSize = self.volumeAmplificateSize;
     config.videoResolution = self.videoResolution;
+    config.sampleRate = 32000;
     if(self.isOnlyAudio)
         config.pushType = VHStreamTypeOnlyAudio;
     
@@ -245,6 +250,9 @@
         ret = YES;
     }
     return ret;
+}
+- (IBAction)noiseSwitchValueChange:(UISwitch *)sender {
+    [_publisher openNoiseSuppresion:sender.on];
 }
 
 - (IBAction)startVideoPlayer

@@ -14,12 +14,12 @@
 #import "VHSettingArrowItem.h"
 #import "CustomPickerView.h"
 
-#import "VHLiveBase.h"
-#import "VHLivePublisher.h"
-#import "VHVodPlayer.h"
-#import "VHInteractiveRoom.h"
-#import "VHImSDK.h"
-#import "VHDocument.h"
+#import <VHCore/VHLiveBase.h>
+#import <VHLSS/VHLivePublisher.h>
+#import <VHLSS/VHVodPlayer.h>
+#import <VHRTC/VHInteractiveRoom.h>
+#import <VHIM/VHImSDK.h>
+#import <VHDoc/VHDocument.h>
 
 #define PushArr @[@"默认",@"标清",@"高清",@"超清",@"自定义"]
 #define OptionsSD   @{VHVideoWidthKey:@"192",VHVideoHeightKey:@"144",VHVideoFpsKey:@(30),VHMaxVideoBitrateKey:@(200)}
@@ -49,6 +49,7 @@
     //文档直播
     VHSettingTextFieldItem *item40;
     VHSettingTextFieldItem *item41;
+    VHSettingTextFieldItem *item42;
     //IM
     VHSettingTextFieldItem *item50;
     //互动
@@ -103,11 +104,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard:)
                                             name:UIKeyboardDidHideNotification object:nil];
     [[UIApplication sharedApplication].keyWindow setBackgroundColor:[UIColor whiteColor]];
-    UIView *headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+    UIView *headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, (iPhoneX ||iPhoneXR||iPhoneXSMAX)? 64+20 : 64)];
     headerView.backgroundColor=[UIColor blackColor];
+    headerView.tag = 100999;
     [self.view insertSubview:headerView atIndex:0];
     
-    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0,20, 44, 44)];
+    UIButton *back = [[UIButton alloc] initWithFrame:CGRectMake(0,headerView.bottom-44, 44, 44)];
     [back setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:back];
@@ -118,7 +120,7 @@
     [title setText:@"参数设置"];
     [title setFont:[UIFont systemFontOfSize:18]];
     [title sizeToFit];
-    title.center = CGPointMake(headerView.center.x, 40);
+    title.center = CGPointMake(headerView.center.x, headerView.bottom-20);
     [headerView addSubview:title];
 
     _pickerView = [CustomPickerView loadFromXib];
@@ -134,7 +136,7 @@
     _volumeAmplificateSlider.maximumValue = 1.0;
     [_volumeAmplificateSlider addTarget:self action:@selector(volumeAmplificate) forControlEvents:UIControlEventValueChanged];
     
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, [UIScreen mainScreen].bounds.size.height-64) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, headerView.bottom, self.view.width, [UIScreen mainScreen].bounds.size.height-headerView.bottom) style:UITableViewStylePlain];
    // tableView.backgroundColor=[UIColor whiteColor];
     _tableView.userInteractionEnabled=YES;
 
@@ -191,7 +193,8 @@
 
 - (void)viewDidLayoutSubviews
 {
-    _tableView.frame = CGRectMake(0, 64, self.view.width, [UIScreen mainScreen].bounds.size.height-64);
+    UIView *headerView = [self.view viewWithTag: 100999];
+    _tableView.frame = CGRectMake(0, headerView.bottom, self.view.width, [UIScreen mainScreen].bounds.size.height-headerView.bottom);
 }
 
 /*
@@ -270,7 +273,9 @@
     item40.text=DEMO_Setting.docChannelID;
     item41 = [VHSettingTextFieldItem  itemWithTitle:@"文档绑定roomID"];
     item41.text=DEMO_Setting.docRoomID;
-    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40,item41]];
+    item42 = [VHSettingTextFieldItem  itemWithTitle:@"加载上次演示文档"];
+    item42.text=DEMO_Setting.isLoadLastDoc?@"1":@"0";
+    VHSettingGroup *group= [VHSettingGroup groupWithItems:@[item40,item41,item42]];
     group.headerTitle = @"文档设置";
     [self.groups addObject:group];
 }
@@ -634,6 +639,12 @@
                 {
                     DEMO_Setting.docRoomID = text;
                     item41.text = DEMO_Setting.docRoomID;
+                }
+                    break;
+                case 2:
+                {
+                    DEMO_Setting.isLoadLastDoc = [text integerValue];
+                    item42.text = DEMO_Setting.isLoadLastDoc?@"1":@"0";
                 }
                     break;
                 default:break;

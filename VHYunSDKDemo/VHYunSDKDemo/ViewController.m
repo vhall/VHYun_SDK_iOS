@@ -9,12 +9,11 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "ViewController.h"
+#import "ViewController+vhall.h"
+
 #import "PublishViewController.h"
 #import "WatchViewController.h"
 #import "WatchVodViewController.h"
-
-#import "DocumentDemoViewController.h"
-#import "VodDocumentViewController.h"
 
 #import "IMViewController.h"
 
@@ -25,6 +24,9 @@
 
 #import "SampleScreenViewController.h"
 
+#import "NewDocumentDemoViewController.h"
+#import "NewLiveDocumentViewController.h"
+#import "NewVodDocumentViewController.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *verLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bundleIDLabel;
@@ -44,6 +46,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self showInitSDKVC];
+}
 #pragma mark - 推流
 - (IBAction)publishBtnClicked:(UIButton*)sender {
     if(![self isCaptureDeviceOK])
@@ -53,9 +61,10 @@
     rtmpLivedemoVC.roomId           = DEMO_Setting.publishRoomID;
     rtmpLivedemoVC.accessToken      = DEMO_Setting.accessToken;
     rtmpLivedemoVC.videoBitRate     = DEMO_Setting.videoBitRate;
+    rtmpLivedemoVC.audioBitRate     = DEMO_Setting.audioBitRate;
     rtmpLivedemoVC.videoCaptureFPS  = DEMO_Setting.videoCaptureFPS;
     rtmpLivedemoVC.interfaceOrientation  = (sender.tag == 1)?UIInterfaceOrientationLandscapeRight :UIInterfaceOrientationPortrait;
-    rtmpLivedemoVC.isOpenNoiseSuppresion = YES;
+    rtmpLivedemoVC.isOpenNoiseSuppresion = DEMO_Setting.isOpenNoiseSuppresion;
     rtmpLivedemoVC.beautifyFilterEnable  = DEMO_Setting.isBeautifyFilterEnable;
     rtmpLivedemoVC.volumeAmplificateSize = DEMO_Setting.volumeAmplificateSize;
     rtmpLivedemoVC.isOnlyAudio           = DEMO_Setting.isOnlyAudio;
@@ -100,11 +109,15 @@
 
 #pragma mark - 直播文档
 - (IBAction)documentBtnClicked:(UIButton *)sender {
-//    DocumentViewController * vc = [[DocumentViewController alloc] init];
-//    vc.channelID    = DEMO_Setting.docChannelID;
-//    vc.accessToken  = DEMO_Setting.accessToken;
-//    [self presentViewController:vc animated:YES completion:nil];
-    DocumentDemoViewController * vc = [[DocumentDemoViewController alloc] init];
+    NewDocumentDemoViewController * vc = [[NewDocumentDemoViewController alloc] init];
+    vc.channelID    = DEMO_Setting.docChannelID;
+    vc.accessToken  = DEMO_Setting.accessToken;
+    vc.roomID       = DEMO_Setting.docRoomID;
+    vc.isLoadLastDoc    = DEMO_Setting.isLoadLastDoc;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+- (IBAction)liveDocumentBtnClicked:(UIButton *)sender {
+    NewLiveDocumentViewController * vc = [[NewLiveDocumentViewController alloc] init];
     vc.channelID    = DEMO_Setting.docChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
     vc.roomID       = DEMO_Setting.docRoomID;
@@ -113,7 +126,8 @@
 }
 #pragma mark - 点播文档
 - (IBAction)vodDocumentBtnClicked:(UIButton *)sender {
-    VodDocumentViewController * vc = [[VodDocumentViewController alloc] init];
+//    VodDocumentViewController * vc = [[VodDocumentViewController alloc] init];
+    NewVodDocumentViewController * vc = [[NewVodDocumentViewController alloc] init];
     vc.recordID      = DEMO_Setting.recordID;
     vc.accessToken   = DEMO_Setting.accessToken;
     vc.seekMode      = DEMO_Setting.seekMode;
@@ -131,6 +145,7 @@
     IMViewController * vc = [[IMViewController alloc] init];
     vc.channelID    = DEMO_Setting.imChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
+    vc.roomID       = DEMO_Setting.publishRoomID;
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - 互动

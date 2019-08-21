@@ -11,4 +11,5 @@
 @interface IMViewController : VHBaseViewController
 @property(nonatomic,copy)NSString * channelID;
 @property(nonatomic,copy)NSString * accessToken;
+@property(nonatomic,copy)NSString * roomID;
 @end
