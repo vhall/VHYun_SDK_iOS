@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*! @abstract   滑竿TouchEnded，需实现此回调。
  @param skinView 播放器皮肤类对象
+ @param time     slider对应的当前时间
  */
 - (void)skinViewSliderTouchEnded:(VHPlayerSkinView *)skinView currentTime:(float)time;
 
@@ -59,6 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
  播放状态，子类重写父类方法，接收播放器状态改变事件
  */
 - (void)playerStatus:(int)state;
+
+/**
+ 播放出错
+ */
+- (void)playerError:(NSError *)error;
 /**
  设置支持的分辨率，子类重写父类方法，接收播放器分辨率改变事件
  */

@@ -21,6 +21,9 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
 
 @interface VHImSDK : NSObject
 @property (nonatomic,weak)id <VHImSDKDelegate>      delegate;
+@property (nonatomic,assign)BOOL                    forbidden;
+@property (nonatomic,assign)BOOL                    forbiddenAll;
+
 /**
  * IM模块初始化
  */
@@ -37,8 +40,50 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
  * @param message IM图片等消息 VHIMMessageTypeImage时传入 NSArray 内部为 图片URL 字符串， VHIMMessageTypeLink连接传入 URL 字符串，
  * @param type   IM消息类型 VHIMMessageType
  * @param text   IM文本消息 最长200字
+ * @param audit  是否需要AI审核 默认 YES 需要审核
  */
-- (void)sendMessage:(id)message type:(VHIMMessageType)type text:(NSString*)text completed:(void (^)(NSError *error))completed;
+- (void)sendMessage:(id)message type:(VHIMMessageType)type text:(NSString*)text  audit:(BOOL)audit completed:(void (^)(NSError *error))completed;
+
+/**
+ * 禁言/取消禁言
+ * @param isForbidden YES 禁言、NO 取消禁言
+ * @param targetId   操作的 第三方ID third_party_user_id
+ */
+- (void)forbidden:(BOOL)isForbidden targetId:(NSString*)targetId completed:(void (^)(NSError *error))completed;
+
+/**
+ * 全员禁言/取消全员禁言
+ * @param isForbidden YES 禁言、NO 取消禁言
+ */
+- (void)forbiddenAll:(BOOL)isForbidden completed:(void (^)(NSError *error))completed;
+
+/**
+ * 获取频道内用户列表
+ * @param page 当前页
+ * @param size 每页大小
+ * data 数据结构
+ *  list              用户列表
+ *  total             总条数
+ *  page_num          当前页
+ *  page_all          总页数
+ *  disable_users     禁言用户列表
+ *  channel_disable   频道是否禁言 true禁言 false 解除禁言
+ */
+- (void)userListWithPage:(int)page size:(int)size completed:(void (^)(id data,NSError *error))completed;
+
+/**
+ * 历史消息查询
+ * @param page 当前页
+ * @param size 每页大小
+ * @param startTime  查询开始时间，格式为：2017/01/01
+ * @param endTime  查询结束时间，默认为当前时间，格式为：2017/01/01
+ * data 数据结构
+ *  list              消息列表
+ *  total             总条数
+ *  page_num          当前页
+ *  page_all          总页数
+ */
+- (void)messageListWithPage:(int)page size:(int)size startTime:(NSString*)startTime endTime:(NSString*)endTime completed:(void (^)(id data,NSError *error))completed;
 
 /**
  *  获得当前SDK版本号
@@ -78,9 +123,17 @@ typedef NS_ENUM(NSInteger, VHIMMessageType) {
 - (void)imSDK:(VHImSDK *)imSDK receiveRoomMessage:(VHMessage*)message;
 
 /**
+ *  接收IM消息
+ *  @param imSDK IM实例
+ *  @param forbidden    当前用户被禁言
+ *  @param forbiddenAll 当前频道被全体禁言
+ */
+- (void)imSDK:(VHImSDK *)imSDK forbidden:(BOOL)forbidden forbiddenAll:(BOOL)forbiddenAll;
+
+/**
  *  错误回调
  *  @param imSDK IM实例
- *  @param error    错误
+ *  @param error    错误o
  */
 - (void)imSDK:(VHImSDK *)imSDK error:(NSError *)error;
 

@@ -93,7 +93,7 @@
     {
         __weak typeof(self) wf = self;
         [self showProgressDialog:_sendBtn];
-        [_chatSDK sendMessage:@[_imagemsgTextField.text] type:VHIMMessageTypeImage text:_msgTextField.text completed:^(NSError *error) {
+        [_chatSDK sendMessage:@[_imagemsgTextField.text] type:VHIMMessageTypeImage text:_msgTextField.text audit:YES completed:^(NSError *error) {
             [wf hideProgressDialog:wf.sendBtn];
             if(error)
                 [wf showMsg:[NSString stringWithFormat:@"%ld%@",error.code,error.domain] afterDelay:2];
