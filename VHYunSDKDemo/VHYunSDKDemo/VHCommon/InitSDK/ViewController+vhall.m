@@ -26,6 +26,7 @@ dispatch_source_t _timer_g;
     if(![VHLiveBase isInited])
     {
         InitSDKViewController *vc = [[InitSDKViewController alloc]init];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:vc animated:NO completion:nil];
         [self showProcessInfo];
     }

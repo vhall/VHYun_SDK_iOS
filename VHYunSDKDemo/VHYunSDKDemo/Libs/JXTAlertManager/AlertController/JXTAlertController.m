@@ -188,7 +188,7 @@ typedef void (^JXTAlertActionsConfig)(JXTAlertActionBlock actionBlock);
 //                actionBlock(buttonIndex, action);
 //            }
 //        });
-        
+        alertMaker.modalPresentationStyle = UIModalPresentationFullScreen;
         if (alertMaker.alertDidShown)
         {
             [self presentViewController:alertMaker animated:!(alertMaker.jxt_setAlertAnimated) completion:^{

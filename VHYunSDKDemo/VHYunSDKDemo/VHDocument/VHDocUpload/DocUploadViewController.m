@@ -59,6 +59,7 @@
                                @"com.microsoft.powerpoint.ppt"];
     UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
     picker.delegate = self;
+    picker.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:picker animated:YES completion:nil];
 }
 //相册上传
@@ -68,6 +69,7 @@
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     picker.delegate = self;
+    picker.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:picker animated:YES completion:nil];
 }
 //拍照上传
@@ -76,6 +78,7 @@
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.delegate = self;
+    picker.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:picker animated:YES completion:nil];
 }
 
@@ -198,6 +201,7 @@
     }];
     [alert addAction:cancel];
     [alert addAction:action];
+    alert.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:alert animated:NO completion:nil];
 }
 //iCloud文件上传
@@ -245,6 +249,7 @@
     }];
     [alert addAction:cancel];
     [alert addAction:action];
+    alert.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:alert animated:NO completion:nil];
 }
 

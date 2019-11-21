@@ -21,7 +21,7 @@
     self = [super init];
     if(self)
     {
-        self.screenShareService = [[VHScreenShareService alloc]initWithAppGroup:@""];
+        self.screenShareService = [[VHScreenShareService alloc]initWithAppGroup:@"group.com.vhall.BroadcastNew.group"];
         self.screenShareService.delegate = self;
     }
     return self;

@@ -410,6 +410,7 @@
         if (arrowItem.desVc)
         {
             UIViewController *vc =[[arrowItem.desVc alloc] init];
+            vc.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:vc animated:YES completion:nil];
         }
     }

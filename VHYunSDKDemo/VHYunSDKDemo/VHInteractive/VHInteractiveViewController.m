@@ -151,6 +151,7 @@
         [self backBtnClicked:nil];
     }];
     [alertController addAction:action];
+    alertController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

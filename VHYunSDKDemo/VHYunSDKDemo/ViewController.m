@@ -69,7 +69,7 @@
     rtmpLivedemoVC.volumeAmplificateSize = DEMO_Setting.volumeAmplificateSize;
     rtmpLivedemoVC.isOnlyAudio           = DEMO_Setting.isOnlyAudio;
     
-    
+    rtmpLivedemoVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:rtmpLivedemoVC animated:YES completion:nil];
 }
 
@@ -85,7 +85,7 @@
     sampleScreenVC.accessToken      = DEMO_Setting.accessToken;
     sampleScreenVC.videoBitRate     = DEMO_Setting.videoBitRate;
     sampleScreenVC.videoCaptureFPS  = DEMO_Setting.videoCaptureFPS;
-
+    sampleScreenVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:sampleScreenVC animated:YES completion:nil];
 }
 
@@ -95,6 +95,7 @@
     watchVC.roomId      = DEMO_Setting.playerRoomID;
     watchVC.accessToken = DEMO_Setting.accessToken;
     watchVC.bufferTime  = DEMO_Setting.bufferTime;
+    watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
 }
 
@@ -104,6 +105,7 @@
     watchVC.recordID    = DEMO_Setting.recordID;
     watchVC.accessToken = DEMO_Setting.accessToken;
     watchVC.seekMode    = DEMO_Setting.seekMode;
+    watchVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:watchVC animated:YES completion:nil];
 }
 
@@ -114,6 +116,7 @@
     vc.accessToken  = DEMO_Setting.accessToken;
     vc.roomID       = DEMO_Setting.docRoomID;
     vc.isLoadLastDoc    = DEMO_Setting.isLoadLastDoc;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)liveDocumentBtnClicked:(UIButton *)sender {
@@ -121,7 +124,7 @@
     vc.channelID    = DEMO_Setting.docChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
     vc.roomID       = DEMO_Setting.docRoomID;
-    
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - 点播文档
@@ -131,12 +134,14 @@
     vc.recordID      = DEMO_Setting.recordID;
     vc.accessToken   = DEMO_Setting.accessToken;
     vc.seekMode      = DEMO_Setting.seekMode;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 //文档上传
 - (IBAction)DocUploadBtnClick:(UIButton *)sender {
     DocUploadViewController * vc = [[DocUploadViewController alloc] init];
     vc.accessToken = DEMO_Setting.accessToken;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -146,6 +151,7 @@
     vc.channelID    = DEMO_Setting.imChannelID;
     vc.accessToken  = DEMO_Setting.accessToken;
     vc.roomID       = DEMO_Setting.publishRoomID;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 #pragma mark - 互动
@@ -161,12 +167,14 @@
     vc.anotherLiveRoomId= DEMO_Setting.ilssLiveRoomID;
 //    vc.anotherLiveRoomID= DEMO_Setting.anotherLiveRoomID;
     vc.userData         = DEMO_Setting.userData;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - 设置
 - (IBAction)settingBtnClicked:(UIButton *)sender {
     VHSettingViewController * settingVC = [[VHSettingViewController alloc] init];
+    settingVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:settingVC animated:YES completion:nil];
 }
 
