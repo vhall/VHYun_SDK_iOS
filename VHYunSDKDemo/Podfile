@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+abstract_target "VHYunSDK" do
+target 'VHYunSDKDemo' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  #use_frameworks!
+  
+  pod 'VHYun_LSS'
+  pod 'VHYun_RTC'
+  pod 'VHYun_IM'
+  pod 'VHYun_OPS'
+end
+
+target 'VHYunSDKDemoScreenShare' do
+  pod 'VHYun_LSS_ScreenShare'
+end
+
+end

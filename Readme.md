@@ -2,6 +2,21 @@
 微吼云 iOS SDK <br>
 集成和调用方式，参见官方文档：http://yun.vhall.com/document/document/index <br>
 
+### Pod 引入微吼云 SDK
+  pod 'VHYun_LSS'<br>
+  pod 'VHYun_RTC'<br>
+  pod 'VHYun_IM'<br>
+  pod 'VHYun_OPS'<br>
+
+#### 微吼云 直播点播 SDK
+https://github.com/vhall/VHYun_SDK_LSS_iOS<br>
+#### 微吼云 互动 SDK
+https://github.com/vhall/VHYun_SDK_RTC_iOS<br>
+#### 微吼云 文档演示 SDK
+https://github.com/vhall/VHYun_SDK_OPS_iOS<br>
+#### 微吼云 消息 SDK
+https://github.com/vhall/VHYun_SDK_IM_iOS<br>
+
 
 ### APP工程集成SDK基本设置
 1、关闭bitcode 设置<br>
@@ -12,6 +27,10 @@
 
 
 ### 版本更新信息
+#### 不再在此库更新 SDK 版本，使用 Pod 引用微吼云SDK
+此库只用于集成所有SDK库的 Demo<br>
+
+
 #### 版本 v2.0.0 更新时间：2019.08.21
 更新内容：<br>
 1、业务模块拆分<br>
